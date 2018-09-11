@@ -1,2 +1,2 @@
-# wechat-app-lianmei
+# 商城小程序
 
