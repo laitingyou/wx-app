@@ -1,0 +1,56 @@
+<page-title title="收货地址"></page-title>
+<view class="addressPage">
+    <radio-group class="addressList" bindchange="setDefaultAddress">
+        <view class="addressItem" wx:for="{{list}}" wx:key="addrId">
+            <view bindtap="chooseAddress" data-id="{{item.addrId}}">
+                <view class="addressItem-header">
+                    <text>{{item.userName}}</text>
+                    <text class="phone">{{item.telNumber}}</text>
+                </view>
+                <text class="addressText">{{item.detailInfo}}</text>
+                <text 
+                    wx:if="{{currentAddrId == item.addrId}}"
+                    class="currentAddress iconfont icon-xuanzhong"
+                ></text>    
+            </view>
+            <view class="addressItem-footer">
+                <label class="addressItem-radio">
+                    <radio checked="{{item.default*1 > 0}}" value="{{item.addrId}}" color="#fe3666"/>
+                    <text>设为默认</text>
+                </label>
+                <view class="addressItem-footer-right">
+                    <view 
+                        class="addressItem-operate" 
+                        data-id="{{item.addrId}}"
+                        bindtap="saveAddressStorage">
+                        <text class="iconfont icon-icon_edit"></text>
+                        <text class="addressItem-operate-text">修改</text>
+                    </view>
+                    <view 
+                        class="addressItem-operate" 
+                        data-id="{{item.addrId}}" 
+                        bindtap="bindDelAddress">
+                        <text class="iconfont icon-shanchu"></text>
+                        <text class="addressItem-operate-text">删除</text>
+                    </view>
+                </view>
+            </view>    
+        </view>
+    </radio-group>
+</view>
+<!-- 底部按钮 -->
+<view class="addressPage-footer">
+    <view class="addressPage-footer-item">
+        <navigator class="footerBotton" url="../addAddress/index">
+            <text class="footerBotton-icon">+</text>
+            <text class="footerBotton-text">手动添加</text>
+        </navigator>        
+    </view>
+    <view class="addressPage-footer-item">
+        <view class="footerBotton wxBotton" bindtap="addAddressFormWx">
+            <text class="footerBotton-icon iconfont icon-weixin"></text>
+            <text class="footerBotton-text">微信添加</text>
+        </view>
+    </view>
+</view>
+<!-- 底部按钮 end -->

@@ -1,0 +1,36 @@
+<view class="message"  wx:if="{{data && data.length>0}}">
+    <view class="message-title">
+        <text>{{info.spellingCount}}人在开团拼赞</text>
+    </view>
+    <view class="line"></view>
+    <view class="message-bottom">
+        <view class="message-scroll" style="height: {{data.length>1?itemHeight*2:itemHeight}}px;">
+            <view
+                    animation="{{animationData}}"
+                    class="message-list playing"
+                    wx:for="{{data}}"
+                    wx:key="{{index}}"
+                    data-orderId="{{item.orderId}}"
+                    data-type="{{item.spellingType}}"
+                    catchtap="onNavigate"
+            >
+                <view class="message-content">
+                    <view class="avatar">
+                        <image class="avatar-img" mode="aspectFill"
+                               src="{{item.portrait}}"></image>
+                        <text class="avatar-name">{{item.userName}}</text>
+                    </view>
+                    <view class="content-right">
+                        <text>{{item.msg}}</text>
+
+                        <text wx:if="{{item.spellingType==1}}" class="praise-box praise-box-content">{{item.spellingTypeMsg}}</text>
+                        <text wx:else class="praise-box praise-box-border">{{item.spellingTypeMsg}}</text>
+                    </view>
+                </view>
+                <!--<view wx:if="{{index!=data.length-1}}" class="line"></view>-->
+            </view>
+        </view>
+
+    </view>
+
+</view>

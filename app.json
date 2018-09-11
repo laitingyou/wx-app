@@ -1,0 +1,125 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/goodsList/index",
+    "pages/goodsPage/index",
+    "pages/preferential/index",
+    "pages/praise/index",
+    "pages/liveDetails/index",
+    "pages/my/index",
+    "pages/goods/index",
+    "pages/login/index",
+    "pages/im/index",
+    "pages/liveAd/index",
+    "pages/unitary/index"
+  ],
+  "subPackages": [
+    {
+      "root": "other",
+      "pages": [
+        "pages/address/index",
+        "pages/addAddress/index",
+        "pages/video/index",
+        "pages/web/index"
+      ]
+    },
+    {
+      "root": "money",
+      "pages": [
+        "pages/pay/index",
+        "pages/order/index",
+        "pages/orderDetails/index",
+        "pages/logistics/index",
+        "pages/refundDetails/index",
+        "pages/consultList/index",
+        "pages/goodsBack/index",
+        "pages/afterSale/index",
+        "pages/afterSaleList/index"
+      ]
+    },
+    {
+      "root": "imPartials",
+      "pages": [
+        "pages/chating/chating",
+        "pages/historyfromcloud/historyfromcloud"
+      ]
+    },
+    {
+      "root": "store",
+      "pages": [
+        "index/index"
+      ]
+    },
+    {
+      "root": "live",
+      "pages": [
+        "pages/live/index",
+        "pages/liveGoods/index"
+      ]
+    },
+    {
+      "root": "getChance",
+      "pages": [
+        "pages/home/index"
+      ]
+    },
+    {
+      "root": "calculator",
+      "pages": [
+        "pages/home/index",
+        "pages/testResult/index"
+      ]
+    },{
+      "root": "activity",
+      "pages": [
+        "pages/001/index",
+        "pages/002/index",
+        "pages/003/index"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FA2458",
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText": "百里挑衣网",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f1f1f1",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "selectedColor": "#ff2853",
+    "color": "#888",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "images/tabBar/home.png",
+        "selectedIconPath": "images/tabBar/home_selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/goodsList/index",
+        "iconPath": "images/tabBar/group.png",
+        "selectedIconPath": "images/tabBar/group_selected.png",
+        "text": "拼货"
+      },
+      {
+        "pagePath": "pages/preferential/index",
+        "iconPath": "images/tabBar/discounts.png",
+        "selectedIconPath": "images/tabBar/discounts_selected.png",
+        "text": "优惠"
+      },
+      {
+        "pagePath": "pages/im/index",
+        "iconPath": "images/tabBar/message.png",
+        "selectedIconPath": "images/tabBar/message_selected.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "images/tabBar/my.png",
+        "selectedIconPath": "images/tabBar/my_selected.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

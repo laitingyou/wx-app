@@ -1,0 +1,51 @@
+
+<view class="container"  >
+    <view  class="container" >
+        <video
+                id="video"
+                class="video"
+                controls="{{false}}"
+                show-play-btn="{{false}}"
+                src="{{src}}"
+                autoplay="{{true}}"
+                bindended="onEnded"
+                bindpause="onPause"
+                bindplay="onPlay"
+                binderror="onError"
+                objectFit="cover"
+                direction="{{0}}"
+                loop="{{true}}"
+                show-fullscreen-btn="{{false}}"
+                enable-progress-gesture="{{false}}"
+        >
+
+            <cover-view class="cover" bindtap="onStop">
+                <cover-view hidden="{{navShow}}" class="close">
+                    <cover-view class="title">视频详情</cover-view>
+                    <cover-image catchtap="onClose" class="down" src="/images/close.png" />
+                </cover-view>
+                <cover-image
+                        hidden="{{navShow}}"
+                        src="/images/video-play.png"
+                        class="video-play"></cover-image>
+                <cover-view class="bottom" wx:if="{{~~params.type === 2}}">
+                    <cover-view class="btn right-btn" data-type="original" bindtap="onBuy">
+                        <cover-view>￥{{params.originalPrice}}</cover-view>
+                        <cover-view class="btn-bottom">立即购买</cover-view>
+                    </cover-view>
+                </cover-view>
+                <cover-view class="bottom" wx:if="{{params.btn != 'false'}}">
+                    <cover-view class="btn left-btn" data-type="original" bindtap="onBuy">
+                        <cover-view>￥{{params.originalPrice}}</cover-view>
+                        <cover-view class="btn-bottom">不集赞购买</cover-view>
+                    </cover-view>
+                    <cover-view class="pk">PK</cover-view>
+                    <cover-view class="btn right-btn" data-type="special" bindtap="onBuy">
+                        <cover-view>￥{{params.specialPrice}}</cover-view>
+                        <cover-view class="btn-bottom">开团集1个赞</cover-view>
+                    </cover-view>
+                </cover-view>
+            </cover-view>
+        </video>
+    </view>
+</view>

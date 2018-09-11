@@ -1,0 +1,33 @@
+@import '/style/iconfont.wxss';
+.model{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.62);
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.model-content{
+  background: #FFFFFF;
+  width: 80%;
+  margin: 15vh auto 0;
+  border-radius: 35rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.icon-cuo{
+  color: #ffffff;
+  font-size:25rpx;
+  border: 1rpx solid #fff;
+  padding: 15rpx;
+  border-radius: 50%;
+  position: absolute;
+  margin-top: 50rpx;
+  left: 50%;
+  width: 25rpx;
+  height: 25rpx;
+  font-weight: bold;
+  transform: translateX(-50%);
+}

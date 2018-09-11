@@ -1,0 +1,95 @@
+<page-title  title="售后申请" ></page-title>
+<view class="afterSale">
+    <modal show="{{modal}}" closable="{{false}}" bindonClose="onClose">
+        <view slot="body" class="modal-body">
+            <text>{{modalMsg}}</text>
+        </view>
+        <view slot="footer" class="modal-footer" >
+            <text>知道了！</text>
+        </view>
+    </modal>
+    <view class="afterSaleCellWrap">
+        <view class="afterSaleCell" bindtap="showReturnGoods">
+            <view>{{type===2?'退货原因':'退款原因'}}</view>
+            <view class="right" hidden="{{!currentReason}}">{{currentReason}}<text class="iconfont icon-right"></text></view>
+            <view class="right" hidden="{{currentReason}}">{{type===2?'请选择退货原因':'请选择退款原因'}}<text class="iconfont icon-right"></text></view>
+        </view>
+        <view class="afterSaleCell">
+            <view class="left">
+                <!--<view>退款金额：<text class="red">￥{{formData.price}}</text></view>-->
+                <view class="input-box">
+                    <text>退款金额：￥</text><input data-type="input" bindblur="onBlur"   value="{{formData.price/100}}"> </input>
+                </view>
+                 <view class="small"><text>( 最多可退 ¥ {{maxPrice/100}}，含发货邮费 ¥ {{formData.franking/100}} )</text></view>
+            </view>
+        </view>
+    </view>
+        <view class="afterSaleInstructions">
+            <view class="title">退款说明：<text class="gary">(选填)</text></view>
+            <view class="textarea">
+                <view class="placeholder" hidden="{{!returnGoodsShow && !modal}}">
+
+                </view>
+                <textarea
+                        data-type="textarea"
+                        hidden="{{returnGoodsShow || modal}}"
+                        maxlength="200"
+                        bindblur="onBlur"
+                        value="{{formData.desc}}"
+                />
+            </view>
+            <view wx:if="{{formData.type == 2}}">
+                <view class="title">图片凭证：(最多9张)</view>
+                <view class="photos">
+                    <view class="photo-item"  wx:for="{{photos}}" wx:key="{{index}}">
+                        <text
+                                data-index="{{index}}"
+                                catchtap="onRemove"
+                                class="iconfont icon-cuo"
+                        ></text>
+                        <image mode='aspectFill' class="image "  src="{{item}}"></image>
+                    </view>
+                    <view class="photo-item">
+                        <view
+                                wx:if="{{photos.length<9}}"
+                                catchtap="addPhoto"
+                                class="photo-add"
+                        ><text>+</text></view>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+    <view>
+
+    </view>
+    <view class="afterSaleButton">
+        <button bindtap="orderRefund">提交申请</button>
+    </view>
+</view>
+<pop class="returnReasonPop"
+        show="{{returnGoodsShow}}"
+        title="退货原因"
+        bindcancel="onCancel"
+        okText="确定">
+    <radio-group
+            class="returnReasonList"
+            bindchange="radioChange"
+    >
+        <label class="returnReasonListItem"
+                wx:for="{{currentList}}"
+                wx:key="{{index}}"
+                data-index="{{index}}">
+            <view class="radio-li-inner">
+                <text>{{item.name}}</text>
+            </view>
+            <view class="radio-li-radio">
+                <radio
+                        color="#fe3666"
+                        value="{{item.value}}"
+                        checked="{{item.value == formData.remarkType}}"
+                />
+            </view>
+        </label>
+    </radio-group>
+</pop>

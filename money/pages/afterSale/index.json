@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "page-title":"/component/pageTitle/pageTitle",
+    "pop": "/component/pop/pop",
+    "modal":"/component/modal/modal"
+  }
+}

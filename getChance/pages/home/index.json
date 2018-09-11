@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "page-title":"/component/pageTitle/pageTitle",
+        "big-modal": "/component/bigModal/bigModal"
+    },
+    "onReachBottomDistance": 200
+}

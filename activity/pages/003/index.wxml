@@ -1,0 +1,158 @@
+<page-title background="#fff" color="#4a4a4a" title="百里挑衣 1元领衣服"></page-title>
+<view class="myPage">
+    <view class="header">
+        <image
+                mode="widthFix"
+                src="{{recommendData.advert.advertImg}}"
+                class="advertImg"></image>
+        <text class="rule" bindtap="openRule">规则说明</text>
+    </view>
+    <big-modal hidden="{{modelHidden}}" bindonClose="closeModel">
+        <image
+                mode="widthFix"
+                src="{{recommendData.advert.ruleDescription}}"
+                class="rule-img"></image>
+    </big-modal>
+
+    <view class="msg">
+        <text class="iconfont icon-guangbo public"></text>
+        <view class="msg-user-box">
+            <view class="msg-user" wx:for="{{recommendData.orderLikeSuccessList}}" wx:key="{{index}}" animation="{{animationData}}">
+                <image
+                        mode="aspectFill"
+                        src="{{item.portrait}}"
+                        class="avatar"></image>
+                <text class="msg-text">{{item.userName}}：{{item.content}}</text>
+            </view>
+        </view>
+    </view>
+    <button open-type="share" class="nobutton share-float">
+        <text><text class="iconfont icon-weixin"></text> 分享好友</text>
+    </button>
+    <view class="nav">
+        <view bindtap="onClickNav"
+              data-class="currentNav"
+              class="currentNav text-align w-100 nav-item {{activeNav==='currentNav'?'currentNav-active':''}}"
+        >
+            <text>本期1元商品</text>
+        </view>
+        <view bindtap="onClickNav" data-class="nextNav" class="nextNav text-align w-100 nav-item {{activeNav==='nextNav'?'nextNav-active':''}}">
+            <text>下期1元预告</text>
+        </view>
+    </view>
+    <view class="goods-container">
+        <view
+                class="item"
+                wx:for="{{goodsList}}"
+                wx:key="{{index}}"
+
+        >
+            <image
+                    lazy-load
+                    mode="aspectFill" class="row-img" src="{{item.goodsImg}}"
+                    data-url="/pages/goods/index?goodsId={{item.goodsId}}"
+                    bindtap="routerTo"
+            ></image>
+            <view class="row-content">
+                <view
+                        data-url="/pages/goods/index?goodsId={{item.goodsId}}"
+                        bindtap="routerTo"
+                ><text class="row-title">{{item.goodsName}}</text></view>
+
+                <view class="row-invitation"
+                      data-url="/pages/goods/index?goodsId={{item.goodsId}}"
+                      bindtap="routerTo"
+                >
+                    <text class="row-invitation-left">已集赞 <text class="red">{{item.sellCount}}</text>件</text>
+                    <text class="row-invitation-right">单买{{item.originalPrice}}</text>
+                </view>
+
+
+                <view class="row-bottom">
+                    <view
+                            data-url="/pages/goods/index?goodsId={{item.goodsId}}"
+                            bindtap="routerTo"
+                            class="price">集赞{{item.requireLikes}}个 <text class="fuhao">￥</text><text class="row-price">{{item.specialPrice}}</text></view>
+                    <!--<image class="row-btn-box" mode="aspectFill" src="/images/itembtn.png"></image>-->
+                    <block wx:if="{{item.saleStock == 0}}">
+                        <text  class="row-btn soldout">已卖光</text>
+                    </block>
+                    <block wx:else>
+                        <block wx:if="{{activeNav === 'currentNav'}}">
+                            <view data-url="/pages/goods/index?goodsId={{item.goodsId}}"
+                                  bindtap="routerTo"
+                                  class="row-btn" >开团集赞</view>
+                        </block>
+                        <block wx:else>
+                            <text wx:if="{{item.isSubscribe}}" class="row-btn dingyue">已订阅</text>
+                            <button
+                                    wx:else
+                                    data-index="{{index}}"
+                                    data-id="{{item.gliId}}"
+                                    class="nobutton row-btn dingyue"
+                                    open-type="getUserInfo"
+                                    catchgetuserinfo="addSubscribe"
+                            >订阅提醒</button>
+                        </block>
+
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+
+
+    <!-- 直播 -->
+    <view class="liveArea">
+        <image
+                mode="widthFix"
+                src="/images/liveDetail/nav.png"
+                class="liveArea-header-bgImg bgImgHeader"></image>
+        <view class="liveArea-header">
+            <view class="liveArea-title">
+                <text class="liveArea-title-icon iconfont icon-zhibodating"></text>
+                <text class="liveArea-title-h2">{{title.content}}</text>
+            </view>
+
+        </view>
+        <view class="today-live">
+
+
+            <live-list class="liveArea-center" list="{{liveDataToday.list}}" wx:if="{{liveDataToday.list.length }}"></live-list>
+
+            <view class="onePending-list onePending-margin" wx:if="{{liveDataToday.list.length==0 }}">
+                <view class="onePending" wx:for="{{advanceListToday}}" wx:key="liveId">
+                    <one-pending item="{{item}}" ></one-pending>
+                </view>
+            </view>
+        </view>
+
+        <view class="liveArea-body today-live live-bg">
+            <view class="tabContent" >
+
+                <text class="tabContent-text tabContent-loading" wx:if="{{liveDataToday.loading}}">加载中……</text>
+                <!-- 即将开播 -->
+                <view class="advanceList live-bg">
+                    <block wx:if="{{advanceListToday.length > 0}}">
+                        <view class="onePendingTitle" hidden="{{liveDataToday.list.length <= 0}}">
+                            <image
+                                    lazy-load
+                                    mode="widthFix"
+                                    class="onePendingTitle-img"
+                                    src="/images/home/titleBj0@2x.png"></image>
+                            <text>即将开播</text>
+                        </view>
+                        <view class="onePending-list" hidden="{{liveDataToday.list.length <= 0}}">
+                            <view class="onePending" wx:for="{{advanceListToday}}" wx:key="liveId">
+                                <one-pending item="{{item}}" ></one-pending>
+                            </view>
+                        </view>
+
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

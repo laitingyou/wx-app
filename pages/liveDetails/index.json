@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "直播间",
+  "navigationBarBackgroundColor": "#FF7684",
+  "disableScroll": true,
+  "usingComponents": {
+    "page-title":"/component/pageTitle/pageTitle",
+    "counter":"/component/counter/counter"
+  }
+}

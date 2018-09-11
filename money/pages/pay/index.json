@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "pop": "/component/pop/pop",
+        "again-pay": "component/againPay",
+        "page-title":"/component/pageTitle/pageTitle",
+        "barrage":"/component/barrage/barrage",
+        "form-button":"/component/formButton/formButton",
+        "modal":"/component/modal/modal"
+    }
+
+}

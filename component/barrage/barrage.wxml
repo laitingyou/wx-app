@@ -1,0 +1,4 @@
+<view class="wrapper {{msgShow?'init show':'hidden'}}" wx:if="{{msg.msg}}">
+     <image class="avatar" mode="aspectFill" src="{{msg.portraitUrl}}"></image>
+     <text class="msg">{{msg.msg}}</text>
+</view>

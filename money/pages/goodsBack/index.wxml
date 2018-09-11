@@ -1,0 +1,55 @@
+<page-title  title="退货" ></page-title>
+<view class="goodsBack">
+    <view class="goodsBackAddr">
+        <view class="tit">
+            <view class="left">卖家退货地址</view>
+            <view class="right"><button plain="true" catchtap="goChat">私聊卖家</button></view>
+        </view>
+        <view class="content">
+            <view><text>姓名：{{defaultAddress.consignee}}</text></view>
+            <view><text>电话：{{defaultAddress.phone_mob}}</text></view>
+            <view><text>地址：{{defaultAddress.address}}</text></view>
+        </view>
+    </view>
+    <view class="goodsBackCell">
+        <view class="goodsBackCellItem" catchtap="selectExpress">
+            <view class="left">{{formData.invoiceName || '选择快递公司'}}</view>
+            <view class="right"> <text class="iconfont icon-right" ></text></view>
+        </view>
+        <view class="goodsBackScanCellItem">
+            <input class="left" value="{{formData.invoiceNo}}" placeholder="请填写快递单号" bindblur="onBlur"> </input>
+            <view class="right"><button class="scanBtn" catchtap="onSweep">扫描识别</button></view>
+        </view>
+    </view>
+    <view class="confirmBtn">
+         <button catchtap="submit">确认退货</button>
+    </view>
+
+</view>
+<pop class="returnReasonPop"
+     show="{{expressShow}}"
+     title="快递公司"
+     okText="确定">
+    <scroll-view scroll-y="{{true}}" class="scroll-view">
+        <radio-group
+                class="returnReasonList"
+                bindchange="radioChange"
+        >
+            <label class="returnReasonListItem"
+                   wx:for="{{expressList}}"
+                   wx:key="{{index}}"
+                   data-index="{{index}}">
+                <view class="radio-li-inner">
+                    <text>{{item.name}}</text>
+                </view>
+                <view class="radio-li-radio">
+                    <radio
+                            color="#fe3666"
+                            value="{{index}}"
+                            checked="{{item.name === formData.invoiceName}}"
+                    />
+                </view>
+            </label>
+        </radio-group>
+    </scroll-view>
+</pop>

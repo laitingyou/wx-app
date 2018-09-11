@@ -1,0 +1,29 @@
+<view class="liveItem">
+    <view class="item">
+        <navigator class="liveImgArea" url="{{liveUrl}}">
+            <image class="liveImg" lazy-load="true" mode="aspectFill" src="{{image}}"></image>
+            <text class="liveHit">直播中</text>
+            <text class="iconfont xin xin0"></text>
+            <text class="iconfont xin xin1"></text>
+            <text class="iconfont xin xin2"></text>
+            <text class="iconfont xin xin3"></text>
+        </navigator>
+        <view class="liveList-right">
+            <navigator class="store-info" url="{{liveUrl}}">
+                <text class="store-info-name">{{title}}</text>
+                <text class="store-info-address">{{addressName}}</text>
+            </navigator>
+            <view class="goodsList">
+                <navigator class="goodsList-more" url="{{liveUrl}}">
+                    <text>{{goodsCount}}个</text>
+                    <text>直播款</text>
+                </navigator>
+                <view class="goodsList-ul">
+                    <navigator class="goodsList-li" url="{{liveUrl}}" wx:for="{{goodsList}}" wx:key="goodsId">
+                        <image class="liveImg" lazy-load="true" mode="aspectFill" src="{{item.defaultImage}}"></image>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

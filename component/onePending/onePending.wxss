@@ -1,0 +1,104 @@
+.ellipsis {
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.liveImg {
+    background-color: #eee;
+}
+.liveItem {
+    padding: 30rpx 24rpx;
+    font-size: 28rpx;
+    color: #4A4A4A;
+    margin-bottom: 20rpx;
+}
+.liveItem-header {
+    display: flex;
+    justify-content: space-between;
+}
+.storeImg {
+    flex: 0 0 80rpx;  
+}
+.storeImg-image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 6rpx;
+}
+.storeInfo {
+    flex: 1 0 auto;
+    width: 0;   
+    padding: 0 20rpx; 
+}
+.storeInfo-liveName,.storeInfo-address {
+    display: block;
+}
+.storeInfo-address {
+    color: #888;
+    font-size: 24rpx;
+    margin-top: 10rpx;
+} 
+.subscribe {
+    flex: 0 0 250rpx;
+    height: 60rpx;
+    background-color: #008ef3;
+    color: #fff;
+    font-size: 28rpx;
+    border-radius: 30rpx;
+    line-height: 60rpx;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0 !important;
+    font-size: 24rpx !important; 
+}
+.subscribe:after {
+    border: none;
+}
+.subscribe.active {
+    background-color: #fff;
+    color: #008ef3;
+    border: 1rpx solid #008ef3 !important;
+} 
+.liveTitle {
+    display: block;
+    margin-top: 16rpx;
+}
+
+.goodsList {
+    display: flex;
+    justify-content: space-between;
+    margin: 20rpx -5rpx 0;
+}
+.goodsList-li, .goodsList-more {
+    min-width: 160rpx;
+    height: 24.2vw;
+    border-radius: 6rpx;
+    overflow: hidden;    
+    margin: 0 5rpx;
+    display: flex;
+    flex: 1 1 auto;
+}
+.goodsList-li image {
+    width: 100%;
+    height: 100%;
+}
+.goodsList-more {
+    background-color: #fbb0c2;
+    color: #fe3666;
+    box-sizing: border-box;
+    font-size: 28rpx;
+    justify-content: center;
+    align-items: center;    
+    flex-direction: column;
+}
+.liveHit {    
+    display: inline-flex;
+    margin-top: 10rpx;
+    color: #fff;
+    line-height: 50rpx;
+    font-size: 24rpx;
+    padding: 0 24rpx;
+    border-radius: 26rpx;
+    background-image: linear-gradient(to bottom right, #19c3ff 0, #2692ff 100%, rgba(86, 168, 251, 0.00) 100%, rgba(163, 157, 248, 0.00) 100%);
+}

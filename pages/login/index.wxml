@@ -1,0 +1,15 @@
+<page-title title="百里挑衣登录"></page-title>
+<view class="loginPage">
+    <image class="loginPage-img" src="/images/loginBj.png"></image>
+    <form report-submit="{{true}}" bindsubmit="bindsubmit" >
+        <button
+            formType="submit"
+            class="loginBtn"
+            type="primary"
+            open-type="getUserInfo"
+            bindgetuserinfo='login'
+    >
+        微信用户一键登录
+    </button>
+    </form>
+</view>

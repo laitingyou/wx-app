@@ -1,0 +1,13 @@
+<page-title 
+    animationname="{{animationName}}"
+    title="直播中心"></page-title>
+<view id="j-body">
+    <block wx:for="{{progressList}}" wx:key="liveId">
+        <in-live item="{{item}}"></in-live>
+    </block>
+    <block wx:for="{{pendingList}}" wx:key="liveId">
+        <pending-live item="{{item}}"></pending-live>
+    </block>
+    <text class="bottomText" wx:if="{{(progressPage >1 || pendingPage>1) && (progressLoading || pendingLoading)}}">正在加载……</text>
+    <text class="bottomText" wx:if="{{progressListEnd && pendingListEnd}}">没有了</text>
+</view>

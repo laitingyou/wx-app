@@ -1,0 +1,99 @@
+<page-title
+        hasback="{{false}}"
+        title="优惠"
+        background="#fff"
+        color="#4a4a4a"
+        defaultstyle="center"
+></page-title>
+<view class="refresh" >
+    <template is="loading"></template>
+</view>
+<view class="preferential">
+    <barrage></barrage>
+    <!--分享红包-->
+    <view class="redbag {{(redbag || openBag)?'show':''}}" catchtap="closeRedbag"></view>
+    <view class="redbag-box {{redbag?'bagShow':''}}">
+        <image catchtap="closeRedbag"  class="redbag-img" mode="aspectFit" src="/images/home/redbag.png"></image>
+        <view  class="redbag-text" >
+            <view class="redbag-title" >
+                <text>{{redbagMsg}}</text>
+            </view>
+            <view class="redbag-content">
+                <text class="redbag-content-top"> 拆中了<text class="redbag-content-tc">{{couponSummaryData.receiveCouponPrice}}元</text>优惠红包</text>
+                <view class="redbag-content-bottom"><text>已放入您的百里挑衣优惠账户</text></view>
+            </view>
+            <form-button bindsubmit="onShareAppMessage">
+                <button open-type="share" class="redbag-share-btn">
+                    <text>分享到微信群领红包</text>
+                </button>
+            </form-button>
+
+        </view>
+        <text catchtap="closeRedbag" class="iconfont icon-cuo "></text>
+    </view>
+    <view class="header">
+        <image class="bg" mode="widthFix" src="/images/preferential/bg.png"></image>
+        <view class="title">
+            <text class="big-title">签到领{{couponSummaryData.receiveCouponPrice}}元优惠券</text>
+            <text class="little-title">{{couponSummaryData.gainUserTotal}}人已经达成，赶紧来签到领取吧！</text>
+        </view>
+            <button open-type="getUserInfo" bindgetuserinfo="getRedBag" class="nobutton signed">{{btnText}}</button>
+        <view class="tip">
+            <text>您一共有{{couponSummaryData.couponTotal}}张红包优惠券 价值{{couponSummaryData.couponPrice}}元</text>
+        </view>
+    </view>
+    <view class="coupon-container" wx:for="{{storeCoupon}}" wx:key="{{index}}">
+        <navigator hover-class="none" url="/store/index/index?storeId={{item.storeId}}" class="store-info">
+            <view class="store-name-box">
+                <image src="{{item.portraitUrl}}" class="store-img"></image>
+                <text class="store-name">{{item.userName}}</text>
+            </view>
+            <text class="store-enter">进入店铺</text>
+        </navigator>
+        <view class="store-coupons {{ item.list.length>3 ? (currentStore === index ?  'puck-up' : 'reset') : ''}}" animation="{{ currentStore === index ? animationData : null }}">
+            <view class="coupons-item" wx:for="{{item.list}}" wx:for-index="couponIndex" wx:for-item="couponItem"   wx:key="{{couponIndex}}" >
+                <view class="coupons-item-img-box">
+                <image class="coupons-item-img" mode="aspectFill" src="{{couponItem.goodsImage}}"></image>
+                </view>
+                <view class="coupons-item-info">
+                    <view class="coupons-item-price">
+                        <text class="fuhao">￥</text><text class="price">{{couponItem.couponValue}}</text> <text class="price-tips">满{{couponItem.minAmount}}减{{couponItem.couponValue}}</text>
+                    </view>
+                    <view>
+                        <text class="coupons-tips">店铺优惠券</text>
+                    </view>
+                    <view class="coupons-item-date">
+                        <text>{{couponItem.fstartTime}}-{{couponItem.fendTime}}</text>
+                    </view>
+                </view>
+                <view class="time" wx:if="{{couponItem.ss || couponItem.mm || couponItem.hh}}">
+                    <text>距离失效只剩 {{couponItem.hh}} 小时 {{couponItem.mm}} 分 {{couponItem.ss}}秒</text>
+                </view>
+            </view>
+        </view>
+        <view class="coupon-many"
+              wx:if="{{item.list.length>3}}"
+              data-index="{{index}}"
+              bindtap="onLookMany"
+              data-length="{{item.list.length}}"
+        >
+            <block wx:if="{{openwin && currentStore === index}}">
+                <text>收起 共{{item.list.length}}张 </text><text class="iconfont icon-up"></text>
+            </block>
+            <block wx:else>
+                <text>展开剩余{{item.list.length - 3}}张 </text><text class="iconfont icon-down"></text>
+            </block>
+        </view>
+    </view>
+    <view class="loading" wx:if="{{loading}}">
+        <template is="loading"></template>
+    </view>
+</view>
+<!--loading样式-->
+<template name="loading">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</template>

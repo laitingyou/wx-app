@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "page-title":"/component/pageTitle/pageTitle",
+        "component-emoji": "/component/emoji/emoji",
+        "input-modal": "/component/inputmodal/inputmodal"
+    }
+}

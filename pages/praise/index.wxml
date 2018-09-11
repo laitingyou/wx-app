@@ -1,0 +1,163 @@
+<page-title
+        title="邀请朋友点赞"
+        background="#fff"
+        color="#4a4a4a"
+        animationname="{{navAnimation}}"
+></page-title>
+<view class="praise-wrapper">
+    <barrage></barrage>
+    <modal show="{{modal}}" bindonClose="onClose">
+        <view slot="body">
+            <view class="modal-title">
+                <text>点赞成功</text>
+            </view>
+            <view class="modal-body">
+                <text>你已经帮好友 {{data.specialOrginUserName}} 点赞成功</text>
+            </view>
+            <view class="modal-btn">
+                <navigator open-type="switchTab" url="/pages/home/index"  class="praise-btn modal-btn-text">90%的人都在看直播</navigator>
+            </view>
+            <navigator wx:if="{{randomLive['liveId']}}" class="live-ad" url="/pages/liveDetails/index?liveId={{randomLive['liveId']}}">
+                <image
+                        src="{{randomLive['image']}}"
+                        mode="aspectFill"
+                        class="live-img"></image>
+                <view class="live-title-box">
+                    <text class="live-title-box-title ellipsis">{{randomLive['title']}}</text>
+                    <view class="live-info" >
+                        <text class="liveHit">直播中</text>
+                        <text>{{randomLive['view']}}人看</text>
+                    </view>
+                </view>
+                <!--<image class="live-img" mode="aspectFill" src="{{data.specialGoodsInfo['goodsImg']}}"></image>-->
+            </navigator>
+        </view>
+    </modal>
+    <view class="top">
+        <view class="price-container">
+               <view class="c-header">
+                   <image class="avatar-img" mode="aspectFill" src="{{data.specialOrginUserPortrait}}"></image>
+                   <text>好想买这个！麻烦大家帮我点个赞吧！</text>
+               </view>
+                <navigator url="/pages/goods/index?goodsId={{data.specialGoodsInfo['goodsId']}}" class="c-content">
+                    <image class="goods-img" mode="aspectFill" src="{{data.specialGoodsInfo['goodsImg']}}"></image>
+                    <view class="price-box">
+                        <view class="goods-price">
+                            <view class="special-money">
+                                <text class="fuhao">￥</text><text class="number">{{data.specialGoodsInfo['specialPrice']}}</text>
+                            </view>
+                            <view class="originalPrice">
+                                <text class="delete">{{data.specialGoodsInfo['originalPrice']}}</text>
+                                <text class="praise-price">点赞价</text>
+                            </view>
+                        </view>
+                        <view class="many">
+                            <text>已卖{{data.specialGoodsInfo['orderCount']}}件</text>
+                            <text>|</text>
+                            <text>点赞{{data.specialGoodsInfo['likeCount']['likeCount'] || data.specialGoodsInfo['likeCount'] || 0}}次</text>
+                        </view>
+                    </view>
+                </navigator>
+                <view class="c-footer">
+                    <view class="timer">
+                        <block wx:if="{{!expired && needLikesCount}}" >
+                            <text>倒计时 <text class="timer-box">{{hh}}小时 {{mm}}分  {{ss}}秒</text> 还缺<text class="praise-num">{{needLikesCount}}个</text>赞</text>
+                        </block>
+                        <block wx:elif="{{!needLikesCount}}">
+                            <text>集赞成功！帮他节省了<text class="praise-num">¥{{ savePrice || 0}}</text></text>
+                        </block>
+                        <block wx:elif="{{expired}}">
+                            <text>集赞失败！差{{needLikesCount}}个赞就能省<text class="praise-num">¥{{ savePrice || 0}}</text></text>
+                        </block>
+                    </view>
+                    <view class="praise-button">
+                            <block wx:if="{{!expired && needLikesCount}}">
+                                <button open-type="share" wx:if="{{data.specialOrginUserId==uid}}" class="praise-btn wechat" catchtap="onShareAppMessage"><text class="iconfont icon-weixin"></text>邀人点赞</button>
+                                <form wx:else  report-submit="{{true}}" bindsubmit="bindsubmit" >
+                                    <button
+                                            formType="submit"
+                                            open-type="getUserInfo"
+                                            bindgetuserinfo="addLike"
+                                            class="praise-btn"
+                                    >帮他点赞</button>
+                                </form>
+
+                            </block>
+                            <navigator open-type="switchTab" url="/pages/home/index" wx:if="{{expired || !needLikesCount}}" class="praise-btn" >更多1元集赞商品</navigator>
+                    </view>
+                    <view class="praise-people">
+                        <view class="p-p-avatar {{data.likePortraitArray.length<6?'center':''}}">
+                            <view class="avatar-item">
+                                <image class="p-avatar" mode="aspectFill" src="{{data.specialOrginUserPortrait}}"></image>
+                                <text wx:if="{{data.specialOrginUserId==uid}}" class="praise-self">我</text>
+                                <text wx:elif="{{data.specialOrginUserId!=uid && !needLikesCount}}" class="praise-self">好友</text>
+                                <text wx:else class="praise-self">团长</text>
+                                <!--<text wx:if="{{index===0}}" class="praise-self">我</text>-->
+                            </view>
+                            <view
+                                    wx:for="{{data.likePortraitArray}}"
+                                    wx:key="{{index}}"
+                                    class="avatar-item"
+                            >
+                                <!--<text wx:if="{{!data.likePortraitArray[index]}}" class="iconfont icon-user1 noOne"></text>-->
+                                <image  class="p-avatar" mode="aspectFill" src="{{item}}"></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+        </view>
+    </view>
+
+
+    <!-- 直播 -->
+    <view class="liveArea">
+        <view class="today-live">
+            <image
+                    mode="widthFix"
+                    src="/images/home/liveArea_header.png"
+                    class="liveArea-header-bgImg bgImgHeader"></image>
+            <view class="liveArea-header">
+                <view class="liveArea-title">
+                    <text class="liveArea-title-icon iconfont icon-zhibodating"></text>
+                    <text class="liveArea-title-h1">{{title.title}}</text>
+                    <div class="liveArea-title-h2">{{title.content}}</div>
+                </view>
+
+            </view>
+            <live-list class="liveArea-center" list="{{liveDataToday.list}}" wx:if="{{liveDataToday.list.length }}"></live-list>
+
+            <view class="onePending-list onePending-margin" wx:if="{{liveDataToday.list.length==0 }}">
+                <view class="onePending" wx:for="{{advanceListToday}}" wx:key="liveId">
+                    <one-pending item="{{item}}" ></one-pending>
+                </view>
+            </view>
+        </view>
+
+        <view class="liveArea-body today-live live-bg">
+            <view class="tabContent" >
+
+                <text class="tabContent-text tabContent-loading" wx:if="{{liveDataToday.loading}}">加载中……</text>
+                <!-- 即将开播 -->
+                <view class="advanceList live-bg">
+                    <block wx:if="{{advanceListToday.length > 0}}">
+                        <view class="onePendingTitle" hidden="{{liveDataToday.list.length <= 0}}">
+                            <image
+                                    lazy-load
+                                    mode="widthFix"
+                                    class="onePendingTitle-img"
+                                    src="/images/home/titleBj0@2x.png"></image>
+                            <text>即将开播</text>
+                        </view>
+                        <view class="onePending-list" hidden="{{liveDataToday.list.length <= 0}}">
+                            <view class="onePending" wx:for="{{advanceListToday}}" wx:key="liveId">
+                                <one-pending item="{{item}}" ></one-pending>
+                            </view>
+                        </view>
+
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+
+</view>

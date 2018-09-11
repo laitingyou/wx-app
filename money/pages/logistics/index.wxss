@@ -1,0 +1,172 @@
+page {
+    background-color: #f1f1f1;
+    color: #4a4a44;
+    font-size: 28rpx;
+}
+
+.box {
+    background-color: #fff;
+    margin-bottom: 20rpx;
+    border-top: 1rpx solid #d8d8d8;
+    border-bottom: 1rpx solid #d8d8d8;
+}
+.null{
+    margin-top: 20rpx;
+    text-align: center;
+}
+.box-header, .box-main {
+    padding: 28rpx;
+}
+
+.box-header {
+    border-bottom: 1rpx solid #d8d8d8;
+}
+
+.primary, .stepList-itemActive {
+    color: #3eb135;
+}
+
+/*快递单信息*/
+
+.logisticsMain {
+    display: flex;
+}
+
+.logisticsMain-center {
+    flex: 1 0 auto;
+    width: 0;
+    padding: 0 28rpx;
+}
+
+.logisticsMain-left {
+    flex: 0 1 152rpx;
+}
+
+.logisticsMain-right {
+    display: flex;
+    flex: 0 1 152rpx;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.logisticsMain-img {
+    width: 152rpx;
+    height: 152rpx;
+    border-radius: 2rpx;
+    background-color: #eee;
+}
+
+.logisticsMain-text {
+    display: block;    
+    width: 100%;
+    line-height: 51rpx;
+}
+
+.logisticsMain-btn {
+    align-self: center;
+    font-size: 24rpx !important;
+    padding: 0 18rpx !important;
+    display: inline-flex !important;
+}
+
+/*快递单信息 end*/
+
+.address {
+    display: flex;
+    color: #888;
+}
+
+.address-icon {
+    flex: 0 0 50rpx;
+    font-size: 38rpx;
+    margin-top: 4rpx;
+}
+
+.address-text {
+    flex: 1 0 auto;
+    width: 0;
+}
+
+/*订单踪迹*/
+
+/* .showListText {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  height: 60rpx;
+  color: #888;
+}
+.showListText-icon {
+  font-size: 28rpx;
+  margin-left: 10rpx;
+} */
+
+/*订单踪迹end*/
+
+.stepList {
+    display: flex;
+}
+
+.stepList-plan {
+    display: flex;
+    flex: 0 1 18rpx;
+    width: 18rpx;
+    margin: 30rpx 0 80rpx 0;
+    border-right: 1rpx solid #c8cdd2;
+}
+
+.stepList-main {
+    flex: 1 0 auto;
+    flex-direction: column;
+    width: 0;
+    color: #888;
+}
+
+.stepList-item {
+    position: relative;
+    z-index: 1;
+    padding: 18rpx 0 0 36rpx;
+}
+
+.stepList-item:before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 25rpx;
+    left: -7rpx;
+    width: 14rpx;
+    height: 14rpx;
+    background-color: #c8cdd2;
+    border-radius: 7rpx;
+}
+
+.stepList-itemActive:before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 25rpx;
+    left: -14rpx;
+    width: 24rpx;
+    height: 24rpx;
+    border: 4rpx solid #c5e7c2;
+    background-color: #3eb135;
+    border-radius: 16rpx;
+}
+
+.stepList-item-text, .stepList-item-time {
+    display: block;
+}
+
+.stepList-item-text {
+    line-height: 32rpx;
+}
+
+.stepList-item-time {
+    font-size: 24rpx;
+    line-height: 60rpx;
+    border-bottom: 1rpx solid #c8cdd2;
+}
+
+.stepList-fistTime {
+    border-bottom: none;
+}

@@ -1,0 +1,66 @@
+<page-title background="#fff" color="#4a4a4a" title="省钱测试"></page-title>
+<view class="wrapper">
+    <view class="header">
+        <view>
+            <text class="iconfont icon-dizhi1"></text><text class="yourcity">您的城市</text>
+        </view>
+        <block wx:if="{{hasProvince}}">
+            <view class="city">            
+                <open-data type="userProvince" lang="zh_CN"></open-data>
+                <open-data type="userCity" lang="zh_CN"></open-data>
+            </view>    
+        </block>
+        <block wx:else>
+            <text class="city" >未知城市</text>
+        </block>
+    </view>
+    <view class="content">
+        <view class="content-title">
+            <image class="content-title-bg" src="/images/nav.png" mode="widthFix"></image>
+            <text class="title-text">请输入你一年买衣服件数</text>
+        </view>
+        <view class="content-con">
+            <view
+                    wx:for="{{dataList}}"
+                    wx:key="{{index}}"
+                    class="content-item {{index===dataList.length-1 ? 'nopadding' : ''}}"
+            >
+                <view>
+                    <text class="item-label">{{item.label}}</text>
+                </view>
+                <view class="item-content">
+                    <text
+                            wx:for="{{3}}"
+                            wx:for-item="sizeItem"
+                            wx:for-index="sizeIndex"
+                            wx:key="{{sizeIndex}}"
+                            data-index="{{index}}"
+                            bindtap="onChoose"
+                            data-value="{{5*(sizeIndex+1)}}"
+                            class="size {{item.value === (5*(sizeIndex+1)) ? 'active': ''}}"
+                    >{{5*(sizeIndex+1)}}件</text>
+                    <text
+                            wx:if="{{!item.input}}"
+                            data-index="{{index}}"
+                            data-value="{{item.value}}"
+                            bindtap="oninput"
+                            class="size self-input {{item.value > 15 || (item.value < 15 && item.value % 5 ) ? 'active' : ''}}"
+                    >{{item.value > 15 || (item.value < 15 && item.value % 5 )? item.value+'件' : '自己填' }}</text>
+                    <view wx:else class="size input">
+                        <input
+                                bindblur="onfinish"
+                                bindconfirm="onfinish"
+                                focus="{{true}}"
+                                type="number"
+                                maxlength="3"
+                                value="{{item.value > 15 || (item.value < 15 && item.value % 5 ) ? ~~item.value : ''}}"
+                        />
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="footer">
+        <button bindtap="startCount" class="nobutton start">开始计算</button>
+    </view>
+</view>

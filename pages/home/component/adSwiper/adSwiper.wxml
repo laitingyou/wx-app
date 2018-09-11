@@ -1,0 +1,27 @@
+<view class="ad">
+    <view class="ad-left">
+        <text class="ad-text">{{adListTitle}}</text>
+        <text class="ad-num">{{adListIndex}}/{{adList.length}}</text>
+    </view>
+    <view class="ad-right">
+        <view class="adSwipper" bindtouchstart="bindStart" bindtouchend="bindEnd" bindtouchcancel="bindCancel">
+            <block wx:for="{{adList}}" wx:key="{{index}}">
+                <view class="adSwipper-item adSwipper-item{{index}} {{item.animationClassName}}" bindanimationend="bindAnimationEnd" >
+                    <block wx:if="{{item.url == '/pages/home/index?calculator=1'}}">
+                        <image bindtap="calculator" src="{{item.image}}" class="adSwipper-image" mode="aspectFill" />
+                    </block>
+                    <block wx:elif="{{item.url == '/pages/home/index?type=share'}}">
+                        <button open-type="getUserInfo" bindgetuserinfo="getUser" class="adSwipper-item-login">
+                            <image src="{{item.image}}" class="adSwipper-image" mode="aspectFill" />
+                        </button>
+                    </block>
+                    <block wx:else>
+                        <navigator open-type="{{item.openType}}" url="{{item.url}}" hover-class="none">
+                            <image src="{{item.image}}" class="adSwipper-image" mode="aspectFill" />
+                        </navigator>
+                    </block>
+                </view>    
+            </block>
+        </view>
+    </view>
+</view>

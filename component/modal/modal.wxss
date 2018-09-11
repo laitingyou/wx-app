@@ -1,0 +1,51 @@
+@import '/style/iconfont.wxss';
+.cover{
+  background-color: rgba(84, 84, 84, 0.51);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+  transition: all 100ms;
+  opacity: 0;
+  pointer-events: none;
+}
+.box{
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+}
+.modal-box{
+  position: fixed;
+  left: 50%;
+  top: 0%;
+  transform: translate(-50%,-100%);
+  background: #FFFFFF;
+  border-radius: 3px;
+  z-index: 1000;
+  width: 68%;
+  padding: 10px;
+  opacity: 0;
+  transition: all 200ms;
+}
+.close{
+  position: fixed;
+  right: 10px;
+  top: 5px;
+}
+.show{
+
+}
+.show .modal-box{
+
+  opacity: 1;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.show .cover{
+  opacity: 1;
+  pointer-events: all;
+}
+.modal-content{
+  word-break: break-all;
+}

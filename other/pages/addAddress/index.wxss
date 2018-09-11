@@ -1,0 +1,32 @@
+.formBody{
+    background-color: #fff;
+    padding: 0 24rpx;
+    overflow: hidden;
+    border-bottom: 1rpx solid #E0E0E0;
+}
+.item {
+    display: flex;
+    align-items: center;
+    margin-bottom: -1rpx;
+    border-bottom: 1rpx solid #E0E0E0;
+    height: 86rpx;
+}
+.item-text {
+    flex: 0 0 180rpx;
+}
+.item-inner {
+    flex: 1 0 auto;
+    width: 0;
+}
+.item-inner-input {
+    width: 100%;
+}
+.cityText {
+    color: #999;
+}
+.item-inner-input {
+    color: #4A4A4A;
+}
+.btnArea {
+    padding: 40rpx 80rpx;
+}

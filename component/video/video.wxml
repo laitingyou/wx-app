@@ -1,0 +1,34 @@
+<!--<page-title></page-title>-->
+<block wx:if="{{isShow}}">
+    <!--<view catchtap="onClose" catchtouchmove="touchmove"  class="bg"></view>-->
+    <view  class="container" catchtouchmove="touchmove">
+        <video
+                class="video"
+                controls="{{false}}"
+                src="{{src}}"
+                autoplay="{{true}}"
+                bindended="onEnded"
+                bindpause="onPause"
+                bindplay="onPlay"
+                binderror="onError"
+                objectFit="cover"
+                bindtap="onStop"
+        >
+            <cover-view hidden="{{navShow}}" class="close">
+                <cover-view class="title">视频详情</cover-view>
+                <cover-image catchtap="onClose" class="down" src="/images/close.png" />
+            </cover-view>
+            <cover-view class="bottom" wx:if="{{data}}">
+                <cover-view class="btn left-btn" data-type="original" catchtap="onBuy">
+                    <cover-view>￥{{data.originalPrice}}</cover-view>
+                    <cover-view>不集赞购买</cover-view>
+                </cover-view>
+                <cover-view class="pk">PK</cover-view>
+                <cover-view class="btn right-btn" data-type="special" catchtap="onBuy">
+                    <cover-view>￥{{data.specialPrice}}</cover-view>
+                    <cover-view>开团集1个赞</cover-view>
+                </cover-view>
+            </cover-view>
+        </video>
+    </view>
+</block>

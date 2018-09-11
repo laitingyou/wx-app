@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "百里挑衣直播中心",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "usingComponents": {
+        "in-live": "component/inLive/inLive",
+        "pending-live": "component/pendingLive/pendingLive",
+        "page-title":"/component/pageTitle/pageTitle"
+    }
+}

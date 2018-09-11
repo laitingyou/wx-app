@@ -1,0 +1,6 @@
+{
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "page-title":"/component/pageTitle/pageTitle"
+  }
+}

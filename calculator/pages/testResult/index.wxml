@@ -1,0 +1,13 @@
+<page-title background="#fff" color="#4a4a4a" title="测试结果"></page-title>
+<view class="wrapper">
+    <!--<view class="header">-->
+
+    <!--</view>-->
+    <view class="content">
+        <canvas canvas-id="canvas" class="canvas"></canvas>
+    </view>
+    <view class="footer">
+        <button bindtap="saveImage" class="nobutton btn">点击保存图片</button>
+        <button open-type="share" class="nobutton btn">跟闺蜜比一比</button>
+    </view>
+</view>

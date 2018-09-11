@@ -1,0 +1,20 @@
+<view class="shade" wx:if="{{show}}">
+    <view class="main">
+        <text class="closeIcon iconfont icon-cuo" bindtap="_colse"></text>
+        <view class="main-inner">
+            <view class="mainTitle">
+                <text>请在</text>                
+                <text class="timeText">{{timeText}}</text>
+                <text>内支付</text>
+            </view> 
+            <block wx:if="{{coupon > 0}}">
+                <text class="mianText">已优惠{{coupon}}元，手慢就没有啦！</text>
+            </block>            
+            <view>
+                <!-- <button type="default" class="payBtn" bindtap="_pay" loading="{{loading}}">继续支付{{price}}</button> -->
+                <slot></slot>
+            </view>    
+        </view>
+    </view>
+</view>
+

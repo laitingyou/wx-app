@@ -1,0 +1,118 @@
+<page-title title="领取明细" ></page-title>
+
+<view id="j-body">
+    <view class="header">
+        <block wx:if="{{statData}}">
+            <text class="header-h1">我的领取机会</text>
+            <text class="header-strong">{{statData.totalTimes}}次</text>
+            <view class="header-main">
+                <text class="header-main-text">已领取衣服次数：{{statData.useTimes}}</text>
+                <text class="header-main-text">未领取衣服次数：{{statData.unclaimedTimes}}</text>
+            </view>
+            <text class="header-fixed" bindtap="onOpenRule">规则说明</text>
+        </block>
+    </view>
+    <big-modal hidden="{{modelHidden}}" bindonClose="onCloseRule">
+        <view class="rule-title">
+            <text>规则说明</text>
+        </view>
+        <view class="rule-content">
+            <text>活动时间：2018.9.5—2018.12.31</text>
+            <text>1、活动期间，用户授权登陆成功，即可获得3次参加1元包邮领衣服活动的机会。</text>
+            <text>2、本活动仅支持在微信小程序-百里挑衣开团集赞，其他渠道下单不生效。</text>
+            <text>3、使用1元包邮领衣服活动机会：用户只要购买1笔非1元包邮活动商品，交易完成后即可再获得2次机会，每成功支付1元商品，则扣除1次机会。取消订单或集赞失败，则增加相应次数。</text>
+            <text>4、如发现刷单作弊行为，百里挑衣平台将拒绝发货。</text>
+            <text>5、此次活动最终解释权归百里挑衣所有。</text>
+        </view>
+    </big-modal>
+    <view class="tabNav">
+        <text 
+            class="tabNav-li {{currentTab == 0 ? 'active' : ''}}" 
+            data-tab="0" 
+            bindtap="changeTab">做任务赚机会
+        </text>
+        <text 
+            class="tabNav-li {{currentTab == 1 ? 'active' : ''}}" 
+            data-tab="1" 
+            bindtap="changeTab">领衣服记录
+        </text>
+    </view>
+
+    <view class="listOut">
+        <view class="list" hidden="{{currentTab != 0}}">
+            <view class="list-item">
+                <view class="list-item-left"></view>
+                <view class="list-item-main">
+                    <text class="listText">授权登录成功</text>
+                    <view class="listTextSmall">
+                        领取机会
+                        <text class="listRed">+3次</text>
+                    </view>
+                </view>
+                <view class="list-item-right">              
+                    <text class="listRed">已完成</text>
+                </view>
+            </view>
+            <view class="list-item">
+                <view class="list-item-left"></view>
+                <view class="list-item-main">
+                    <text class="listText">直播间支付订单</text>
+                    <view class="listTextSmall">
+                        领取机会
+                        <text class="listRed">+2次</text>
+                    </view>
+                </view>
+                <view class="list-item-right">
+                    <navigator class="listBtn" open-type="switchTab" url="/pages/home/index">
+                        <text>去下单</text>
+                    </navigator>
+                </view>
+            </view>
+            <view class="list-item">
+                <view class="list-item-left"></view>
+                <view class="list-item-main">
+                    <text class="listText">9.9拼团支付订单</text>
+                    <view class="listTextSmall">
+                        领取机会
+                        <text class="listRed">+2次</text>
+                    </view>
+                </view>
+                <view class="list-item-right">
+                    <navigator class="listBtn" open-type="switchTab" url="/pages/goodsList/index">
+                        <text>去下单</text>
+                    </navigator>
+                </view>
+            </view>
+            <view class="list-item">
+                <view class="list-item-left"></view>
+                <view class="list-item-main">
+                    <text class="listText">限时秒杀支付订单</text>
+                    <view class="listTextSmall">
+                        领取机会
+                        <text class="listRed">+2次</text>
+                    </view>
+                </view>
+                <view class="list-item-right">
+                    <navigator class="listBtn" url="/activity/pages/002/index">
+                        <text>去秒杀</text>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+        <view class="list" hidden="{{currentTab != 1}}">
+            <view class="list-item" wx:for="{{listData}}" wx:key="aoId">
+                <view class="list-item-left"></view>
+                <view class="list-item-main">
+                    <text class="listText">{{item.createdTime}}</text>
+                    <text class="listTextSmall">{{item.remark}}</text>
+                </view>
+                <view class="list-item-right">              
+                    <text class="listRed">{{item.times == -1 ? '领了1件' : '领取失败'}}</text>
+                </view>
+            </view>
+            <text class="listBottomText" hidden="{{!isListLoading}}">加载中……</text>
+            <text class="listBottomText" hidden="{{!isNotList}}">没有了</text>
+        </view>
+    </view> 
+</view>
+

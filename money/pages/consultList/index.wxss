@@ -1,0 +1,105 @@
+@import '../../style/imgItem.wxss';
+
+button:active {
+    opacity: .8;
+}
+
+.consultList {
+    padding: 22rpx 24rpx;
+    font-size: 28rpx;
+
+}
+
+.consultList .consultItem {
+    border: 1px solid #e0e0e0;
+    margin-bottom: 20rpx;
+}
+
+.store-icon {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 6rpx;
+    margin-right: 10rpx;
+    background-color: #FF5F00;
+    color: #fff;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+    color: #FE3666;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35rpx;
+}
+
+.consultList .consultItem .consultItemTitle {
+    padding: 24rpx 22rpx;
+    background: #fbfbfb;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e0e0e0;
+    line-height: 0;
+}
+
+.consultItemTitle .left {
+    font-size: 32rpx;
+    font-weight: bold;
+}
+
+.consultItemTitle .right {
+    line-height: 22px;
+}
+
+.consultList .consultItem .consultItemContent {
+    padding: 30rpx 20rpx;
+    background-color: #fff;
+
+}
+
+.consultList .consultItem .consultItemContent .consultItemContentText {
+    line-height: 40rpx;
+}
+
+.consultItemContentList {
+    line-height: 28rpx;
+    margin-top: 30rpx;
+}
+
+.consultItemContentList .textItem {
+    margin-bottom: 20rpx;
+    line-height: 40rpx;
+}
+
+.imglist {
+    display: flex;
+    justify-content: space-between;
+}
+
+.imglist .title {
+    width: 45%;
+    margin-right: 10rpx;
+}
+
+.imglist .images image {
+    width: 132rpx;
+    height: 132rpx;
+    background: #eee;
+    display: inline-block;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+
+}
+
+.red {
+    color: #ff2021;
+}
+
+.gary {
+    color: #757575;
+}

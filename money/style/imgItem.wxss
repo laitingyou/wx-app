@@ -1,0 +1,37 @@
+.imgItem {
+    display: flex;
+}
+.imgItem-labe {
+    flex: 0 0 auto;
+    display: flex;
+}
+.imgItem-conent {
+    flex: 1 0 auto;
+    width: 0;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.imgItemImg {
+    box-sizing: border-box;    
+    display: inline-flex;  
+    width: 33.3333%;
+    padding-top: 33.3333%;
+    position: relative;
+    z-index: 1;
+}
+.imgItemImg-inner {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0 0 10rpx 10rpx;
+}
+.imgItem-img {
+    width: 100%;
+    height: 100%;
+    background: #f1f1f1;
+}

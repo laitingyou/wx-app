@@ -1,0 +1,69 @@
+<page-title
+        title="{{navName}}"
+        defaultstyle="center"
+></page-title>
+<view class="container">
+    <barrage msgShow="{{msgShow}}" msg="{{msg}}"></barrage>
+    <view class="tabs-wrapper" wx:if="{{basicInfo['listCat'].length>1}}">
+            <view class="orderTabWrap" >
+                <scroll-view
+                        scroll-x
+                        scroll-left="{{scrollLeft}}"
+                        scroll-with-animation
+                >
+                <view class="orderTab" id="tabs" >
+                    <view wx:for="{{basicInfo['listCat']}}" wx:key="{{index}}"
+                          class="orderTabItem {{index===currents ? 'orderTabItemSelect' : ''}}"
+                          data-currents="{{index}}"
+                          data-id="{{item.cateId}}"
+                          bindtap="getGoods">{{item.cateName}}
+                    </view>
+                </view>
+                </scroll-view>
+            </view>
+    </view>
+
+    <!-- 广告-->
+    <block  wx:if="{{imgUrls.length}}" >
+    <swiper  class="swiper" indicator-dots="{{true}}"
+            autoplay="{{true}}" indicator-color="#fff" indicator-active-color="#FE3666" interval="{{3000}}" duration="{{500}}">
+        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+            <swiper-item>
+                <navigator class="adSwiper-item"  url="{{item.url}}"    data-url="{{item.url}}" open-type="{{item.openType}}"  hover-class="none" bindtap="adToHome"  >
+                    <image src="{{item.image}}" class="slide-image" mode="aspectFill"  ></image>
+                </navigator>
+            </swiper-item>
+        </block>
+    </swiper>
+    </block>
+    <view class="store-goods-container">
+        <text class="bottomText" wx:if="{{ispadding}}">正在加载……</text>
+        <block wx:if="{{activityStoreGood.length>0}}">
+            <view class="store-goods">
+                <navigator
+                        class="goods-shore-item"
+                        wx:for="{{activityStoreGood}}"
+                        wx:key="{{index}}"
+                        url="{{~~item.isVideo && isShow ? '/other/pages/video/index?src='+item.videoUrl+'&originalPrice='+item.originalPrice+'&goodsId='+item.goodsId+'&btn=false'+'&type=2':'/pages/goods/index?goodsId='+item.goodsId}}"
+                >
+                    <view class="hot-item-box">
+                        <image mode="aspectFill" class="hot-item-img" src="{{item.goodsImg}}"></image>
+                        <block wx:if="{{~~item.isVideo && isShow}}">
+                            <image
+                                    src="/images/video-play.png"
+                                    class="video-play"></image>
+                        </block>
+                    </view>
+                    <view class="hot-item-footer">
+                        <text class="store-goods-title">{{item.goodsName}}</text>
+                        <view class="hot-item-price">
+                            <text class="price"> ￥{{item.specialPrice || 0}} </text>
+                            <view class="hot-item-sold"><text>已卖 {{item.orderCount ||0}}件</text></view>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+        </block>
+        <text wx:if="{{topBtn}}" class="iconfont icon-huidaodingbu huidaodingbu" bindtap="scrollToTop"></text>
+    </view>
+</view>

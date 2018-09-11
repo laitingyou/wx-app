@@ -1,0 +1,332 @@
+.chating-wrapper {
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  /* margin: 70rpx 0 100rpx; */
+  box-sizing: border-box;
+  /* overflow: hidden; */
+}
+/* 收起键盘热区 */
+.fold-keyboad-wrapper {
+  position: fixed;
+  top: 70rpx;
+  width: 100%;
+  height: 500rpx;
+}
+/*历史消息  */
+.chating-history {
+  display: block;
+  width:100%;
+  height:70rpx;
+  padding: 10rpx 40rpx;
+  box-sizing: border-box;
+  line-height:50rpx;
+  color: #999;
+  text-align: center;
+
+}
+
+/*聊天输入框  */
+.chatinput-wrapper {
+  width: 100%;
+  background-color: #fff;
+  border: 2rpx solid #ccc;
+  position: fixed;
+  bottom: 0;
+  left: 0; 
+}
+.chatinput-content {
+  width: 100%;
+  height: 100rpx;
+  box-sizing: border-box;
+  padding: 0 15rpx;
+  box-sizing: border-box;
+  display: flex;
+}
+.chatinput-img{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 100%;
+  margin: 15rpx 0 15rpx 15rpx;
+  font-size: 70rpx;
+  color: #828282;
+  /*display: inline-block;*/
+  display: flex;
+  flex: 0 1px auto;
+}
+
+ .chatinput-input {
+  display: flex;
+  flex: 1 0 auto;
+  width: 0;
+  /*width: 440rpx;*/
+  min-height: 70rpx; 
+  border-radius: 8rpx;
+  border: 1px solid #ccc;
+  margin-top: 15rpx;
+  display: inline-block;
+  vertical-align:top;
+  box-sizing:border-box;
+  padding-left: 20rpx;
+  font-size: 30rpx;
+}
+.chatinput-voice-mask {
+  width: 440rpx;
+  height: 76rpx; 
+  line-height: 76rpx;
+  display: inline-block;
+  border-radius: 40rpx;
+  border: 1px solid #ccc;
+  margin-top: 12rpx;
+  vertical-align:top;
+  box-sizing:border-box;
+  /* padding-left: 20rpx; */
+  font-size: 28rpx;
+  text-align: center;
+  background-color: #fff;
+}
+.chatinput-voice-mask-hover {
+  background-color: #999;
+}
+/*subcontent wrapper  */
+.chatinput-subcontent {
+ width: 100%;
+ height: 470rpx;
+ background-color: #999;
+}
+.fr {
+  float: right;
+}
+/* more-subcontent */
+.more-subcontent {
+  padding: 40rpx 30rpx;
+  border: 2rpx solid #ccc;
+  display: flex;
+}
+.more-subcontent-item {
+  display: flex;  
+  margin-bottom: 30rpx;
+  width: 25%;
+  flex: 0 0 auto;
+  justify-content: center;  
+}
+.more-subcontent-item .image {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width:100rpx;
+  height:100rpx;
+  border-radius:50rpx;
+  margin-bottom: 10rpx;
+  color:#fff;
+  background-color: #f5a623;
+  font-size: 60rpx;
+}
+
+.more-subcontent .iconCapture {
+  background-color: #f5a623;
+}
+.more-subcontent .iconAlbum {
+  background-color: #fe6262;
+}
+
+/*聊天记录  */
+.record-wrapper {
+  width: 100%;
+  padding-bottom: 100rpx;
+  padding-top:10rpx;
+}
+.record-chatting-item {
+  width: 100%;
+  padding: 20rpx 20rpx;
+  box-sizing: border-box;
+}
+.record-item-time-wrapper {
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+}
+.record-item-time {
+  border-radius: 10rpx;
+  padding:4rpx 10rpx;
+  background-color: #999999;
+  color:#fff;
+  font-size: 26rpx;
+}
+.record-chatting-item-img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  display: inline-block;
+}
+.record-chatting-item-text {
+  color: #333;
+  max-width: 70%;
+  border-radius: 10rpx;
+  background-color: #7ddc59;
+  padding: 16rpx;
+  box-sizing:border-box;
+  word-wrap:break-word;
+  overflow: hidden;
+}
+/* tip消息富文本 */
+.tip-rich-text {
+  background-color:#ccc;
+  text-align:center;
+  align-self:center;
+  height:40rpx;
+  font-size:26rpx;
+  padding:0 20rpx;
+  color:#000;
+  border-radius: 10rpx;
+}
+
+.self {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  color: #fff;
+}
+.other {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  color: #fff;
+}
+.left-triangle{  
+  height:0px;    
+  width:0px;    
+  border-width:20rpx;    
+  border-style:solid;    
+  border-color:transparent #fff transparent transparent;    
+  margin-top: 20rpx;
+}  
+.right-triangle{  
+  height:0px;    
+  width:0px;    
+  border-width:20rpx;    
+  border-style:solid;    
+  border-color:transparent transparent transparent #7ddc59;    
+  margin-top: 20rpx;
+}  
+.video-triangle {
+  height:0px;    
+  width:0px;    
+  border-width:30rpx;    
+  border-style:solid;    
+  border-color:transparent transparent transparent #777;    
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+}
+
+.small-map-wrapper {
+  width: 200rpx;
+  height:200rpx;
+  position:relative;
+  padding:10rpx;
+  background-color:#80a1d5;
+  border-radius:14rpx;
+}
+.small-map-wrapper .small-geo-img {
+  width: 100%;
+  height: 100%;
+  background-color: pink;
+}
+.small-map-wrapper .text {
+  line-height: 32rpx;
+  font-size: 28rpx;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color:#fff;
+  background-color:#444;
+  padding:0 10rpx;
+  border-bottom-left-radius:14rpx;
+  border-bottom-right-radius:14rpx;
+}
+
+.small-video-wrapper {
+  width:200rpx;
+  height:200rpx;
+  padding:10rpx;
+  background-color:#fff;
+  border-radius:20rpx;
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+  align-items:center;
+}
+.small-video-wrapper .video {
+  max-width:200px;
+  max-height:300px;
+}
+
+.audio-wrapper {
+  background-color:#fff;
+  border-radius:28rpx;
+  display:flex;
+  justify-content:space-between;
+  padding:0 20rpx;
+  min-width: 30%;
+  box-sizing:border-box;
+  margin-left:-2px;
+}
+.audio-wrapper .image {
+  width:70rpx;
+  height:70rpx;
+  align-self:center;
+}
+.audio-wrapper .text {
+  align-self:center;
+  color:#fff;
+}
+
+/*自定义消息*/
+.productsMsg {
+  background-color:#fff;
+  border-radius:10rpx;
+  padding: 20rpx;
+  width: 535rpx;
+  box-sizing:border-box;
+  margin-left:-2px;  
+}
+.productsMsg-text {
+  display: block;
+  font-size: 28rxp;
+  color: #333;
+}
+.productsMsg-List {
+  display: flex;
+  width: 100%;
+  margin: 10rpx 0 0 -10rpx;
+}
+.productsMsg-List-item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 0 0 auto;
+  width: 175rpx;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+}
+.productsMsg-List-item image {
+  width: 155rpx;
+  height: 155rpx;
+}
+.productsMsg-List-item text{
+  position: absolute;
+  z-index: 1;
+  right: 10rpx;
+  bottom: 0;
+  left: 10rpx;
+  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.6));
+  text-align: center;
+  font-size: 24rpx;
+}
+/*自定义消息 end*/

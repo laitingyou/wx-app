@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "f0f0f0",
+  "usingComponents": {
+    "page-title":"/component/pageTitle/pageTitle"
+  }
+}

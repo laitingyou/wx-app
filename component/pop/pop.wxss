@@ -1,0 +1,86 @@
+@import "../../style/iconfont.wxss";
+
+.popBj {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(120%);
+  transition: transform 350ms;
+  transition: opacity 350ms;
+}
+
+.popCont {
+  position: fixed;
+  z-index: 1000;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-size: 32rpx;
+  background-color: #fff;
+  transform: translateY(120%);
+  transition: transform 350ms;
+}
+
+.popCont-head {
+  width: 100%;
+  line-height: 88rpx;
+  height: 88rpx;
+  border-bottom: 1px solid #ebebeb;
+  text-align: center;
+  display: block;
+}
+.placeholder{
+  height: 90rpx ;
+  opacity: 0;
+}
+
+.popCont-body {
+  padding: 32rpx 32rpx 0rpx 32rpx;
+  box-sizing: border-box;
+}
+.popColse {
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #fff;
+  background-color: #FE3666;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+.popCont-header{
+  border-bottom: 1px solid #ebebeb;
+  padding: 0rpx 32rpx;
+}
+.close-pop{
+    position: absolute;
+  right: 32rpx;
+  top: 5rpx;
+  color: #8c8c8c;
+  font-size: 20px;
+}
+.popCont-footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.close-pop{
+  position:absolute;
+  right:0;
+  top:0;
+  color:#979797 ;
+  font-size:26rpx;
+  padding: 30rpx;
+
+}

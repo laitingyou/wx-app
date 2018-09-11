@@ -1,0 +1,6 @@
+{
+	"navigationBarTitleText": "",
+	"usingComponents": {
+		"page-title":"/component/pageTitle/pageTitle"
+	}
+}

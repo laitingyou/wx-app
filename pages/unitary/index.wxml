@@ -1,0 +1,19 @@
+<page-title
+        title="一元福利"
+        background="#fff"
+        color="#4a4a4a"
+></page-title>
+<view class="img-box">
+    <image
+            bindtap="preview"
+            mode="widthFix"
+            data-url="{{images[1]}}"
+            src="{{images[0]}}"
+    ></image>
+    <image
+            bindtap="preview"
+            mode="widthFix"
+            data-url="{{images[1]}}"
+            src="{{images[1]}}"
+    ></image>
+</view>

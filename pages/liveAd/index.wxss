@@ -1,0 +1,18 @@
+/* liveAd.wxss */
+.img-box image{
+  width: 100%;
+  display: block;
+}
+.copy{
+  top: 120rpx;
+  position: absolute;
+  right: 10%;
+  width: 30%;
+  height: 100rpx;
+  background: #000;
+  z-index: 99;
+  opacity: 0;
+}
+.image-btn{
+  position: relative;
+}

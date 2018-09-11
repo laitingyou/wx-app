@@ -1,0 +1,10 @@
+<view class="nav styleSheet" animation="{{animationData}}">
+    <view class="{{border?'border-bottom':''}} nav-inner {{defaultstyle}}" style="color: {{color}}; background: {{background}}">
+        <form-button
+                wx:if="{{hasback}}"
+                bindsubmit="_goBack"
+                class="form-button"
+        ><text class="iconfont icon-back"></text></form-button>
+        <text class="title">{{title}}</text>
+    </view> 
+</view>

@@ -1,0 +1,10 @@
+{   "onReachBottomDistance":100,
+    "usingComponents": {
+        "title-text": "/component/titleText/titleText",
+        "tiem": "/component/item/item",
+        "page-title":"/component/pageTitle/pageTitle",
+        "form-button":"/component/formButton/formButton",
+        "one-pending": "/component/onePending/onePending",
+        "live-list": "/component/liveList/liveList"
+    }
+}

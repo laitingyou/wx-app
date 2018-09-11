@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "form-button":"/component/formButton/formButton",
+    "video-play": "/component/video/video"
+  }
+}

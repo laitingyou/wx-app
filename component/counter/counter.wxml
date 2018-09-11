@@ -1,0 +1,19 @@
+<view class="counter-box">
+    <block>
+        <text wx:if="{{value===min}}" class="reduce disable" data-type="{{-1}}" bindtap="onChange">-</text>
+        <text wx:else class="reduce" data-type="{{-1}}" bindtap="onChange">-</text>
+    </block>
+
+    <input class="input"
+           bindinput="onChange"
+           type="number"
+           value="{{value}}"
+           bindblur="bindblur"
+    />
+    <block>
+
+        <text wx:if="{{value===max}}" class="add disable" data-type="{{1}}" bindtap="onChange">+</text>
+        <text wx:else class="add" data-type="{{1}}" bindtap="onChange">+</text>
+    </block>
+
+</view>

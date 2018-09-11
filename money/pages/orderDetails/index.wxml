@@ -1,0 +1,326 @@
+<!--pages/orderDetails/index.wxml-->
+<!--订单详情-->
+<page-title background="#fff" color="#4a4a4a" hasback="{{hasback}}" title="订单详情"></page-title>
+<view class="enablePullDownRefresh"></view>
+<view class="orderDetail" wx:if="{{orderDetailData}}">
+    <view class="orderDetailBanner">
+        <view class="orderDetailBannerContent">
+            <image src="/images/orderDetail/bg.png" class="bg"></image>
+            <view class="text">
+                <text class="texta">{{orderDetailData.extension==='0'&&orderDetailData.orderStatus==='3'?orderStatusData[orderDetailData.orderStatus].content2:orderStatusData[orderDetailData.orderStatus].content}}</text>
+                <text class="textb" hidden="{{createdTime}}">{{countDownData}}</text>
+            </view>
+            <text class="iconfont orderIco {{orderStatusData[orderDetailData.orderStatus].ico}}"></text>
+        </view>
+    </view>
+    <view class="orderDetailAddr">
+        <view class="orderDetailAddrCont">
+            <view class="orderDetailAddrContText" bindtap="goLogistics" data-orderid="{{orderDetailData.orderId}}"
+                  wx:if="{{orderDetailData.expressStatus}}">
+                <text class="iconfont icon-log icons"></text>
+                <view class="orderDetailAddrContTa">
+                    <text class="L green">[{{orderDetailData.expressStatus}}]</text>
+                </view>
+                <view class="gray">{{orderDetailData.expressTime}}</view>
+                <text class="iconfont icon-more"></text>
+            </view>
+            <view class="orderDetailAddrContText">
+                <text class="iconfont icon-geo icons"></text>
+                <view class="orderDetailAddrContTa">
+                    <text class="L">收货人:{{orderDetailData.consignee}}</text>
+                    <text class="R">{{orderDetailData.mobile}}</text>
+                </view>
+                <view>{{orderDetailData.regionName}} {{orderDetailData.address}}</view>
+            </view>
+            <view class="orderDetailAddrContText" wx:if="{{orderDetailData.remark}}">
+                <text class="iconfont icon-msg icons"></text>
+                <view class="orderDetailAddrContTa">
+                    <text class="L">买家留言</text>
+                </view>
+                <text>{{orderDetailData.remark}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="orderDetailInfo">
+        <view class="orderListContentTop ">
+            <view class="orderListContentTopAvatar">
+                <navigator hover-class="none" url="/store/index/index?storeId={{orderDetailData.sellerId}}">
+                    <view class="iconfont icon-dianpu store-icon"></view>
+                    <text class="ellipsis">{{orderDetailData.sellerName}}</text>
+                    <text class="iconfont icon-right"></text>
+                </navigator>
+            </view>
+            <view class="orderListContentTopR">
+                <navigator hover-class="none" url="/imPartials/pages/chating/chating?chatTo=seller_00000{{orderDetailData.sellerId}}">
+                    <text class="iconfont icon-service"></text>
+                    <text>联系老板</text>
+                </navigator>
+            </view>
+        </view>
+
+        <view class="orderDetailInfoMiddle" wx:for="{{orderDetailData.goodsList}}" wx:key="{{index}}">
+            <navigator url="/pages/goods/index?goodsId={{item.goodsId}}">
+                <view class="orderDetailInfoMiddleT cf">
+                    <image src="{{item.goodsImage}}" mode="aspectFill"></image>
+                    <view class="orderDetailInfoMiddleTR">
+                        <view class="InfoMiddleTRtop">
+                            <view class="InfoMiddleTRtopTitle">
+                                <text class="mEllipsis">{{item.goodsName}}</text>
+                            </view>
+                            <view class="InfoMiddleTRtopPrice">
+                                <text>￥{{item.price}}</text>
+                            </view>
+                        </view>
+                        <view class="InfoMiddleTRbottom">
+                            <view class="InfoMiddleTRbottomL">
+                                <text>{{item.spec[0]}}</text>
+                                <text>{{item.spec[1]}}</text>
+                            </view>
+                            <view class="InfoMiddleTRbottomR">
+                                <text>x{{item.quantity}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </navigator>
+
+            <view class="orderDetailInfoMiddleM">
+                <view class="orderDetailInfoMiddleMA" wx:if="{{orderDetailData.discountAmount!=='0'}}">
+                    <view class="L">
+                        <text>店铺优惠：已使用{{orderDetailData.newdiscountAmount}}元优惠券</text>
+                    </view>
+                    <view class="R">
+                        <text>- ￥{{orderDetailData.newdiscountAmount}}</text>
+                    </view>
+                </view>
+                <view class="orderDetailInfoMiddleMA">
+                    <view class="L">
+                        <text>快递运费：{{orderDetailData.initFreight==='0'? '免运费':' '}}</text>
+                    </view>
+                    <view class="R">
+                        <text>￥{{orderDetailData.newinitFreight}}</text>
+                    </view>
+                </view>
+                <view class="orderDetailInfoMiddleMA" wx:if="{{orderDetailData.changePrice!=='0'}}">
+                    <view class="L">
+                        <text>卖家改价：</text>
+                    </view>
+                    <view class="R">
+                        <text>-￥{{orderDetailData.newchangePrice}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="orderDetailInfoMiddleB">
+                <text class="L">实际付款：</text>
+                <text class="R">￥{{orderDetailData.neworderAmount}}</text>
+            </view>
+            <view class="orderDetailInfoMiddleB"  hidden="{{!orderDetailData.returnAmount||orderDetailData.returnAmount==='0'}}">
+                <text class="L">卖家退款：</text>
+                <text class="R">-￥{{orderDetailData.newReturnPrice}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="orderDetailTips">
+        <button class="orderDetailTipsBtn"  bindtap="setClipboard" data-clip="{{orderDetailData.orderSn}}">复制</button>
+        <view class="orderDetailTipsList">
+            <view>
+                <text>订单号:</text>
+                {{orderDetailData.orderSn}}
+            </view>
+            <view wx:if="{{orderDetailData.timeList['createdTime']}}">
+                <text>下单时间:</text>
+                {{orderDetailData.timeList['createdTime']}}
+            </view>
+            <view hidden="{{orderDetailData.orderStatus==='1'||orderDetailData.orderStatus==='9'}}">
+                <text>支付方式:</text>
+                微信
+            </view>
+            <view wx:if="{{orderDetailData.timeList['payTime']}}">
+                <text>付款时间:</text>
+                {{orderDetailData.timeList['payTime']}}
+            </view>
+            <view wx:if="{{orderDetailData.timeList['shareTime']}}">
+                <text>成功时间:</text>
+                {{orderDetailData.timeList['shareTime']}}
+            </view>
+            <view wx:if="{{orderDetailData.timeList['shipTime']}}">
+                <text>发货时间:</text>
+                {{orderDetailData.timeList['shipTime']}}
+            </view>
+            <view wx:if="{{orderDetailData.timeList['receiveTime']}}">
+                <text>完成时间:</text>
+                {{orderDetailData.timeList['receiveTime']}}
+            </view>
+        </view>
+    </view>
+    <view class="orderDetailBottomNavFix">
+        <view class="orderDetailBottomNavFixCont">
+            <view class="likeSuccess"  wx:if="{{orderDetailData.orderStatus==='2'&&orderDetailData.likes*1<orderDetailData.requireLikes*1}}">
+                <text>集赞中，等待我分享</text>
+            </view>
+            <view class="R">
+
+
+                <!--
+         0 = 未知（错误值）
+         1 = 等待我付款
+         2 = 待分享
+         3 = 待发货
+         4 = 待收货
+         5 = 待评价
+         6 = 已评价
+         7 = 集赞失败,已退款
+         8 = 已退款, 交易取消
+         9 = 未付款, 交易取消
+         10 = 申请退款中
+         11  =  申请退货中
+         12 = 卖家拒绝退款
+         13 = 卖家拒绝退货
+         14 = 等待我退货
+         15 = 等待卖家收货
+         16 = 交易完成
+         17 = 已退款，交易取消
+
+
+         -->
+
+
+
+
+                <!--跟进售后-->
+                <block wx:if="{{orderDetailData.ordOsId}}">
+                    <!-- <block wx:if="{{ orderDetailData.osId ==='12' || orderDetailData.osId ==='15' ||orderDetailData.osId ==='26'}}">
+                         <button size="small " size="mini" plain="ture" bindtap="goreundDetails" data-orderid="{{orderDetailData.orderId}}" class="plainBtn ml10">查看售后</button>
+                     </block>
+                     <block wx:if="{{orderDetailData.osId === '6'}}">
+                         <button size="small " size="mini" plain="ture" bindtap="goreundDetails" data-orderid="{{orderDetailData.orderId}}" class="plainBtn ml10">跟进售后</button>
+                     </block>-->
+                    <block wx:if="{{orderDetailData.returnFlag==='1'}}">
+                        <button size="small " size="mini" plain="ture" bindtap="goreundDetails" data-orderid="{{orderDetailData.orderId}}" class="plainBtn mr10">跟进售后</button>
+                    </block>
+                    <block wx:else>
+                        <button size="small " size="mini" plain="ture" bindtap="goreundDetails" data-orderid="{{orderDetailData.orderId}}" class="plainBtn mr10">查看售后</button>
+                    </block>
+                </block>
+
+                <block wx:if="{{orderDetailData.orderStatus==='1'}}">
+                    <button class="primaryBtn" type="primary" data-ordersn="{{orderDetailData.orderSn}}"
+                            disabled="{{isPay}}" bindtap="goPay" size="mini">{{isPay?'正在支付...':'立即支付'}}
+                    </button>
+                </block>
+                <block wx:if="{{orderDetailData.orderStatus==='2'}}">
+                    <button class="primaryBtn" type="primary" bindtap="goPraise"
+                            data-orderid="{{orderDetailData.orderId}}" size="mini">邀人点赞
+                    </button>
+                </block>
+                <block wx:if="{{orderDetailData.orderStatus==='3'}}">
+
+                    <button size="small " size="mini" plain="ture" bindtap="goAfterSale" data-type="1" data-orderAmount="{{orderDetailData.orderAmount}}" data-freight="{{orderDetailData.freight}}" data-orderid="{{orderDetailData.orderId}}" class="plainBtn {{orderDetailData.extension==='1'?'mr10': ''}} ">申请售后</button>
+
+                    <button class="plainBtn" wx:if="{{orderDetailData.extension==='1'}}" plain="ture" bindtap="goPraise" size="mini">集赞详情</button>
+                </block>
+                <block wx:if="{{orderDetailData.orderStatus==='4'}}">
+                    <button size="small " size="mini" plain="ture" bindtap="goAfterSaleList" data-type="2" data-orderAmount="{{orderDetailData.orderAmount}}" data-freight="{{orderDetailData.freight}}" data-orderid="{{orderDetailData.orderId}}" data-flag="1" class="plainBtn mr10">申请售后</button>
+                    <button class="plainBtn mr10" plain="ture" bindtap="goPraise" size="mini"
+                            wx:if="{{orderDetailData.extension==='1'}}">集赞详情
+                    </button>
+                    <button class="primaryBtn" type="primary" size="mini" bindtap="goTake">去收货</button>
+                </block>
+                <block wx:if="{{orderDetailData.orderStatus==='5'}}">
+                    <button class="plainBtn mr10" wx:if="{{orderDetailData.extension==='1'}}" plain="ture" bindtap="goPraise" size="mini">集赞详情</button>
+                    <!--
+                                        <button size="small " size="mini" plain="ture" bindtap="goreundDetails" data-orderid="{{orderDetailData.orderId}}" class="plainBtn">退款详情</button>
+                    -->
+                    <!--<button class="primaryBtn" size="mini">去评价</button>-->
+                </block>
+
+
+
+                <block wx:if="{{orderDetailData.orderStatus==='6'||orderDetailData.orderStatus==='7'}}">
+                    <button  wx:if="{{orderDetailData.extension==='1'}}" class="plainBtn mr10" plain="ture" bindtap="goPraise" size="mini">集赞详情</button>
+                    <button class="plainBtn" plain="ture" bindtap="goDetail" size="mini">再次购买</button>
+                </block>
+                <block wx:if="{{orderDetailData.orderStatus==='9'}}">
+                    <button class="plainBtn" plain="ture" bindtap="goDetail" size="mini">再次购买</button>
+                </block>
+
+                <!--申请退款中  申请退货中 卖家拒绝退款 type1 = 退款  type2 = 退货退款   flag1 = 申请  flag = 修改 -->
+                <block wx:if="{{orderDetailData.orderStatus === '10'||orderDetailData.orderStatus === '11' ||orderDetailData.orderStatus === '12' || orderDetailData.orderStatus === '13' }}">
+                    <!--
+                                        <button size="small " size="mini" plain="ture" bindtap="goreundDetails" data-orderid="{{orderDetailData.orderId}}" class="plainBtn {{orderDetailData.extension==='1'?'mr10': ''}}">跟进售后</button>
+                    -->
+                    <button  wx:if="{{orderDetailData.extension==='1'}}" class="plainBtn" plain="ture" bindtap="goPraise" size="mini">集赞详情</button>
+
+                </block>
+
+                <!--卖家同意退货，等待我退货-->
+                <block wx:if="{{orderDetailData.orderStatus === '14'}}">
+                    <!--{{orderDetailData.extension==='1'?'mr10': ''}}-->
+                    <!--
+                                        <button size="small " size="mini" plain="ture" bindtap="goreundDetails" data-orderid="{{orderDetailData.orderId}}" class="plainBtn mr10">跟进售后</button>
+                    -->
+                    <button  wx:if="{{orderDetailData.extension==='1'}}" class="plainBtn mr10" plain="ture" bindtap="goPraise" size="mini">集赞详情</button>
+                    <button size="small" size="mini"  type="primary" bindtap="goGoodsBack" data-orderid="{{orderDetailData.orderId}}" data-flag="1" data-sellerId="{{orderDetailData.sellerId}}" class="primaryBtn">退货</button>
+
+                </block>
+                <!--等待卖家收货-->
+                <block wx:if="{{orderDetailData.orderStatus === '15'}}">
+                    <!--
+                                        <button size="small " size="mini" plain="ture" bindtap="goreundDetails" data-orderid="{{orderDetailData.orderId}}" class="plainBtn mr10">跟进售后</button>
+                    -->
+                    <button  wx:if="{{orderDetailData.extension==='1'}}" class="plainBtn mr10" plain="ture" bindtap="goPraise" size="mini">集赞详情</button>
+                    <button class="plainBtn " plain="ture" bindtap="goLogistics" data-orderid="{{orderDetailData.orderId}}" data-type="2"  size="mini">查看退货物流</button>
+                </block>
+                <!--ordType-->
+                <block wx:if="{{orderDetailData.orderStatus === '16'}}">
+                    <!--
+                                        <button size="small " wx:if="{{orderDetailData.ordType}}" size="mini" plain="ture" bindtap="goreundDetails" data-orderid="{{orderDetailData.orderId}}" class="plainBtn mr10">退款详情</button>
+                    -->
+                    <button class="plainBtn" plain="ture" bindtap="goDetail" size="mini">再次购买</button>
+                </block>
+
+                <!--已退款，交易取消-->
+                <block wx:if="{{orderDetailData.orderStatus === '17'|| orderDetailData.orderStatus ==='8'}}">
+                    <!--
+                                        <button size="small " size="mini" plain="ture" bindtap="goreundDetails" data-orderid="{{orderDetailData.orderId}}" class="plainBtn mr10">退款详情</button>
+                    -->
+                    <button  wx:if="{{orderDetailData.extension==='1'}}" size="small " size="mini" plain="ture" bindtap="goPraise" data-orderid="{{orderDetailData.orderId}}" class="plainBtn mr10">集赞详情</button>
+                    <button class="plainBtn" plain="ture" bindtap="goDetail" size="mini">再次购买</button>
+                </block>
+
+
+
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 弹出授权限用户信息 -->
+<view class="wxGetUserInfo" wx:if="{{showLoginBox}}">
+    <view class="wxGetUserInfo-Bj"></view>
+    <view class="wxGetUserInfo-inner">
+        <button
+           formType="submit"
+           size="mini"
+           type="primary"
+           open-type="getUserInfo"
+           bindgetuserinfo='buttonLogin'>
+           此功能需要您授权
+       </button>
+    </view>    
+</view>
+
+<!-- 弹出返回来源"小程序"的组件 -->
+<view class="wxGetUserInfo" wx:if="{{showBackAppBox}}">
+    <view class="wxGetUserInfo-Bj"></view>
+    <view class="wxGetUserInfo-inner">
+        <navigator 
+            class="backApp"
+            target="miniProgram"
+            app-id="{{wxAppId}}"
+            path="pages/my/index"
+            version="{{navigatorVersion}}">
+            支付成功
+        </navigator>
+    </view>    
+</view>

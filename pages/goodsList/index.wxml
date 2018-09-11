@@ -1,0 +1,104 @@
+<page-title
+
+        hasback="{{false}}"
+        title="拼货"
+        defaultstyle="center"
+></page-title>
+<view class="loading refreshing" hidden="{{!isRefresh}}">
+    <template is="loading"></template>
+</view>
+<view class="adTab">
+    <view class="adTabList">
+        <view class="adTabListItem {{index===currents ? 'adTabListItemSelect' : ''}}" wx:key="{{index}}"  bindtap="switchTab"   wx:for="{{adTabList}}"  data-catid="{{item.category}}" data-currents="{{index}}" ><text>{{item.name}}</text></view>
+    </view>
+    <view class="adTabContent">
+        <view class="swiper-loading" if="{{isSwiperLoading}}"><text>{{isSwiperLoading}}</text></view>
+        <swiper  class="swiper" indicator-dots="{{true}}"
+                      autoplay="{{false}}" indicator-color="#9B9B9B" indicator-active-color="#FE3666" interval="{{3000}}" duration="{{500}}">
+            <block wx:for="{{adData}}" wx:key="{{index}}">
+                      <swiper-item>
+                          <view  class="swiper-img-list">
+                              <block wx:for="{{item}}" wx:for-item="imgItem" wx:key="{{index}}">
+                              <navigator bindtap="adToHome"   url="{{imgItem.url}}"  data-url="{{imgItem.url}}"  open-type="{{imgItem.openType}}" hover-class="none"  class="swiper-img-list-item" >
+                                  <image src="{{imgItem.image}}" mode="aspectFill"></image>
+                                  <view class="swiper-img-list-item-text"><text class="ellipsis">{{imgItem.title}}</text></view>
+                              </navigator>
+                              </block>
+                          </view>
+                      </swiper-item>
+                  </block>
+              </swiper>
+    </view>
+</view>
+<view class="container">
+
+    <barrage msgShow="{{msgShow}}" msg="{{msg}}"></barrage>
+    <view class="nav-box">
+        <view class="nav-sticky">
+        <view wx:if="{{basicInfo.length>0}}" class="nav-container" id="nav-container">
+            <block wx:for="{{basicInfo}}" wx:key="{{index}}">
+                <text
+                        bindtap="getGoods"
+                        data-type="{{item.type}}"
+                        data-prc="{{item.prc}}"
+                        data-id="nav-{{index}}"
+                        data-index="{{index}}"
+                        class="nav {{current==='nav-'+index?'active':''}}">{{item.name}}</text>
+            </block>
+        </view>
+        </view>
+    </view>
+
+
+    <view wx:if="{{basicInfo.length>0}}" >
+        <!--wx:if="{{ ispadding}}"-->
+        <view  class="block" wx:for="{{goodLists[currentPage]}}" wx:key="{{index}}">
+            <goods-item videoShow="{{isShow}}" itemData="{{item}}" type="row"></goods-item>
+        </view>
+        <!--<text class="bottomText" wx:if="{{isloading}}">正在加载……</text>-->
+        <view class="loading" wx:if="{{isloading}}">
+            <template is="loading"></template>
+        </view>
+        <!--<text wx:if="{{goodLists[currentPage].length>3}}" class="bottomText none-bottomText">没有了</text>-->
+
+        <!--<block wx:if="{{activityStoreGood.length>0}}">-->
+            <!--<view class="line-title">更多{{basicInfo[currentPage].price}}元商品推荐</view>-->
+            <!--<view class="store-goods">-->
+                <!--<navigator-->
+                        <!--class="goods-shore-item"-->
+                        <!--wx:for="{{activityStoreGood}}"-->
+                        <!--wx:key="{{index}}"-->
+                        <!--url="{{~~item.isVideo && isShow ? '/other/pages/video/index?src='+item.videoUrl+'&originalPrice='+item.originalPrice+'&specialPrice='+item.specialPrice+'&goodsId='+item.goodsId+'&btn=true':'/pages/goods/index?goodsId='+item.goodsId}}"-->
+                <!--&gt;-->
+                    <!--<view class="hot-item-box">-->
+                        <!--<image mode="aspectFill" class="hot-item-img" src="{{item.goodsImg}}"></image>-->
+                        <!--<block wx:if="{{~~item.isVideo && isShow}}">-->
+                            <!--<image-->
+                                    <!--src="/images/video-play.png"-->
+                                    <!--class="video-play"></image>-->
+                        <!--</block>-->
+                    <!--</view>-->
+                    <!--<view class="hot-item-footer">-->
+                        <!--<text class="store-goods-title">{{item.goodsName}}</text>-->
+                        <!--<view class="hot-item-price">-->
+                            <!--<text class="price"> ￥{{item.originalPrice || 0}} </text>-->
+                            <!--<view class="hot-item-sold"><text>已拼 {{item.orderCount ||0}}件</text></view>-->
+                        <!--</view>-->
+                    <!--</view>-->
+                <!--</navigator>-->
+            <!--</view>-->
+        <!--</block>-->
+
+    </view>
+
+
+
+</view>
+<!--loading样式-->
+<template name="loading">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</template>

@@ -1,0 +1,122 @@
+<view class="myPage">
+    <!-- 头部 -->
+    <view class="header">
+        <button open-type="getUserInfo" class="nobutton userImg" bindgetuserinfo="login">
+            <image class="header-img image" lazy-load mode="aspectFill" src="{{user.portrait}}"></image>
+            <text wx:if="{{noLogin}}" class="userImg-icon iconfont icon-user"></text>
+        </button>
+        <button open-type="getUserInfo" class="nickName nobutton" bindgetuserinfo="login">
+            <text class="header-userName" >{{( user.wechatName || user.nickName) || '点击登录'}}</text>
+            <text  class=" update" >更新资料</text>
+        </button>
+    </view>
+    <!-- 头部 end -->
+    <view class="goAdTextOut" wx:if="{{chanceStatData}}">
+        <navigator class="goAdText" url="/getChance/pages/home/index">
+            <view class="goAdText-inner">
+                <view class="goAdText-text ellipsis">
+                    你已领
+                    <text class="goAdText-text-num">{{chanceStatData.useTimes}}</text>
+                    件衣服，还剩
+                    <text class="goAdText-text-num">{{chanceStatData.unclaimedTimes}}</text>
+                    次机会
+                </view>
+                <text class="goAdText-btn">去看看</text>
+            </view>
+        </navigator>    
+    </view>
+    <!-- 幻灯 -->
+    <view class="adSwiper" wx:if="{{adList.length}}">
+        <swiper autoplay 
+            interval="3000"
+            indicator-dots="{{true}}"
+            indicator-color="#fff"
+            indicator-active-color="#FE3666">
+            <block wx:for="{{adList}}" wx:key="{{index}}">
+                <swiper-item class="adSwiper-item">
+                    <navigator 
+                        class="adSwiper-item" 
+                        url="{{item.url}}" 
+                        open-type="{{item.openType}}"
+                        data-url="{{item.url}}"
+                        bindtap="adToHome">
+                        <image src="{{item.image}}" class="adSwiper-img" mode="aspectFill" />
+                    </navigator>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view> 
+    <!-- 幻灯 end -->
+    <!-- 订单入口 -->
+    <order-area order="{{orderAmount}}" wx:if="{{orderAmount}}"></order-area>
+    <!-- 订单入口 end -->
+    
+    <!-- 收货地址和客服 -->
+    <view class="otherList">
+        <view class="orderArea-main icons">
+            <button
+                class="orderArea-item  nobutton"
+                wx:for="{{btn}}"
+                wx:key="{{index}}"
+                data-url="{{item.url}}"
+                open-type="{{item.type}}"
+                catchtap="{{item.type ? '' : 'clickBtn'}}">
+            
+                <!--<button class="contactOut-button" open-type="contact"></button>-->
+                <text class="orderArea-item-icon iconfont {{item.icon}}"></text>
+                <text class="orderArea-item-text">{{item.text}}</text>
+                <!--<text class="orderArea-item-number" wx:if="{{needPay}}">{{needPay}}</text>-->
+            </button>
+        </view>
+    </view>
+    <!-- 直播 -->
+    <view class="liveArea">
+        <view class="today-live">
+            <image
+                    mode="widthFix"
+                    src="/images/home/liveArea_header.png"
+                    class="liveArea-header-bgImg bgImgHeader"></image>
+            <view class="liveArea-header">
+                <view class="liveArea-title">
+                    <text class="liveArea-title-icon iconfont icon-zhibodating"></text>
+                    <text class="liveArea-title-h1">{{title.title}}</text>
+                    <div class="liveArea-title-h2">{{title.content}}</div>
+                </view>
+
+            </view>
+            <live-list class="liveArea-center" list="{{liveDataToday.list}}" wx:if="{{liveDataToday.list.length }}"></live-list>
+
+            <view class="onePending-list onePending-margin" wx:if="{{liveDataToday.list.length==0 }}">
+                <view class="onePending" wx:for="{{advanceListToday}}" wx:key="liveId">
+                    <one-pending item="{{item}}" ></one-pending>
+                </view>
+            </view>
+        </view>
+
+        <view class="liveArea-body today-live live-bg">
+            <view class="tabContent" >
+
+                <text class="tabContent-text tabContent-loading" wx:if="{{liveDataToday.loading}}">加载中……</text>
+                <!-- 即将开播 -->
+                <view class="advanceList live-bg">
+                    <block wx:if="{{advanceListToday.length > 0}}">
+                        <view class="onePendingTitle" hidden="{{liveDataToday.list.length <= 0}}">
+                            <image
+                                    lazy-load
+                                    mode="widthFix"
+                                    class="onePendingTitle-img"
+                                    src="/images/home/titleBj0@2x.png"></image>
+                            <text>即将开播</text>
+                        </view>
+                        <view class="onePending-list" hidden="{{liveDataToday.list.length <= 0}}">
+                            <view class="onePending" wx:for="{{advanceListToday}}" wx:key="liveId">
+                                <one-pending item="{{item}}" ></one-pending>
+                            </view>
+                        </view>
+
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

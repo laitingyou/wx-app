@@ -1,0 +1,90 @@
+.goodInfo {
+    background-color: #fff;
+    padding:0 32rpx; 
+    color: #333; 
+}
+.goodInfo-item {
+    padding: 32rpx 0;
+}
+.goodName {
+    border-bottom: 1px solid #e6e6e6;
+    line-height: 40rpx;
+    padding: 24rpx 0;
+}
+.goodName-tit {
+    padding: 5rpx;
+    color: #fff;
+    border-radius: 8rpx;
+    vertical-align: middle;
+    background-color:#e64340;
+		margin-right:15rpx;
+		font-size: 24rpx;
+}
+.goodName-name {
+    vertical-align: middle;
+    font-size: 32rpx;
+    color: #333333;
+}
+.isSoldOut {
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/*价格*/
+.priceArea .info{
+    font-size: 20rpx;
+    background: #FE3666;
+    border-radius: 6rpx;
+    color: #FFFFFF;
+    display: inline;
+}
+.priceArea .price {
+    color: #e64340;
+}
+.oldPrice {
+    text-decoration: line-through;
+    margin-left: 35rpx;
+}
+.typeA {
+    line-height: 88rpx;
+}
+.typeA .price{
+    font-size: 32rpx;
+    font-weight: 550;
+    vertical-align: bottom;
+}
+.typeA .info{
+    font-size: 24rpx;
+    vertical-align: bottom;
+}
+.typeB{
+    display: flex;
+    flex-direction: row;
+    padding: 20rpx 0;
+}
+.typeB-item {
+    flex: 1;
+    flex-direction: column;
+}
+.typeB-item text {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    padding: 0 10rpx;
+}
+.typeB .price{
+    font-size: 28rpx;
+    line-height: 36rpx;
+}
+.typeB .info{
+    font-size: 24rpx;
+    line-height: 30rpx;
+}
+/*价格 end*/
+
+.iconActivityTime {
+	height: 28rpx;
+	width: 75rpx;
+	margin-right: 5rpx;
+}

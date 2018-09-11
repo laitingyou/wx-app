@@ -1,0 +1,60 @@
+@import '/style/iconfont.wxss'
+/* 订单进口 */
+.orderArea {
+    background-color: #fff;    
+}
+.orderArea-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 86rpx;
+    padding: 0 24rpx;
+    font-size: 32rpx;
+}
+.orderArea-header-right-text {
+    font-size: 24rpx;
+    margin-right: 10rpx;
+}
+.orderArea-main {
+    display: flex;
+    border-top: 1rpx solid #E0E0E0;
+    border-bottom: 1rpx solid #E0E0E0;
+    padding: 40rpx 0;
+}
+.orderArea-item {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 auto;
+    justify-content: center;
+}
+.orderArea-item-icon,.orderArea-item-text{
+    display: flex;
+    justify-content: center;
+}
+.orderArea-item-icon {
+    font-size: 54rpx;
+    color: #888;
+}
+.orderArea-item-text {
+    font-size: 24rpx;
+    margin-top: 20rpx;
+}
+.orderArea-item-number {
+    position: absolute;
+    z-index: 1;
+    top: -20rpx;
+    left: 50%;
+    margin-left: 20rpx;
+    color: #fff;
+    box-sizing: border-box;
+    background-color: #FE3666;
+    font-size: 24rpx;
+    min-width: 44rpx;
+    height: 44rpx;
+    line-height: 44rpx;
+    padding: 0 10rpx;
+    
+    text-align: center;
+    border-radius: 22rpx;
+}
+/* 订单进口end */

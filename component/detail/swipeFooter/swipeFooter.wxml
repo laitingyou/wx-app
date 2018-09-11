@@ -1,0 +1,37 @@
+<view class="goods-info">
+  <!--<image mode="aspectFit" class="goods-info-bg" src="/images/detail/bg.png"></image>-->
+  <view class="goods-info-box">
+    <view class="left">
+      <view class="goods-info-left">
+        <text>￥</text><text class="goods-price">{{info.activePrice || 0}}</text>
+      </view>
+      <view class="goods-info-middle">
+        <view class="original-price">
+          <text>不点赞原价</text><text class="original-price-number"> {{info.sourcePrice || 0}}</text>
+        </view>
+        <view class="row-invitation">
+          <text class="row-invitation-left">邀请朋友点赞</text>
+          <text class="row-invitation-right">省{{~~(info.sourcePrice*10000-info.activePrice*10000)/10000 || 0}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="goods-info-right">
+      <button open-type="share" class="shareTar-item nobutton">
+        <text class="iconfont icon-fenxiang share-icon"></text>
+        <text class="icon-label">分享</text>
+      </button>
+    </view>
+  </view>
+
+  <!--<view class="goods-info-right">-->
+    <!--<text class="timer-title">距结束仅剩</text>-->
+    <!--<view class="timer">-->
+      <!--<block wx:if="{{ !dd}}">-->
+      <!--<text  class="timer-number">{{hh}}</text> : <text class="timer-number">{{mm}}</text> : <text class="timer-number">{{ss}}</text>-->
+      <!--</block>-->
+        <!--<block wx:else>-->
+      <!--<text  class="timer-number">{{dd}}</text>天 <text class="timer-number">{{hh}}</text>小时 <text class="timer-number">{{mm}}</text>分-->
+        <!--</block>-->
+    <!--</view>-->
+  <!--</view>-->
+</view>

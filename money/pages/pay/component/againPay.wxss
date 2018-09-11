@@ -1,0 +1,50 @@
+@import '/style/iconfont.wxss';
+.shade {
+    background-color: rgba(0, 0, 0, .6);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.closeIcon {
+    float: right;
+    color: #979797;
+    padding: 20rpx 20rpx;
+}
+.main {
+    background-color: #fff;
+    border-radius: 6rpx;
+    min-width: 550rpx;
+    box-sizing: border-box;
+    text-align: center;    
+}
+.main-inner {
+    padding: 56rpx;
+}
+.mainTitle {
+    font-size: 32rpx;
+    color: #000;
+    padding-bottom: 80rpx;
+}
+.timeText {
+    color: #ff2b2b;
+}
+.mianText {
+    font-size: 24rpx;
+    color: #888;
+}
+/* .payBtn {
+    display: block;
+    margin-top: 20rpx;
+    border-radius: 30rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 32rpx;
+    color: #fff !important;
+    background-image: linear-gradient(to bottom, #FF857B, #FC003C);
+} */

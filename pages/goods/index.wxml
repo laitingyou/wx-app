@@ -1,0 +1,235 @@
+<page-title
+        defaultstyle="center"
+        background="#fff"
+        color="#4a4a4a"
+        title="商品详情"
+></page-title>
+
+<view class="detail-wrapper">
+    <barrage msgShow="{{msgShow}}"></barrage>
+    <!--轮播图   start-->
+    <view class="top">
+        <view class="goods-img">
+
+                <swiper bindchange="swiperChange" class="swiper" indicator-dots="{{false}}"
+                        autoplay="{{false}}" interval="{{5000}}" duration="{{500}}">
+                    <block wx:for="{{images}}" wx:key="{{index}}">
+                        <swiper-item  data-item="{{index}}">
+                            <block wx:if="{{video['video_url'] && index===0 && isShareHide}}" >
+                                <text catchtap="onPlayer" class="iconfont icon-play"></text>
+                                <image  mode="aspectFill" src="{{item}}" class="slide-image" />
+                            </block>
+                            <block>
+                                <image catchtap="onPreview" data-url="{{item}}" mode="aspectFill" src="{{item}}" class="slide-image" />
+                            </block>
+                        </swiper-item>
+                    </block>
+                </swiper>
+
+            <view class="swiper-bottom">
+                <text class="swiper-current">{{current}}/{{images.length}}</text>
+            </view>
+        </view>
+    </view>
+    <!--<video-play isShow="{{videoShow}}" src="{{currentVideo}}"></video-play>-->
+
+    <!--end-->
+
+    <!--拼货产品信息：价格、倒计时、优惠券-->
+    <goods-swipeFooter wx:if="{{isSpelling}}" info="{{goodPrice}}"></goods-swipeFooter>
+    <!-- 商品名称、价格、活动倒记时 -->
+    <!--<goods-info wx:if="{{!isSpelling && info}}" info="{{info}}"></goods-info>-->
+    <!--拼货商品名字、点赞量、销量-->
+    <goods-title
+            bind:getCoupon="onShowCoupon"
+            couponList="{{couponList}}"
+            info="{{titleInfo}}"
+    ></goods-title>
+
+    <!--普通商品 服务信息 -->
+    <view class="goodOther" wx:if="{{!isSpelling}}">
+        <view class="attestation goodOther-item" data-pop="serviceNote" data-poptitle="服务说明" bindtap="showAttestation">
+            <text class="iconfont attestation-more goood-icDian"></text>
+            <view class="attestation-left">
+                <block wx:for="{{attestation}}" wx:for-index="idx" wx:key="*this">
+                    <view class="attestation-item" wx:if="{{idx<3}}">
+                        <text class="iconfont attestation-icon {{item.className}}"></text>
+                        <text class="">{{item.text}}</text>
+                    </view>
+                </block>
+            </view>
+        </view>
+        <text class="goodOther-item attestationText">此商品由卖家提供售前售后与配送服务</text>
+    </view>
+
+    <!-- 商品规格 -->
+    <view class="panel" wx:if="{{!isSpelling}}">
+        <view class="panel-title">
+            <text class="tit-h1">规格选择</text>
+            <view class="tit-h2">
+                <text class="c-info va-m">{{store.mixWholesale}}</text>
+                <text class="iconfont iconRight d-ib va-m"></text>
+            </view>
+        </view>
+        <view class="panel-body">
+            <view class="currentNature" bindtap="goToChoose">
+                <view class="currentNature-item">
+                    <text class="Nature-Key">颜色</text>
+                    <text class="">{{colors}}</text>
+                </view>
+                <view class="currentNature-item">
+                    <text class="Nature-Key">尺码</text>
+                    <text class="">{{sizes}}</text>
+                </view>
+            </view>
+            <view class="attributeTit" data-pop="allAttribute" data-poptitle="商品属性" bindtap="showAllAttribute">
+                <text>商品属性</text>
+                <text class="iconfont goood-icDian"></text>
+            </view>
+        </view>
+    </view>
+
+    <!-- 推荐商品 -->
+    <view wx:if="{{!isSpelling}}" class="panel paddingAll" xw:if="{{recommendGoods.length>0}}">
+        <recomend-goods list="{{recommendGoods}}"></recomend-goods>
+    </view>
+
+    <block wx:if="{{isSpelling}}" >
+        <view class="share">
+            <view class="tips">
+                <text>开团支付并邀请朋友帮你点赞成功，若没有点赞将自动退款</text>
+            </view>
+            <!--<view class="steps">-->
+                <!--<image mode="scaleToFill" class="steps-btn" src="/images/detail/btn1.png"></image>-->
+                <!--<view class="steps-header">-->
+                    <!--<text>发到微信群，找人帮你点赞，拿折扣！</text>-->
+                    <!--<button open-type="share"  class="praise-btn">邀人点赞</button>-->
+                <!--</view>-->
+                <!--<praise-step></praise-step>-->
+            <!--</view>-->
+        </view>
+        <goods-review info="{{reviews}}"></goods-review>
+        <goods-message info="{{praiseMsg}}"
+                       goodsId="{{goods_id}}"
+                       ramdom="{{ramdom}}"
+                       pageStatus="{{pageStatus}}"
+        ></goods-message>
+        <goods-shore info="{{storedData}}"></goods-shore>
+    </block>
+
+
+    <view class="detail">
+        <block wx:if="{{isSpelling}}">
+             <view class="detail-header">
+                <text>详情介绍</text>
+            </view>
+            <view class="detail-paramBox">
+                <view wx:for="{{goods_details}}" wx:key="{{index}}" class="label-item">
+                    <text class="label">{{item.key_name}}</text>
+                    <text class="value">{{item.key_value}}</text>
+                </view>
+            </view>
+        </block>
+        <view class="detail-img-box">
+            <image
+                    wx:for="{{goods_images}}"
+                    wx:key="{{index}}"
+                    class="detail-img"
+                    mode="widthFix"
+                    src="{{item}}"
+                    data-url="{{item}}"
+                    data-index="{{index}}"
+                    catchtap="detailImgPreview"
+            ></image>
+        </view>
+
+        <view class="placeholder"></view>
+    </view>
+    <goods-tabBar
+            autoShow="{{autoShow}}"
+            bind:onOrder="onOrder"
+            info="{{tabBarInfo}}"
+            storeid="{{store_id}}"
+            liveData="{{liveDataToday}}"
+    ></goods-tabBar>
+
+
+
+
+</view>
+
+<!--活动结束-->
+<view class="mask" wx:if="{{isExpired}}">
+    <view class="mask-content">
+        <view class="mask-content-title"><text>抱歉，您来晚了活动已结束</text></view>
+        <navigator class="mask-content-btn" url="/pages/home/index" open-type="switchTab">去逛逛</navigator>
+      </view>
+</view>
+
+
+<!-- 认证属性弹框 -->
+<pop show="{{showPop_attestation}}" title="服务说明" okText="关闭">
+    <block wx:for="{{attestation}}" wx:key="*this">
+        <view class="attestation-item attestation-item1" >
+            <text class="iconfont attestation-icon {{item.className}}"></text>
+            <text class="">{{item.text}}</text>
+        </view>
+        <text class="attestation-info">
+            {{item.info}}
+        </text>
+    </block>
+</pop>
+<!-- 认证属性弹框 end -->
+<!-- 认证属性弹框 -->
+<pop show="{{showPop_allAttribute}}" title="商品属性" okText="关闭">
+    <view class="allAttribute">
+        <view class="allAttribute-table">
+            <block wx:for="{{goodsDetails}}" wx:key="*this">
+                <view class="allAttribute-tr">
+                    <text class="allAttribute-th c-info">{{item.key_name}}</text>
+                    <text class="allAttribute-td">{{item.key_value}}</text>
+                </view>
+            </block>
+        </view>
+    </view>
+</pop>
+<!-- 认证属性弹框 end -->
+
+<!--优惠券弹窗-->
+<pop
+        show="{{discountPop}}"
+        okText="完成"
+        bottomButton="{{false}}"
+        closable="{{true}}"
+>
+    <view slot="header" class="discountPop-header">
+        <text>店铺优惠券</text>
+    </view>
+    <scroll-view
+            style="height: 40vh;"
+            scroll-y="{{true}}"
+    >
+        <view class="discountPop-body">
+            <view wx:for="{{couponList}}"
+                  wx:key="{{index}}"
+                  class="coupon ">
+
+                <view class="coupon-l-t has-coupon">
+                    <view class="coupon-top">
+                        <text class="coupon-top-money">{{item.couponValue}}</text>
+                        <text class="threshold">满{{item.minAmount}}元可用</text>
+                    </view>
+                    <view class="expiry-date">
+                        <text >有效期：{{item.timeSlot}}</text>
+                    </view>
+                </view>
+                <view class="coupon-r" data-keycode="{{item.keycode}}" catchtap="getCoupon">
+                    <text class="getCoupon-btn">立即领取</text>
+                </view>
+                <!--<image></image>-->
+            </view>
+        </view>
+    </scroll-view>
+
+</pop>
+<canvas class="share-canvas"  canvas-id="canvas" hidden="{{true}}"></canvas>

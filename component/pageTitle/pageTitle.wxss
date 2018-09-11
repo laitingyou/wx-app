@@ -1,0 +1,75 @@
+@import "../../style/iconfont.wxss";
+
+.nav, .nav-inner {
+    /*height: 150rpx;*/
+    height: 70px;
+    width: 100%;
+}
+.border-bottom{
+    border-bottom: 1rpx solid #f6f6f6;
+}
+.form-button{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 80rpx;
+    height:80rpx ;
+    padding-bottom: 8rpx;
+}
+.nav-inner{
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    background: #FF4069;
+    padding: 46rpx 80rpx 0 80rpx;
+    padding-top: 46rpx;
+    color: #fff;    
+    font-size: 44rpx;
+    font-weight: 600;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-inner.left {
+    justify-content: flex-start;
+    padding-right: 220rpx;
+    font-size: 32rpx;
+}
+
+.icon-back{
+    width: 80rpx;
+    height:80rpx ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40rpx;
+    padding-right: 10rpx;
+    padding-bottom: 12rpx;
+}
+.icon-back::after{
+    content: '\e69b';
+}
+
+.title {
+    display: block;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+
+
+.hide{
+    transform: translateY(-100%);
+}
+
+.placeholder{
+    display: block;
+    width: 100%;
+}

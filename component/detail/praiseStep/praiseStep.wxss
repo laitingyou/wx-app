@@ -1,0 +1,52 @@
+@import "/style/iconfont.wxss";
+.steps-title{
+  text-align: center;
+
+  font-size: 32rpx;
+  color: #4A4A4A;
+  letter-spacing: 0.57px;
+}
+.three-steps{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  margin: 20rpx auto;
+}
+.three-steps .wallet,.three-steps .praise,.three-steps .logistics{
+  width: 60rpx;
+  height: 60rpx;
+
+}
+.line{
+  color: #FF6389;
+}
+.three-steps-item{
+  text-align: center;
+  color: #888888;
+  letter-spacing: 0.86rpx;
+  position: relative;
+}
+.wallet::before{
+    content: "\e618";
+    font-size: 60rpx;
+    color: #FF6389;
+}
+.praise::before{
+    content: "\e600";
+    font-size: 60rpx;
+    color: #FF6389;
+}
+
+.praise::after{
+  content: '+1';
+  color: #FF6389;
+  position: absolute;
+  top: 0;
+  font-size: 28rpx;
+}
+.logistics::before{
+  content: "\e634";
+  font-size: 60rpx;
+  color: #FF6389;
+}

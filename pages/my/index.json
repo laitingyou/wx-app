@@ -1,0 +1,13 @@
+{
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#FA2458",
+    "usingComponents": {    
+        "title-text": "/component/titleText/titleText",
+        "tiem": "/component/item/item",
+        "order-area": "component/orderArea/orderArea",
+        "page-title":"/component/pageTitle/pageTitle",
+        "form-button":"/component/formButton/formButton",
+        "one-pending": "/component/onePending/onePending",
+        "live-list": "/component/liveList/liveList"
+    }
+}

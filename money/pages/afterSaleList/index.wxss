@@ -1,0 +1,73 @@
+@import '/style/iconfont.wxss';
+
+.red {
+    color: #FF0000;
+}
+
+.small {
+    color: #999;
+    font-size: 20rpx;
+}
+
+.gary {
+    color: #999;
+}
+
+.afterSaleList {
+    font-size: 28rpx;
+}
+
+.afterSaleList .afterSaleListCellWrap {
+    margin-bottom: 20rpx;
+
+}
+
+.afterSaleList .afterSaleListCell {
+    background: #fff;
+    padding: 30rpx 28rpx;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1rpx solid #e0e0e0;
+}
+
+.afterSaleList .afterSaleListCell .right {
+    color: #888;
+    line-height: 37px;
+}
+
+.afterSaleList .afterSaleListCell .left {
+    display: flex;
+}
+
+.afterSaleList .afterSaleListCell .icons {
+    color: #fe3666;
+    font-size: 70rpx;
+    margin-right: 26rpx;
+}
+
+.afterSaleList .afterSaleListCell .right .icon-right {
+    color: #999;
+    font-size: 24rpx;
+}
+
+.afterSaleList .afterSaleListInstructions {
+    background: #fff;
+    padding: 40rpx 28rpx;
+}
+
+.afterSaleList .afterSaleListInstructions .title {
+    line-height: 28rpx;
+    margin-bottom: 40rpx;
+}
+
+.afterSaleList .afterSaleListInstructions .textarea {
+    background: #D8D8D8;
+    padding: 20rpx;
+    margin-bottom: 40rpx;
+}
+
+.afterSaleList .afterSaleListInstructions .textarea textarea {
+    color: #999;
+    width: 100%;
+}
+

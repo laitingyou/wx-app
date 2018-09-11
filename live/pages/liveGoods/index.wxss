@@ -1,0 +1,84 @@
+page {
+    background-color: #fff
+}
+.view{
+    background-color: #F0F0F1;
+}
+.goodsMain {
+    padding: 32rpx;
+}
+
+.goodsMain-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.goodsMain-header-left {
+    display: flex;
+    width: 77%;
+    align-items: center;
+}
+
+.goodsMain-header-h1 {
+    font-size: 32rpx;
+    color: #222;
+    letter-spacing: 0;
+    line-height: 32rpx;
+}
+
+.goodsMain-tips {
+    background: #fc7293;
+    border-radius: 6rpx;
+    padding: 4rpx 6rpx;
+    margin-left: 1.9%;
+    color: #fff;
+    font-size: 24rpx;
+    color: #fff;
+    letter-spacing: 0;
+    line-height: 24rpx;
+    max-width: 300rpx;
+}
+
+.goodsMain-amount {
+    font-size: 24rpx;
+    color: #4a4a4a;
+    letter-spacing: 0;
+    line-height: 24rpx;
+}
+
+.countDown {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    height: 82rpx;
+    font-size: 28rpx;
+    background-color: #fe3666;
+    text-align: center;
+    margin: -42rpx 32rpx 0;
+    border-radius: 12rpx;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.countDown-em {
+    color: #fe3666;
+    font-size: 32rpx;
+    background-color: #fff;
+    display: inline-block;
+    line-height: 44rpx;
+    height: 44rpx;
+    width: 44rpx;
+    border-radius: 6rpx;
+    padding: 0 8rpx;
+    margin: 0 10rpx;
+}
+
+.strong {
+    font-size: 34rpx;
+    margin-left: 10rpx;
+    font-weight: bold;
+}

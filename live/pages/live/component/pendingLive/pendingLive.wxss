@@ -1,0 +1,155 @@
+.liveItem {
+    font-size: 28rpx;
+    margin-bottom: 20rpx;
+    background-color: #fff;
+    padding: 28rpx;
+    overflow: hidden;
+}
+
+.liveItem-header {
+    width: 100%;
+    overflow: hidden;
+}
+
+.liveImg {
+    width: 100%;
+    height: 100%;
+    background-color: #eee;
+}
+
+.storeImg {
+    float: left;
+    overflow: hidden;
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
+    background-color: #000;
+}
+
+.storeInfo {
+    margin: 0 210rpx 0 90rpx;
+}
+
+.storeInfo-liveName, .storeInfo-address, .store-info-name {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    word-break: keep-all;
+    text-overflow: ellipsis;
+}
+
+.storeInfo-liveName {
+    font-size: 32rpx;
+    color: #4a4a4a;
+}
+
+.storeInfo-address {
+    font-size: 24rpx;
+    color: #aaa;
+}
+
+.subscribe {
+    float: right;
+    height: 60rpx;
+    background-color: #fff;
+    border: 1rpx solid #008ef3;
+    color: #008ef3;
+    font-size: 28rpx;
+    border-radius: 30rpx;
+    line-height: 60rpx;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.subscribe.active {
+    background-color: #008ef3;
+    border: none;
+    color: #fff;
+}
+
+.item {
+    margin-top: 20rpx;
+    overflow: hidden;
+}
+
+.liveImgArea {
+    float: left;
+    width: 280rpx;
+    height: 280rpx;
+    position: relative;
+    z-index: 1;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.liveHit {
+    position: absolute;
+    z-index: 1;
+    top: 10rpx;
+    left: 10rpx;
+    display: inline-block;
+    color: #fff;
+    line-height: 40rpx;
+    font-size: 20rpx;
+    padding: 0 20rpx;
+    border-radius: 20rpx;
+    background-image: linear-gradient(to bottom right, #19c3ff 0, #2692ff 100%, rgba(86, 168, 251, 0.00) 100%, rgba(163, 157, 248, 0.00) 100%);
+}
+
+.liveList-right {
+    margin-left: 300rpx;
+    height: 280rpx;
+    position: relative;
+    z-index: 1;
+}
+
+.store-info-name {
+    color: #222;
+}
+
+.store-info-time {
+    color: #4a4a4a;
+    margin-top: 20rpx;
+}
+
+.store-info-time-inner {
+    margin-left: 10rpx;
+    color: #008ef3;
+}
+
+.goodsList {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.goodsList-li, .goodsList-more {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 6rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.goodsList-more {
+    float: right;
+    background-color: #fbb0c2;
+    color: #fe3666;
+    box-sizing: border-box;
+    font-size: 20rpx;
+}
+
+.goodsList-ul {
+    height: 90rpx;
+    overflow: hidden;
+}
+
+.goodsList-li {
+    float: left;
+    margin-right: 8rpx;
+}

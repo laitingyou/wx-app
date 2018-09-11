@@ -1,0 +1,121 @@
+.promo-content .promo-banner{
+    overflow: hidden;
+}
+.promo-content .promo-banner image{
+    width: 100%;
+    background-color: #ccc;
+}
+.promo-content .promo-content-list{
+    padding: 15rpx;
+
+}
+
+.promo-content .promo-content-list .promo-content-list-item{
+    background: #fff;
+    margin-bottom: 15rpx;
+    display: flex;
+    padding: 15rpx;
+
+}
+
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-img{
+    width: 270rpx;
+    height: 278rpx;
+    background-color: #eee;
+    position: relative;
+}
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-img image{
+    width: 270rpx;
+    height: 278rpx;
+}
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-img .promo-content-list-item-img-tips{
+    width: 60rpx;
+    height: 60rpx;
+    background-image: linear-gradient(-45deg, #fc7500 0%, #e22704 100%);
+    color: #fff;
+    font-size: 24rpx;
+    text-align: center;
+    position: absolute;
+    left: 6rpx;
+    top: 0;
+    line-height: 1;
+    padding-top: 10rpx;
+}
+
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-text{
+    margin-left: 15rpx;
+    position: relative;
+    height: 278rpx;
+    width: 100%;
+
+}
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-text .promo-content-list-item-text-title{
+    font-size: 30rpx;
+    color: #020202;
+    margin-bottom: 20rpx;
+}
+
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-text-discount{
+    height: 38rpx;
+    line-height: 38rpx;
+    display: inline-block;
+    font-size: 26rpx;
+}
+
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-text-discount .promo-content-list-item-text-discount-l{
+    background: #e12304;
+    color: #fff;
+    display: inline-block;
+    border: 1px solid #e12304;
+    padding: 0 10px;
+
+}
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-text-discount .promo-content-list-item-text-discount-r{
+    border: 1px solid #bd250c;
+    color: #bd250c;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+}
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-bottom-flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-bottom-flex .promo-content-list-item-bottom-price{
+    color: #e12304;
+    font-size: 55rpx;
+    font-style: oblique;
+    font-weight: bold;
+    display: block;
+}
+
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-bottom-flex .promo-content-list-item-bottom-price text{
+    font-size: 36rpx;
+}
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-bottom-flex .promo-content-list-item-bottom-btn{
+    display: inline-block;
+    background: #e12304;
+    color: #fff;
+    margin: 0;
+    width: 168rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 26rpx;
+}
+.promo-content .promo-content-list .promo-content-list-item .promo-content-list-item-bottom-flex .promo-content-list-item-bottom-btn:active{
+    opacity: .8;
+}
+.isLoading{
+    text-align: center;
+    padding-bottom: 60rpx;
+    color: #939393;
+    font-size: 28rpx;
+}

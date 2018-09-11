@@ -1,0 +1,30 @@
+<view>
+    <view class="steps-title">
+        <text>集赞玩法</text>
+    </view>
+    <view class="three-steps">
+        <view class="three-steps-item">
+            <!--<image mode="scaleToFill" class="wallet" src="/pages/home/images/wallet.png"></image>-->
+            <text class=" iconfont wallet"></text>
+             <view>
+                <text>开团集赞购买</text>
+            </view>
+        </view>
+        <text class="line">----></text>
+        <view class="three-steps-item">
+            <!--<image mode="scaleToFill" class="praise" src="/pages/home/images/praise.png"></image>-->
+            <text class=" iconfont praise"></text>
+            <view>
+                <text>邀请朋友点赞成功</text>
+            </view>
+        </view>
+        <text class="line">----></text>
+        <view class="three-steps-item">
+            <!--<image mode="scaleToFill" class="logistics" src="/pages/home/images/car.png"></image>-->
+            <text class=" iconfont logistics"></text>
+            <view>
+                <text>卖家发货</text>
+            </view>
+        </view>
+    </view>
+</view>

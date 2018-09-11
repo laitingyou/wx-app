@@ -1,0 +1,9 @@
+{
+    "navigationBarBackgroundColor": "#045ce3",
+    "navigationBarTextStyle": "#fff",
+    "navigationBarTitleText": "店铺首页",
+    "usingComponents": {
+        "page-title":"/component/pageTitle/pageTitle",
+        "pop": "/component/pop/pop"
+    }
+}

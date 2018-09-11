@@ -1,0 +1,51 @@
+<page-title 
+    hasback="{{false}}"
+    defaultstyle="center"
+    title="消息"></page-title>
+
+<view class='recentchat-wrapper'>
+    <view class="eellyService">        
+        <image src="/images/loginDian.png" mode="aspectFill" class="service-img"></image>
+        <text class="eellyService-text">百里挑衣网客服</text>
+        <button class="contactOut-button" open-type="contact"></button>
+    </view>    
+    <view wx:if="{{chatList.length != 0}}" wx:for="{{chatList}}" wx:for-item="message" wx:key="message.time" data-data='{{message.account}}' bindtap='catchDeleteTap'>
+        <swipe-delete>
+            <view wx:if="{{message.isSystem}}" data-data='{{message.account}}' catchtap='switchToChating' class='recentchat-item' hover-class='recentchat-item-hover'>
+                <!--src="{{message.nick == '百里挑衣直播消息' ? '/images/iconLive.png' : '/images/loginDian.png'}}   "-->
+                <image
+                    src='/images/iconLive.png'
+                    lazy-load 
+                    mode="aspectFill" 
+                    class='recentchat-item-img'></image>
+                <view class='recentchat-item-right'>
+                    <view class='recentchat-item-top'>
+                        <text class='recentchat-item-title'>{{message.nick}}</text>
+                        <text class='recentchat-item-time'>{{message.displayTime}}</text>
+                    </view>
+                    <view class='recentchat-item-bottom'>
+                        <text class='recentchat-item-desc'>{{message.lastestMsg}}</text>
+                        <view wx:if="{{message.unread}}" class='recentchat-item-unread'>{{message.unread || ''}}</view>
+                    </view>
+                </view>
+            </view>
+            <view wx:if="{{!message.isSystem}}" class='recentchat-item' hover-class='recentchat-item-hover'>
+                <image src='{{message.avatar}}' lazy-load mode="aspectFill" class='recentchat-item-img' data-data='{{message.account}}' catchtap='switchToPersonCard'></image>
+                <view class='recentchat-item-right' data-data='{{message.account}}' catchtap='switchToChating'>
+                    <view class='recentchat-item-top'>
+                        <text wx:if="{{message.account != loginUserAccount}}" class='recentchat-item-title'>{{message.nick || message.account}}</text>
+                        <text wx:if="{{message.account == loginUserAccount}}" class='recentchat-item-title'>我的电脑</text>
+                        <text class='recentchat-item-time'>{{message.displayTime}}</text>
+                    </view>
+                    <view class='recentchat-item-bottom'>
+                        <view style='display:flex;align-items:center;'>
+                            <text wx:if="{{message.account != loginUserAccount}}" class='recentchat-item-status'>[{{message.status || '离线'}}]</text>
+                            <text class='recentchat-item-desc'>{{message.lastestMsg}}</text>
+                        </view>
+                        <view wx:if="{{message.unread}}" class='recentchat-item-unread'>{{message.unread || ''}}</view>
+                    </view>
+                </view>
+            </view>
+        </swipe-delete>
+    </view>
+</view>

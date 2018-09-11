@@ -1,0 +1,20 @@
+<view class="goodsMain-content">
+    <block wx:for="{{goodsList}}" wx:key="{{goodsList.goodsList}}">
+        <view class="item">
+            <navigator class="itemBox" url="/pages/goods/index?goodsId={{item.goodsId}}">
+                <view class="itemInner">
+                    <text class="item-index">{{index+1}}</text>
+                    <view class="item-image">
+                        <image class="item-image-img" lazy-load="true" mode="aspectFill"
+                               src="{{item.defaultImage}}"></image>
+                    </view>
+                </view>
+                <text class="item-title ellipsis">{{item.goodsName}}</text>
+                <view class="item-price">
+                    <text>￥{{item.luPrice}}</text>
+                    <!-- <text class="iconfont item-price-car"></text> -->
+                </view>
+            </navigator>
+        </view>
+    </block>
+</view>

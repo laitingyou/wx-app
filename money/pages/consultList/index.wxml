@@ -1,0 +1,111 @@
+<page-title title="协商记录"></page-title>
+<view class="consultList">
+    <view class="consultItem" wx:for="{{consultListData}}"   wx:key="{{index}}">
+        <view class="consultItemTitle">
+            <view class="left">
+                <block wx:if="{{item.type === '1'}}">
+                    <view class="iconfont icon-user user-icon"></view>
+                    我
+                </block>
+                <block wx:else>
+                    <view class="iconfont icon-dianpu store-icon"></view>
+                    卖家
+                </block>
+            </view>
+            <view class="right">{{item.created_time}}</view>
+        </view>
+        <view class="consultItemContent">
+
+            <view class="consultItemContentText" >
+                {{item.remark}}
+            </view>
+            <!--to_os_id-->            <!--卖家的协商状态-->
+
+            <block wx:if="{{item.type === '2'}}">
+
+
+                <!--同意-->
+                <view class="consultItemContentList" wx:if="{{item.to_os_id === '17' || item.to_os_id==='18'}}" >
+                    <view class="textItem">
+                        退货地址 ：{{item.address.address}}
+                    </view>
+                    <view class="textItem">
+                        联系人: {{item.address.consignee}}
+                    </view>
+                    <view class="textItem">
+                        电话 : {{item.address.phone}}
+                    </view>
+                </view>
+
+                <!--拒绝退款-->
+
+                <view class="consultItemContentList" wx:if="{{item.to_os_id === '19'}}">
+                            <view class="textItem">
+                                拒绝理由 ：{{item.certificate.refuseReason}}
+                            </view>
+                           <!-- <view class="textItem">
+                                拒绝说明: {{item.certificate.remark}}
+                            </view>-->
+                            <view class="imgItem" >
+                                <text class="imgItem-labe">图片凭证:<text class="gray">{{item.certificate.certificate? '' : ' 无'}}</text></text>
+                                <view class="imgItem-conent" wx:if="{{item.certificate.certificate}}">
+                                    <view class="imgItemImg" wx:for="{{item.certificate.certificate}}" wx:key="{{index}}">
+                                        <view class="imgItemImg-inner">
+                                            <image  bindtap="showImage"
+                                                    class="imgItem-img"
+                                                    lazy-load
+                                                    mode="aspectFill"
+                                                    data-img="{{item}}"
+                                                    src="{{item}}">
+                                            </image>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+            </block>
+
+
+
+            <!--买家的协商状态-->
+            <view class="consultItemContentList" wx:if="{{item.type ==='1'}}">
+                <!-- 状态16 申请退货退款-->
+                <block wx:if="{{item.to_os_id === '16' || item.to_os_id === '20'}}">
+                  <!--  <view class="textItem" wx:if="{{item.certificate.phase}}">
+                       <text>退货数量：{{item.certificate.phase}}</text>
+                    </view>-->
+                <view class="textItem">
+                    <text>申退金额: <text class="red">￥{{item.certificate.apply_amount}}</text><text class="gary">（含运费￥{{item.certificate.apply_freight}}）</text></text>
+                </view>
+                <view class="textItem">
+                    <text>退款类型: {{item.certificate.type==='1'? '退款' : '退货退款'}}</text>
+                </view>
+                <view class="textItem">
+                    <text>退款原因: {{remarkTypeArray[item.certificate.remark_type]}}</text>
+                </view>
+                <view class="textItem">
+                    <text>退款说明: {{item.certificate.remark?item.certificate.remark : ' 无'}}</text>
+                </view>
+                <view class="imgItem" >
+                    <text class="imgItem-labe">图片凭证:{{item.certificate.certificate? '' : ' 无'}}</text>
+                    <view class="imgItem-conent" wx:if="{{item.certificate.certificate}}">
+                        <view class="imgItemImg" wx:for="{{item.certificate.certificate}}" wx:for-item="items"  wx:key="{{index}}">
+                            <view class="imgItemImg-inner">
+                                <image  bindtap="showImage"
+                                        class="imgItem-img"
+                                        lazy-load
+                                        mode="aspectFill"
+                                        data-img="{{items}}"
+                                        data-certificate ="{{item.certificate.certificate}}"
+                                        src="{{items}}">
+                                </image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                </block>
+
+            </view>
+        </view>
+    </view>
+</view>

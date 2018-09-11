@@ -1,0 +1,22 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "f0f0f0",
+  "usingComponents":{
+    "barrage":"/component/barrage/barrage",
+    "counter":"/component/counter/counter",
+    "goods-title":"/component/detail/title/title",
+    "goods-review":"/component/detail/review/review",
+    "goods-message":"/component/detail/message/message",
+    "goods-shore":"/component/detail/shore/shore",
+    "goods-tabBar":"/component/detail/tabBar/tabBar",
+    "goods-swipeFooter":"/component/detail/swipeFooter/swipeFooter",
+    "pop":"/component/pop/pop",
+    "recomend-goods": "/component/detail/recomendGoods/recomendGoods",
+    "goods-info": "/component/detail/info/info",
+    "page-title":"/component/pageTitle/pageTitle",
+    "praise-step":"/component/detail/praiseStep/praiseStep",
+    "video-play": "/component/video/video"
+  }
+}

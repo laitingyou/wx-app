@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "banner": "component/banner/banner",
+        "list-item": "component/listItem/listItem",
+        "page-title":"/component/pageTitle/pageTitle"
+    },
+    "backgroundTextStyle": "dark"
+}

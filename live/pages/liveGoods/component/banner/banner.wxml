@@ -1,0 +1,15 @@
+<view class="liveGoodsBanner">
+    <image class="liveGoodsBanner-img" mode="aspectFill" src="{{storedata.image}}"></image>
+    <view class="liveGoodsBanner-inner">
+        <view class="topOperate">
+            <!--<button class="topOperate-attention">关注</button>-->
+        </view>
+        <view class="topStore">
+            <view>
+                <image class="topStore-img" src="{{storedata.portraitUrl}}"></image>
+            </view>
+            <text class="topStroe-name">{{storedata.userName}}</text>
+            <text class="topStroe-address">{{storedata.addressName}}</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,248 @@
+<page-title title="立即下单" hasback="{{hasback}}"></page-title>
+<!-- 弹出授权限用户信息 -->
+<modal show="{{showLoginBox}}"  closable="{{false}}" forbidClose="{{true}}">
+    <view slot="header" class="model-title"><text>提示</text></view>
+    <view slot="body" class="model-body"><text>为了保证功能的正常使用，请确定授权</text></view>
+    <view slot="footer" class="model-footer">
+        <button
+                formType="submit"
+                size="mini"
+                open-type="getUserInfo"
+                bindgetuserinfo='buttonLogin'>
+            确定
+        </button>
+    </view>
+</modal>
+
+<!-- 弹出返回来源"小程序"的组件 -->
+<modal show="{{showBackAppBox}}"  closable="{{false}}" forbidClose="{{true}}">
+    <view slot="header" class="model-title"><text>提示</text></view>
+    <view slot="body" class="model-body"><text>支付成功，点击返回</text></view>
+    <view slot="footer" class="model-footer">
+        <navigator
+                class="navigator"
+                target="miniProgram"
+                app-id="{{wxAppId}}"
+                path="{{backAppPath}}"
+                version="{{navigatorVersion}}"
+                extra-data="{{backAppData}}">
+            确定
+        </navigator>
+    </view>
+</modal>
+
+<view class="payBody">
+    <!-- 地址 -->
+    <navigator 
+        class="addreeArea" 
+        url="/other/pages/address/index?type=choose&addrId={{address.addrId || ''}}">
+            <text class="addreeArea-left iconfont icon-dizhi"></text>
+            <view class="addreeArea-main">
+                <block wx:if="{{address.addrId}}">
+                    <view class="usrInfo">
+                        <text>{{address.userName}}</text>
+                        <text class="phone">{{address.telNumber}}</text>
+                    </view>                
+                    <text class="addressText">{{address.detailInfo}}</text>    
+                </block>                
+                <text wx:else class="notAddress">点击添加收货地址</text>
+            </view>
+            <text class="addreeArea-right iconfont icon-right"></text>
+    </navigator>
+    <view class="addreeAreaFooter"></view>
+    <!-- 地址end -->
+    <!-- 订单 -->
+    <view 
+        class="rooderBox"
+        wx:for="{{payGoodsData}}"
+        wx:key="*index">
+    
+        <view class="rooderBox-inner store">        
+            <text class="iconfont icon-dianpu store-icon"></text>
+            <text class="store-name">{{item.storeName}}</text>
+        </view>
+        <block 
+            wx:for="{{item.goodsInfo}}"
+            wx:key="goodsId"
+            wx:for-item="goodsInfo">
+            
+            <view class="goods">
+                <image 
+                    class="goods-img img" 
+                    mode="aspectFill" 
+                    lazy-load
+                    src="{{goodsInfo.goodsImage}}">
+                </image>
+                <view class="goods-main">
+                    <text class="goods-name">{{goodsInfo.goodsName}}</text>
+                    <view class="goods-attribute">
+                        <block 
+                            wx:for="{{goodsInfo.specInfo}}"
+                            wx:key="*index"
+                            wx:for-item="specInfo">
+                        
+                            <view class="goods-attribute-left">
+                                <text class="goods-color">颜色：{{specInfo.color}}</text>
+                                <text class="goods-size">尺码：{{specInfo.size}}</text>
+                            </view>
+                            <view class="goods-attribute-right">
+                                <text class="originalPrice">
+                                    <block wx:if="{{spelling > 0}}">￥{{specInfo.originalPrice}}</block>
+                                </text>
+                                <text class="price">￥{{specInfo.price}}</text>
+                            </view>    
+                        </block>
+                    </view>
+                </view>
+            </view>
+            <view class="rooderBox-inner buyNumber">
+                <text>购买数量</text>
+                <view class="buyNumberComponent">
+                    <text 
+                        class="buyNumberComponent-minus {{goodsInfo.goodsNumber*1 > goodsInfo.lowerLimit ? '' : 'disabled'}}"
+                        bindtap="changGoodsNumberBtn"
+                        data-storeid="{{item.storeId}}"
+                        data-goodsid="{{goodsInfo.goodsId}}"
+                        data-lower="{{goodsInfo.lowerLimit}}"
+                        data-disabled="{{goodsInfo.goodsNumber*1 > goodsInfo.lowerLimit ? '' : 'disabled'}}"
+                        data-add="{{false}}"
+                        data-value="{{goodsInfo.goodsNumber}}"
+                        >-</text>
+                    <input 
+                        type="number" 
+                        class="buyNumberComponent-input" 
+                        data-storeid="{{item.storeId}}"
+                        data-goodsid="{{goodsInfo.goodsId}}"
+                        data-lower="{{goodsInfo.lowerLimit}}"
+                        data-stock="{{goodsInfo.stock}}"
+                        bindblur="goodsNumberInt"
+                        bindconfirm="goodsNumberInt"
+                        value="{{goodsInfo.goodsNumber}}" />                    
+                    <text 
+                        class="buyNumberComponent-add {{goodsInfo.goodsNumber*1 >= goodsInfo.stock ? 'disabled' : ''}}"
+                        bindtap="changGoodsNumberBtn"
+                        data-storeid="{{item.storeId}}"
+                        data-goodsid="{{goodsInfo.goodsId}}"
+                        data-lower="{{goodsInfo.lowerLimit}}"
+                        data-stock="{{goodsInfo.stock}}"
+                        data-disabled="{{goodsInfo.goodsNumber*1 >= goodsInfo.stock ? 'disabled' : ''}}"
+                        data-add="{{true}}"
+                        data-value="{{goodsInfo.goodsNumber}}"
+                        >+</text>
+                </view>
+            </view>    
+        </block>
+    </view>
+    <!-- 订单 end -->
+    <!-- 优惠 -->
+    <view class="box" wx:if="{{couponList.length > 0}}">
+        <view class="box-inner" bindtap="openDiscounts">
+            <text class="box-inner-left">店铺优惠券</text>
+            <view class="box-inner-right">
+                <text>{{currentCoupon}}元</text>
+                <text class="iconfont icon-right addreeArea-right-icon"></text>
+            </view>
+        </view>
+    </view>
+    <!-- 优惠 end -->
+    <!-- 配送方式 -->
+    <view class="box">
+        <view class="box-inner" bindtap="openExpressageList">
+            <text class="box-inner-left">配送方式</text>
+            <view class="box-inner-right">                
+                <text wx:if="{{currentWeight == 0}}">免运费</text>
+                <text wx:else>快递费{{currentFreight}}元</text>
+                <text class="iconfont icon-right addreeArea-right-icon"></text>
+            </view>
+        </view>
+        <view class="box-inner leaveMessage">
+            <text class="leaveMessage-left">我要留言：</text>
+            <view class="leaveMessage-right">
+                <input 
+                    class="leaveMessage-input" 
+                    maxlength="200" 
+                    bindblur="changeRemark"
+                    placeholder="有什么要求，可以点这里留言告诉卖家~" />
+            </view>
+        </view>
+    </view>
+    <!-- 配送方式 end -->
+    <view class="payFooter">
+        <view class="payFooter-inner">
+            <text>合计</text>
+            <text class="totalValue">￥{{totalPrice}}</text>
+        </view>
+        <form-button bindsubmit="clickPayBtn"><text class="payFooter-btn">{{payBtnText}}</text></form-button>
+    </view>
+</view>
+
+<!-- 店铺优惠弹框 -->
+<pop show="{{showDiscounts}}" title="店铺优惠" okText="确定">
+    <radio-group class="discountsList" bindchange="couponChange">
+        <label 
+            wx:for="{{couponList}}"
+            wx:key="couponNo"
+            class="radio-li">
+            <view class="radio-li-inner">               
+                <view                    
+                    class="coupon">
+                    <image class="coupon-img" src="/images/coupon.png"></image>
+                    <text>{{item.couponValue}}</text>
+                </view>    
+                <text>下单省{{item.couponValue}}元</text>
+            </view>
+            <view class="radio-li-radio">
+                <radio color="#fe3666"
+                    checked="{{currentCouponNo == item.couponNo}}" 
+                    value="{{item.couponNo}},{{item.couponId}},{{item.couponValue}}" />
+            </view>
+        </label>
+        <label class="radio-li">
+            <text class="radio-li-inner">不使用优惠</text>
+            <view class="radio-li-radio">
+                <radio color="#fe3666" value="" />
+            </view>
+        </label>
+    </radio-group>
+</pop>
+<!-- 店铺优惠弹框 end -->
+
+<!-- 配送方式 -->
+<pop 
+    show="{{expressageListShow}}" 
+    title="配送方式" 
+    okText="确定">
+
+    <radio-group class="discountsList" bindchange="freightChange">
+        <label 
+            class="radio-li"
+            wx:for="{{freightList}}"
+            wx:key="shippingId"
+            data-index="{{index}}">
+        
+            <view class="radio-li-inner">
+                <text>{{item.name}}</text>
+                <text class="radio-li-smallText">预计运费{{item.freight}}元</text>
+            </view>
+            <view class="radio-li-radio">
+                <radio 
+                    color="#fe3666" 
+                    checked="{{freightIndex == index}}"
+                    value="{{index}},{{item.freight}},{{item.weight}}"/>
+            </view>
+        </label>
+    </radio-group>
+</pop>
+<!-- 店铺优惠弹框 end -->
+
+<!-- 继续支付 -->
+<again-pay 
+    wx:if="{{orderSns.length > 0}}"
+    show="{{showAgainPay}}" 
+    order="{{orderSns}}"
+    price="{{totalPrice}}" 
+    time="{{orderTime}}"
+    coupon="{{currentCoupon}}">
+        <button type="default" class="payBtn" bindtap="tapAgainPayBtn" loading="{{inPaying}}">继续支付{{totalPrice}}</button>
+    </again-pay>
+<!-- 继续支付 end -->

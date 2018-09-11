@@ -1,0 +1,159 @@
+@import '/style/iconfont.wxss';
+
+button:after {
+    border: none;
+}
+
+button:active {
+    opacity: .8;
+}
+
+.red {
+    color: #FF0000;
+}
+
+.small {
+    color: #999;
+    font-size: 20rpx;
+}
+
+.gary {
+    color: #999;
+}
+
+.afterSale {
+    font-size: 28rpx;
+}
+
+.afterSale .afterSaleCellWrap {
+    margin-bottom: 20rpx;
+}
+
+.afterSale .afterSaleCell {
+    background: #fff;
+    padding: 40rpx 28rpx;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1rpx solid #e0e0e0;
+}
+
+.afterSale .afterSaleCell .right {
+    color: #888;
+}
+
+.afterSale .afterSaleCell .right .icon-right {
+    color: #999;
+    font-size: 24rpx;
+}
+
+.afterSale .afterSaleInstructions {
+    background: #fff;
+    padding: 40rpx 28rpx;
+}
+
+.afterSale .afterSaleInstructions .title {
+    line-height: 28rpx;
+    margin-bottom: 40rpx;
+}
+
+.afterSale .afterSaleInstructions .textarea {
+    background: #D8D8D8;
+    padding: 20rpx;
+    margin-bottom: 40rpx;
+}
+
+.afterSale .afterSaleInstructions .textarea textarea {
+    color: #999;
+    width: 100%;
+    height: 200rpx;
+}
+.placeholder{
+    width: 100%;
+    height: 200rpx;
+}
+.afterSaleButton {
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    width: 100%;
+}
+
+.afterSaleButton button {
+    background: #fe3666;
+    color: #ffffff;
+    border-radius: 0;
+}
+
+.returnReasonPop .returnReasonList {
+    margin: -32rpx -32rpx 0 -32rpx;
+
+}
+
+.returnReasonList .returnReasonListItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 40rpx 28rpx;
+    border-bottom: 1rpx solid #f1f1f1;
+    font-size: 28rpx;
+
+}
+.photos{
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+.photo-item{
+    width: 25%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20rpx;
+    position: relative;
+}
+.photo-add{
+    font-size: 100rpx;
+    color: #333333;
+    width: 160rpx;
+    height: 160rpx;
+    text-align: center;
+    line-height: 160rpx;
+    border: 1rpx dotted #333333;
+    box-sizing: border-box;
+    border-radius: 15rpx;
+}
+
+.image{
+    width: 160rpx;
+    height: 160rpx;
+}
+.icon-cuo::before{
+    position: absolute;
+    right:  5rpx;
+    top: -16rpx;
+    font-size: 16rpx;
+    background: red;
+    color: #ffffff;
+    border-radius: 50%;
+    text-align:center ;
+    line-height: 30rpx;
+    width: 30rpx;
+    height: 30rpx;
+    z-index: 0;
+}
+.input-box{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.modal-body{
+    text-align: center;
+    padding: 30rpx 0 40rpx;
+}
+.modal-footer{
+    text-align: center;
+    width: 100%;
+    color: rgba(255, 47, 5, 0.86);
+    padding: 15rpx 0 5rpx;
+    border-top: 1rpx solid #f3f3f3;
+}

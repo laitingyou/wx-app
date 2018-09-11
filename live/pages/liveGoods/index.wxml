@@ -1,0 +1,26 @@
+<page-title title="{{title}}"></page-title>
+<view class="view">
+    <banner storedata="{{store}}"></banner>
+    <view class="countDown" wx:if="{{isShareHide}}">
+        <text>直播将于</text>
+        <text class="countDown-em">{{countDownData.days}}</text>
+        <text>天</text>
+        <text class="countDown-em">{{countDownData.hours}}</text>
+        <text>时</text>
+        <text class="countDown-em">{{countDownData.minutes}}</text>
+        <text>分</text>
+        <text class="countDown-em">{{countDownData.seconds}}</text>
+        <text>秒</text>
+        <text class="strong">后开始</text>
+    </view>
+    <view class="goodsMain" wx:if="{{isShareHide}}">
+        <view class="goodsMain-header">
+            <view class="goodsMain-header-left">
+                <text class="goodsMain-header-h1">直播主题</text>
+                <text class="goodsMain-tips ellipsis">{{live.title}}</text>
+            </view>
+            <text class="goodsMain-amount ellipsis">{{goodsList.length}}款新品</text>
+        </view>
+    </view>
+    <list-item  goodsList="{{goodsList}}" ></list-item>
+</view>

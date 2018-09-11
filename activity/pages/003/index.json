@@ -1,0 +1,15 @@
+{
+    "enablePullDownRefresh": true,
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "f0f0f0",
+    "usingComponents": {
+        "title-text": "/component/titleText/titleText",
+        "tiem": "/component/item/item",
+        "page-title":"/component/pageTitle/pageTitle",
+        "form-button":"/component/formButton/formButton",
+        "one-pending": "/component/onePending/onePending",
+        "big-modal": "/component/bigModal/bigModal",
+        "live-list": "/component/liveList/liveList"
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "backgroundColor": "#FF4069",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "goods-item": "/component/item/item",
+    "titleLine": "/component/titleText/titleText",
+    "barrage":"/component/barrage/barrage",
+    "page-title":"/component/pageTitle/pageTitle",
+    "form-button":"/component/formButton/formButton"
+  }
+}

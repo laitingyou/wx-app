@@ -1,0 +1,221 @@
+<view class="live-wrapper" wx:if="{{liveData.length>0}}" >
+    <navigator
+            wx:for="{{liveData}}"
+            wx:key="{{index}}"
+            url="/pages/liveDetails/index?liveId={{item.liveId}}"
+            class="float"
+            animation="{{animationData}}"
+    >
+        <view class="float-content">
+            <view class="content-l">
+                <image class="live-avatar" mode="aspectFill" src="{{item.image}}" ></image>
+                <text class="living">直播中</text>
+            </view>
+            <view class="content-r">
+                <view class="live-info">
+                    <text class="live-title">{{item.title}}</text>
+                    <text class="live-watcher">{{item.view}}人看</text>
+                </view>
+            </view>
+        </view>
+        <view class="close" catchtap="onLiveclose">
+            <text  class="iconfont icon-cuo" ></text>
+        </view>
+    </navigator>
+</view>
+<view class="fixedNav" wx:if="{{info.type===1}}">
+    <view class="fixedNavBtn fixedNavBtn-home">
+        <navigator open-type="switchTab" hover-class="none"  class="pt" url="/pages/home/index">
+            <text class="iconfont  icon-shouye1"></text>
+            <text class="home-text">首页</text>
+        </navigator>
+    </view>
+    <view class="fixedNavBtn fixedNavBtn-service">
+        <button  class="chatTo"
+                 open-type="getUserInfo"
+                 bindgetuserinfo="goToIm"></button>
+        <view
+                class="pt">
+            <text class="iconfont  icon-service"></text>
+            <text class="home-text">客服</text>
+        </view>
+    </view>
+
+</view>
+<view class="bottom" wx:if="{{info['sourcePrice']}}">
+    <view class="bottom-item bottom-left" wx:if="{{info.type!==1}}">
+        <navigator open-type="switchTab" bindtap="onPopShow" class="home" url="/pages/home/index">
+            <text class="iconfont icon-home icon-shouye1"></text>
+            <text class="home-text bottom-btn-home">首页</text>
+        </navigator>
+        <view class="mymessage">
+            <button
+                    class="chatTo"
+                    open-type="getUserInfo"
+                    bindgetuserinfo="goToIm"></button>
+            <!-- <test class="msg">2</test> -->
+            <text class="iconfont icon-mymessage icon-service"></text>
+            <text class="home-text bottom-btn-home">客服</text>
+        </view>
+    </view>
+    <block wx:if="{{info.stock!=0 && info.closed ==0 && info.show ==1}}">
+        <block wx:if="{{info.type===1}}">
+            <view id="single"   class="bottom-item no-praise-buy" bindtap="onPopShow">
+                <view class="no-praise-price" >
+                    <text class="praise-price-num">¥ {{info.sourcePrice}}</text>
+                    <text >单独购买</text>
+                </view>
+            </view>
+
+            <view id="upper"   class="bottom-item no-praise-buy" bindtap="onPopShow">
+                <view class="no-praise-price" >
+                    <text class="praise-price-num">¥ {{info.upperPrice}}</text>
+                    <text >批发（3件起）</text>
+                </view>
+            </view>
+            <view id="group" class="bottom-item praise-buy" bindtap="onPopShow">
+                <view  class="praise-price" >
+                    <text class="praise-price-num">¥ {{info.activePrice}}</text>
+                    <text>开团集{{info.requireLikes}}个赞</text>
+                </view>
+            </view>
+        </block>
+        <block wx:else>
+            <view  class="bottom-item no-praise-buy share-box">
+                <button open-type="share" class="no-praise-price share">
+                    <text class="iconfont icon-weixin"></text>
+                    <text wx:if="{{info.cate_id=='289'}}">私聊好友 问下意见</text>
+                    <text wx:else>私聊闺蜜 问下意见</text>
+                </button>
+            </view>
+            <view id="single"  class="bottom-item no-praise-buy nopraise" bindtap="onPopShow">
+                <view class="no-praise-price {{info.type!==1?'fff':''}}" >
+                    <!--<text>¥ {{info.sourcePrice}}</text>-->
+                    <text >立即购买</text>
+                </view>
+            </view>
+        </block>
+    </block>
+    <block wx:else>
+        <view class="sold">
+            <text wx:if="{{info.stock==0}}">商品已卖光</text>
+            <text wx:elif="{{info.show==0 || info.show==2 || info.show==5}}">商品已下架</text>
+            <text wx:elif="{{info.show==3}}">商品等待上架</text>
+            <text wx:else>立即购买</text>
+        </view>
+    </block>
+
+</view>
+<pop
+        show="{{popShow}}"
+        okText="确定"
+        closable="{{false}}"
+        bottomButton="{{false}}"
+>
+    <view slot="header">
+        <view class="header">
+            <image mode="aspectFill" src="{{info.default_image}}" class="order-img"></image>
+            <view wx:if="{{info.type===1}}" class="order-info">
+                <view><text class="order-price">￥ {{allPrice}}</text></view>
+                <view class="order-attribute-box"><text wx:if="{{currentColor!==null || currentSize!==null}}"> 已选择：<text class="order-attribute">{{info.colors[currentColor]}}, {{info.sizes[currentSize]}}</text></text></view>
+            </view>
+            <view wx:else class="order-info priceRange">
+                <!--<view wx:for="{{info.priceRange}}" wx:key="{{index}}" class="priceRange-item">-->
+                    <!--<text class="order-price">￥{{item.price}}</text>-->
+                    <!--<text class="priceRange-item-num">{{item.show}}件</text>-->
+                <!--</view>-->
+                <view   class="priceRange-item">
+                    <text class="order-price">￥{{info.priceRange[0].price}}</text>
+                    <text class="priceRange-item-num">{{info.priceRange[0].lower}}件起批</text>
+                </view>
+            </view>
+        </view>
+
+    </view>
+    <scroll-view class="scroll-view" scroll-y>
+        <view class="colors">
+            <view class="form-header">
+                <text>颜色</text>
+            </view>
+            <view class="form-content">
+                <block
+                        wx:for="{{info.colors}}"
+                        wx:key="{{index}}"
+                >
+                    <text
+                            wx:if="{{disabled['color'][index]}}"
+                            class="form-content-item none"
+                    >{{item}}</text>
+                    <text
+                            wx:else
+                            data-key="{{index}}"
+                            data-type="color"
+                            class="form-content-item {{currentColor===index?'active':random}}"
+                            bindtap="btnClick"
+
+                    >{{item}}</text>
+                </block>
+
+                <!--<text class="form-content-item active">红色</text>-->
+                <!--<text class="form-content-item none">白色</text>-->
+
+            </view>
+        </view>
+        <view class="sizes">
+            <view class="form-header">
+                <text>尺码</text>
+            </view>
+            <view class="form-content">
+                <block
+                        wx:for="{{info.sizes}}"
+                        wx:key="{{index}}"
+                >
+                    <text
+                            wx:if="{{disabled['size'][index]}}"
+                            class="form-content-item none"
+                    >{{item}}</text>
+                    <text
+                            wx:else
+                            data-key="{{index}}"
+                            data-type="size"
+                            class="form-content-item {{currentSize===index?'active':random}}"
+                            catchtap="btnClick"
+                    >{{item}}</text>
+                </block>
+
+
+            </view>
+        </view>
+        <view class="amount">
+            <view class="form-header">
+                <text>数量</text>
+            </view>
+
+            <view class="form-content">
+                <view class="stock"><text wx:if="{{currentStock!==null}}">库存剩{{currentStock}}</text></view>
+                <counter
+                        value="{{num}}"
+                        max="{{currentStock!==null?currentStock:1000}}"
+                        bind:onChange="orderAmount"
+                ></counter>
+            </view>
+        </view>
+
+        <view class="placeholder"></view>
+    </scroll-view>
+
+    <view slot="footer">
+        <button
+                wx:if="{{currentSize!==null && currentColor!==null && enabled }}"
+                class="nobutton pop-ok"
+                open-type="getUserInfo"
+                bindgetuserinfo="onOrder"
+
+        ><text>确定</text></button>
+        <view
+                wx:else
+                class="none-ok"
+        ><text>确定</text></view>
+        <!--<view class="pop-ok" catchtap="onOrder"><text>确定</text></view>-->
+    </view>
+</pop>

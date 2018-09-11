@@ -1,0 +1,442 @@
+.detail-wrapper{
+  background-color: #EFEFEF;
+  font-size: 24rpx;
+}
+
+.goods-img{
+  height: 750rpx;
+  position: relative;
+}
+.swiper{
+  width: 100vw;
+  height: 100%;
+}
+.slide-image{
+  width: 100vw;
+  height: 100%;
+}
+.icon-play{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.icon-play::before{
+  font-size: 160rpx;
+  color: #fff;
+
+}
+
+.swiper-current{
+  float: right;
+  margin: 0 28rpx 20rpx 0;
+  background: #4a4a4a;
+  color: #ffffff;
+  padding: 6rpx 20rpx;
+  border-radius: 26rpx;
+}
+
+.swiper-bottom{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/*分享*/
+.share-canvas{
+  width: 300px;
+  height: 300px;
+}
+
+/*-----detail----*/
+.detail{
+  margin-top: 20rpx;
+  line-height: 68rpx;
+  background-color: #ffffff;
+  padding: 20rpx 28rpx;
+}
+.detail-header{
+  text-align: center;
+}
+
+.detail-paramBox{
+  background-color: #F0F0F0;
+  border-radius: 10rpx;
+  padding: 30rpx;
+}
+.detail-img-box{
+  margin: 20rpx 0;
+}
+.detail-img{
+  width: 100%;
+  display: block;
+}
+
+
+
+
+
+/*------template-----*/
+.detail-paramBox{
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+}
+.label-item{
+  display: inline-block;
+  margin-right: 20rpx;
+  width: 46%;
+  display: flex;
+  align-items: flex-start;
+}
+.label{
+  color: #909090;
+  width: 140rpx;
+  display: inline-block;
+  text-align: right;
+
+}
+.value{
+  display: inline-block;
+  width: 150rpx;
+}
+.placeholder{
+  height: 60rpx;
+}
+/*优惠券弹窗*/
+.discountPop-header{
+  text-align: center;
+  line-height: 80rpx;
+}
+.discountPop-body{
+
+}
+.coupon{
+    width: 688rpx;
+    height: 160rpx;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  color: #ffffff;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+}
+.has-coupon{
+  background: #FE3666;
+
+}
+.no-coupon{
+  background: #B5B5B5;
+}
+.coupon-top{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.coupon-l-t{
+  width: 520rpx;
+  height: 100%;
+  position: relative;
+
+}
+.coupon-top-money{
+  font-size: 52rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  line-height: 80rpx;
+}
+.threshold{
+  display: block;
+  font-size: 20rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  line-height: 20rpx;
+}
+.expiry-date{
+  font-size: 20rpx;
+  color: #FFFFFF;
+  background: #FF7294;
+  letter-spacing: 0;
+  line-height: 40rpx;
+  border-top: 6rpx dotted #ffffff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+
+}
+.getCoupon-btn{
+  display: block;
+  line-height: 60rpx;
+  background: #FE3666;
+  border-radius: 200rpx;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  width: 150rpx;
+  height: 60rpx;
+  text-align: center;
+
+}
+.detail-img{
+  background: #aaaaaa;
+}
+.coupon-r{
+  width: 170rpx;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*------mask---------*/
+.mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.56);
+  z-index: 2000;
+}
+.mask-content{
+  position: absolute;
+  top: 30%;
+  text-align: center;
+  width: 100%;
+}
+.mask-content-title{
+  font-size: 24rpx;
+  color: #ffffff;
+  text-align: center;
+}
+.mask-content-btn{
+  display: block;
+  line-height: 60rpx;
+  background: #FE3666;
+  border-radius: 200rpx;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  width: 150rpx;
+  height: 60rpx;
+  text-align: center;
+  margin: 40rpx auto;
+}
+/*-普通商品 服务信息 */
+.goodOther {
+  background-color: #fafafa;
+  border-top: 1rpx solid #ebebeb;
+  border-bottom: 1rpx solid #ebebeb;
+  padding: 0 36rpx;
+}
+.goodOther-item{
+  padding: 20rpx 0;
+}
+
+.goood-icDian:before {
+  content: '\e642';
+  color: #ccc;
+  display: inline-block;
+}
+.iconRight:before {
+  content: '\e6a2';
+  color: #ccc;
+  display: inline-block;
+}
+.attestation {
+  border-bottom: 1rpx solid #ebebeb;
+  line-height: 50rpx;
+  height: 50rpx;
+}
+.attestation-left {
+  overflow: hidden;
+  margin-right: 46rpx;
+  word-break:keep-all;
+  white-space:nowrap;
+}
+.attestation-item {
+  display: inline-flex;
+  color: #8fb82d;
+  padding-right: 20rpx;
+  align-items: center;
+}
+
+.attestation-icon {
+  font-size: 40rpx;
+  margin-right: 10rpx;
+  color:#8fb82d;
+}
+.attestation-more {
+  float: right;
+  flex: 1;
+}
+.attestationText {
+  color: #b2b2b2;
+  display: block;
+}
+.attestation-item1 {
+  padding-bottom: 20rpx;
+}
+.attestation-info {
+  padding:0 0 20rpx 48rpx ;
+  font-size: 28rpx;
+  color: #b2b2b2;
+  display: block;
+  border-top: 1rpx solid #ebebeb;
+}
+
+/*商品规格*/
+.panel {
+  background-color: #fff;
+  border-top: 1rpx solid #ebebeb;
+  border-bottom: 1rpx solid #ebebeb;
+  margin-top: 25rpx;
+}
+.panel-title {
+  padding: 34rpx;
+  border-bottom: 1px solid #ebebeb;
+  height: 28rpx;
+  line-height: 28rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.panel-title .icon-right {
+  margin-left: 10rpx;
+}
+.panel-body {
+  padding: 34rpx;
+}
+
+/* 面板 end*/
+.paddingAll {
+  padding:32rpx;
+}
+.currentNature {
+  margin-top: -32rpx;
+  padding-top: -1px;
+  flex-direction: column;
+}
+.currentNature-item {
+  border-bottom: 1px solid #ebebeb;
+  line-height: 88rpx;
+  height: 88rpx;
+  display: flex;
+}
+.Nature-Key {
+  min-width:72rpx;
+  margin-right: 15rpx;
+  color: #b2b2b2;
+}
+.attributeTit {
+  display:flex;
+  justify-content: space-between;
+  padding:32rpx 32rpx 0 32rpx;
+  margin:-1rpx -32rpx 0 -32rpx;
+  line-height:24rpx;
+  border-top:1rpx solid #ebebeb;
+}
+.tit-h2 {
+  font-size: 28rpx;
+}
+.c-info {
+  color:#b2b2b2;
+}
+.va-m {
+  vertical-align: middle;
+}
+.d-ib {
+  display: inline-block;
+}
+
+/* 商品属性弹框 */
+.allAttribute {
+  max-height: 400rpx;
+  overflow-y: auto;
+}
+.allAttribute-table{
+  display: table;
+  width: 100%;
+}
+.allAttribute-tr {
+  display: table-row;
+  line-height:88rpx;
+  height:88rpx;
+}
+.allAttribute-th {
+  padding-right: 10rpx;
+  min-width: 75rpx;
+  white-space: nowrap;
+}
+.allAttribute-td {
+  padding-left: 10rpx;
+}
+.allAttribute-tr text{
+  display: table-cell;
+  border-bottom:1px solid #ebebeb;
+}
+/* 商品属性弹框 end */
+
+
+/*praise*/
+
+.share{
+  margin-top: 10px;
+  background: #ffffff;
+
+}
+.steps{
+  padding: 10px;
+  position: relative;
+}
+.steps-btn{
+  width: 100%;
+  height:152rpx;
+  position: absolute;
+  left: 0;
+}
+
+
+.share .tips{
+  background-color: #FCDAE2;
+  color: #FF2853;
+  padding:0 10rpx;
+  line-height: 54rpx;
+  font-size: 12px;
+  letter-spacing: 0;
+  text-align: center;
+}
+.steps-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  height:144rpx;
+  box-sizing: border-box;
+  color: #ffffff;
+  padding: 0 8rpx;
+  font-size: 30rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  line-height: 40rpx;
+  margin-bottom:18rpx ;
+}
+.praise-btn{
+  background-image: linear-gradient(-180deg, #00D9F9 0%, #008EF3 100%);
+  box-shadow: inset 0 1px 1px 0 #DEF2FF;
+  color: #ffffff;
+  width: 184rpx;
+  height: 100rpx;
+  border-radius: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+
+}
+
+

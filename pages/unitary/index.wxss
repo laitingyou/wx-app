@@ -1,0 +1,5 @@
+/* liveAd.wxss */
+.img-box image{
+  width: 100%;
+  display: block;
+}

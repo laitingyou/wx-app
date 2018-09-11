@@ -1,0 +1,134 @@
+.ad{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+  width: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  
+}
+.ad-left,.ad-right,.ad-text,.ad-num {
+  display: flex;
+}
+.ad-left{  
+  flex: 0 0 64rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20rpx;
+}
+.ad-text{
+  width: 100%;
+  font-size: 32rpx;
+  font-weight: bold;
+  line-height: 1;
+  height: 70rpx;
+  overflow: hidden;
+  justify-content: center;
+}
+.ad-num {
+  align-items: center;
+  background-color: #FE3666;
+  color: #fff;
+  height: 28rpx;
+  border-radius: 14rpx;
+  font-size: 20rpx;
+  margin-top: 6rpx;
+  padding: 0 14rpx;
+}
+.ad-right{
+  flex: 1 0 auto; 
+  height: 130rpx;
+  margin-right: 36rpx;
+}
+.adSwipper,.adSwipper-item,.adSwiper-img,.adSwipper-item navigator {
+  width: 100%;
+  height: 100%;
+}
+.adSwipper {
+  position: relative;
+}
+.adSwipper-item {
+  position: absolute;  
+  box-shadow: 0rpx 0rpx 10rpx 5rpx rgba(2, 2, 2, 0.11); 
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+.adSwipper-item0 {
+  z-index: 3;
+}
+.adSwipper-item1 {
+  z-index: 2;
+  transform: translateX(13.4%) scale(0.8, 0.8);
+}
+.adSwipper-item2 {
+  z-index: 1;
+  transform: translateX(26%) scale(0.6, 0.6);
+}
+/* 广告动画 */
+@keyframes adAnimation0 {
+  0% {
+    transform: translateX(0) scale(1, 1);
+    z-index: 3;
+  }
+  80% {
+    transform: translateX(0) scale(0.6, 0.6);
+    z-index: 1;
+  }
+  100% {
+    transform: translateX(26%) scale(0.6, 0.6);
+    z-index: 1;
+  }
+}
+@keyframes adAnimation1 {
+  0% {
+    transform: translateX(13.4%) scale(0.8, 0.8);
+  }  
+  100% {
+    transform: translateX(0) scale(1, 1);
+  }
+}
+@keyframes adAnimation2 {
+  0% {
+    transform: translateX(26%) scale(0.6, 0.6);
+  }  
+  100% {
+    transform: translateX(13.4%) scale(0.8, 0.8);
+  }
+}
+.adAnimation0 {
+  animation-name: adAnimation0;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+  -webkit-animation-fill-mode: forwards;
+}
+.adAnimation1 {
+  animation-name: adAnimation1;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+  -webkit-animation-fill-mode: forwards;
+}
+.adAnimation2 {
+  animation-name: adAnimation2;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+/* 广告动画 end */
+
+.adSwipper-image {
+  width: 100%;
+  height: 100%;
+} 
+.adSwipper-item-login {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;  
+}

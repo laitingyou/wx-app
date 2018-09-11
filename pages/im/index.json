@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "page-title":"/component/pageTitle/pageTitle",
+        "swipe-delete": "/component/swipedelete/swipedelete"
+    }
+}

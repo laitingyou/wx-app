@@ -1,0 +1,107 @@
+@import '/style/iconfont.wxss';
+
+button:active{
+    opacity: .8;
+}
+button:after{
+    border: none;
+}
+.goodsBack{
+    font-size: 28rpx;
+}
+.goodsBackAddr{
+    border-top: 1px dashed #888;
+    margin-top: 20rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+.goodsBackAddr .tit {
+    display: flex;
+    justify-content: space-between;
+    padding: 30rpx 28rpx;
+    border-bottom: 1rpx solid #e0e0e0;
+}
+.goodsBackAddr .tit .left{
+    line-height: 48rpx;
+}
+.goodsBackAddr .tit .right{
+    line-height: 0;
+}
+.goodsBackAddr .tit .right button{
+    line-height: 48rpx;
+    border-radius: 200rpx;
+    font-size: 24rpx;
+    border: 1rpx solid #FE3666;
+    color: #FE3666;
+}
+.goodsBackAddr .content{
+    color: #999;
+    line-height: 28rpx;
+    padding: 31rpx 28rpx;
+}
+.goodsBackAddr .content view{
+    margin-bottom: 30rpx;
+}
+.goodsBackCell {
+    background: #fff;
+}
+.goodsBackCell .goodsBackCellItem{
+    display: flex;
+    border-bottom: 1rpx solid #e0e0e0;
+    padding: 40rpx 28rpx;
+    color: #999;
+    justify-content: space-between;
+    position: relative;
+}
+.goodsBackCell .goodsBackScanCellItem {
+    display: flex;
+}
+.goodsBackCell .goodsBackScanCellItem .left{
+    flex: auto;
+    padding: 40rpx 28rpx;
+    color: #999;
+}
+.scanBtn{
+    background:#FE3666 ;
+    color: #fff;
+    display: block;
+    width: 190rpx;
+    text-align: center;
+    right: 0;
+    height: 132rpx;
+    line-height: 132rpx;
+    border-radius: 0;
+    font-size: 28rpx;
+}
+.goodsBackCell .goodsBackCellItem .iconfont{
+    font-size: 24rpx;
+}
+.goodsBackCell .goodsBackCellItem:last-child{
+    border-bottom: none;
+}
+.confirmBtn {
+    margin-top: 200rpx;
+}
+.confirmBtn button{
+    background:#FE3666 ;
+    color: #fff;
+    margin: 0  80rpx;
+    border-radius: 6rpx;
+    font-size: 32rpx;
+}
+.returnReasonPop .returnReasonList {
+    margin: -32rpx -32rpx 0 -10rpx;
+
+}
+
+.returnReasonList .returnReasonListItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 40rpx 28rpx;
+    border-bottom: 1rpx solid #f1f1f1;
+    font-size: 28rpx;
+
+}
+.scroll-view{
+    height: 50vh;
+}

@@ -1,0 +1,25 @@
+<page-title  title="售后申请" ></page-title>
+<view class="afterSaleList">
+    <view class="afterSaleListCellWrap">
+        <view class="afterSaleListCell"  bindtap="goAfterSale" data-type="1" >
+            <view class="left">
+                <view class="iconfont icon-icon3 icons"></view>
+                <view class="text">
+                    仅退款
+                    <view class="small">只需退款，无需退换货</view>
+                </view>
+            </view>
+            <view class="right"><text class="iconfont icon-right"></text></view>
+        </view>
+        <view class="afterSaleListCell"  bindtap="goAfterSale" data-type="2">
+                <view  class="left">
+                    <view class="iconfont icon-tuihuox icons"></view>
+                    <view class="text">
+                        退货退款
+                        <view class="small">需要退换已收到的有质量问题的货</view>
+                    </view>
+                </view>
+            <view class="right"><text class="iconfont icon-right"></text></view>
+        </view>
+    </view>
+</view>

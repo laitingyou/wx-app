@@ -1,0 +1,18 @@
+{
+  "navigationBarTitleText": "百里挑衣网",
+  "navigationBarBackgroundColor":"#FF4069",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "goods-item": "/component/item/item",
+    "titleLine": "/component/titleText/titleText",
+    "barrage":"/component/barrage/barrage",
+    "page-title":"/component/pageTitle/pageTitle",
+    "form-button":"/component/formButton/formButton",
+    "one-pending": "/component/onePending/onePending",
+    "live-list": "/component/liveList/liveList",
+    "video-play": "/component/video/video",
+    "big-modal": "/component/bigModal/bigModal",
+    "ad-swiper": "component/adSwiper/adSwiper"
+  }
+}

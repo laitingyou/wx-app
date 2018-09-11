@@ -1,0 +1,21 @@
+<view class="popBj {{show ? 'show' : ''}}" bindtap="okFun" catchtouchmove="touchmove"></view>
+<view class="popCont {{show ? 'show' : ''}}" >
+  <text class="close-pop iconfont icon-cuo" wx:if="{{closable}}" bindtap="okFun"></text>
+  <text class="popCont-head" wx:if="{{title}}">{{title}}</text>
+    <view class="popCont-header">
+      <slot name="header"></slot>
+    </view>
+  <view class="popCont-body">
+    <slot></slot>
+  </view>
+  <view class="popCont-footer">
+      <slot name="footer"></slot>
+  </view>
+  <block wx:if="{{bottomButton}}">
+    <view class="placeholder"></view>
+    <text
+            class="popColse"
+           bindtap="closeFun"
+    >{{okText}}</text>
+  </block>
+</view>

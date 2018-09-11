@@ -1,0 +1,30 @@
+.goodList {
+    margin-top: 20rpx;
+    white-space:nowrap;
+}
+.goodList-item {
+    display: inline-block;
+    width: 184rpx;
+    margin-right: 32rpx;
+}
+.goodList-item image {
+    width: 184rpx;
+    height: 184rpx;
+    border-radius: 8rpx;
+}
+.goodList-goodName {
+    display: block;
+    font-size: 22rpx;
+    line-height: 30rpx;
+    height: 30rpx;
+}
+.goodList-price {
+    display: block;
+    color: #e64340;
+    font-size: 24rpx;    
+}
+.ellipsis {
+  word-break:keep-all;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}

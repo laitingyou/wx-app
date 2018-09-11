@@ -1,0 +1,315 @@
+<page-title
+        animationname="{{navAnimation}}"
+        hasback="{{false}}"
+        title="百里挑衣"
+        class="styleSheet"
+></page-title>
+
+<view class="container" id="j-body">
+
+    <!--弹幕-->
+    <barrage wx:if="{{isShow}}"></barrage>
+
+    <!--分享红包-->
+    <view class="redbag {{(redbag || openBag)?'show':''}}" catchtap="closeRedbag"></view>
+    <view class="redbag-box {{redbag?'bagShow':''}}">
+        <image catchtap="closeRedbag"  class="redbag-img" mode="aspectFit" src="/images/home/redbag.png"></image>
+        <view  class="redbag-text" >
+            <view class="redbag-title" >
+                <text>{{redbagMsg}}</text>
+            </view>
+            <view class="redbag-content">
+                <text class="redbag-content-top"> 拆中了<text class="redbag-content-tc">{{basicInfo.receiveCouponPrice}}元</text>优惠红包</text>
+                <view class="redbag-content-bottom"><text>已放入您的百里挑衣优惠账户</text></view>
+            </view>
+            <form-button bindsubmit="onShareAppMessage">
+                <button open-type="share" class="redbag-share-btn">
+                    <text>分享到微信群领红包</text>
+                </button>
+            </form-button>
+
+        </view>
+        <text catchtap="closeRedbag" class="iconfont icon-cuo "></text>
+    </view>
+
+    <!--拆红包-->
+    <view class="redbag-box {{openBag?'bagShow':''}}">
+        <image catchtap="closeRedbag" class="redbag-img" mode="aspectFit" src="/images/home/openBag.png"></image>
+        <view  class="redbag-text" >
+            <view class="redbag-title" >
+                <!--<text>{{redbagMsg}}</text>-->
+                <text class=""><text class="redbag-content-open">{{basicInfo.receiveCouponPrice || 0}}元</text>优惠红包</text>
+            </view>
+            <view class="redbag-content">
+                <!--<text class="redbag-content-top"><text class="redbag-content-tc">{{basicInfo.receiveCouponPrice}}元</text>优惠红包</text>-->
+                <view class="redbag-content-top open"><text>拆开100%可得</text></view>
+            </view>
+            <button open-type="getUserInfo" class="redbag-share-btn btn-open" bindgetuserinfo="onOpenRedBag">
+                <text>拆</text>
+            </button>
+        </view>
+        <text catchtap="closeRedbag" class="iconfont icon-cuo redbag-box-cuo"></text>
+    </view>
+
+    <!--顶部模块-->
+    <view class="top">
+        <!--顶部背景-->
+        <image class="top-bg" mode="scaleToFill" src="/images/home/top.png"></image>
+
+        <!--顶部标题-->
+        <view class="top-title">
+            <!--<text class="top-big-title"></text>-->
+            <view class="logo">
+                <image mode="aspectFill" class="top-big-title" lazy-load src="/images/home/logo.png"></image>
+            </view>
+            <text class="top-little-title">批发市场新零售 ,<text class="number">1</text> 件也是批发价 ！</text>
+                <navigator
+                        open-type="switchTab"
+                        url="/pages/preferential/index"
+                        class="top-title-btn"
+                        wx:if="{{userInfo['uid']}}"
+                >
+                    <view class="text-box">
+                        <text>您有</text><text class="red">{{couponPrice || 0}}元</text>
+                    </view>
+
+                </navigator>
+                <button
+                        class="top-title-btn"
+                        open-type="getUserInfo"
+                        form-type="submit"
+                        bindgetuserinfo="onLogin"
+                        wx:else
+
+                >
+                    <view class="text-box">
+                        <text>点此登录</text><text class="red">领红包</text>
+                    </view>
+
+                </button>
+
+        </view>
+        <view class="top-content">
+            <view class="top-content-priceArea">
+                <block wx:for="{{navigateIcon}}" wx:key="{{index}}">
+                    <block wx:if="{{item.url == '/pages/home/index?calculator=1'}}">
+                        <view
+                            class="price-item"
+                            open-type="{{item.openType}}"
+                            url="{{item.url}}"
+                            bindtap="onCouter">
+                            <view class="price-item-content">
+                                <image mode="aspectFill" class="price-item-img" src="{{item.image}}"></image>
+                            </view>
+                            <view class="price-item-footer">
+                                <text>{{item.title}}</text>
+                            </view>
+                        </view>
+                    </block>
+                    <block wx:elif="{{item.url == '/pages/home/index?type=share'}}">
+                        <view
+                            class="price-item"
+                            open-type="{{item.openType}}"
+                            url="{{item.url}}">
+                            <view class="price-item-content">
+                                <image mode="aspectFill" class="price-item-img" src="{{item.image}}"></image>
+                            </view>
+                            <view class="price-item-footer">
+                                <text>{{item.title}}</text>
+                            </view>
+                            <button class="price-item-login" open-type="getUserInfo" bindgetuserinfo="onOpenRedBag"></button>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <navigator
+                            hover-class="none"
+                            class="price-item"
+                            open-type="{{item.openType}}"
+                            url="{{item.url}}">
+                            <view class="price-item-content">
+                                <image mode="aspectFill" class="price-item-img" src="{{item.image}}"></image>
+                                <!--<text class="price-item-text">{{item['price']}}<text class="yuan">元</text></text>-->
+                            </view>
+                            <view class="price-item-footer">
+                                <text>{{item.title}}</text>
+                            </view>
+                        </navigator>
+                    </block>
+                </block>
+            </view>
+        </view>
+
+    </view>
+
+    <ad-swiper          
+        wx:if="{{adList.length > 0}}" 
+        list="{{adList}}"
+        bind:calculator="onCouter"
+        bind:getuser="onOpenRedBag" 
+        class="adSwiper"></ad-swiper>
+
+    <!--拼货模块-->
+    <view class="goods-list">
+        <view class="goods-list-header">
+            <!--<text class="iconfont icon-zan2 zan"></text>-->
+            <text class="liveArea-title-h1">{{basicInfo.titleArea[0].title}}</text>
+            <text class="liveArea-title-h2">{{basicInfo.titleArea[0].content}}</text>
+        </view>
+        <view class="goods-list-content">
+            <scroll-view
+                    scroll-x
+                    class="scroll-box">
+              <!--  <view wx:if="{{isShow}}" class="goods-list-item goods-redbag">
+                    <image mode="aspectFill" class="goods-redbag-img" src="/images/home/getBag.png"></image>
+                    <view class="goods-redbag-text">
+                        <text class="free">免费领取</text>
+                        <text class="coupon-price">{{ basicInfo.receiveCouponPrice || 0}}元</text>
+                        &lt;!&ndash;<text class="coupon-tip">100%可得</text>&ndash;&gt;
+                        <button
+                                class="goods-redbag-btn"
+                                open-type="getUserInfo"
+                                bindgetuserinfo="getRedBag"
+                        >
+                            <image mode="aspectFill" class="qiang" src="/images/home/qiang.png"></image>
+                        </button>
+
+                    </view>
+                </view>-->
+                <view
+                        catchtap="enterDetail"
+                        class="goods-list-item goods-hot-item"
+                        wx:for="{{basicInfo['activityGoods']}}"
+                        wx:key="{{index}}"
+                        data-index="{{index}}"
+                        data-url="{{~~item.isVideo ? '/other/pages/video/index?src='+item.videoUrl+'&originalPrice='+item.originalPrice+'&specialPrice='+item.specialPrice+'&goodsId='+item.goodsId+'&btn=true':'/pages/goods/index?goodsId='+item.goodsId}}">
+
+                    <view class="hot-item-top">
+                        <image mode="aspectFill" class="hot-img" src="/images/home/hot.png"></image>
+                    </view>
+                    <view class="hot-item-box">
+                        <image mode="aspectFill" class="hot-item-img" src="{{item.goodsImg}}"></image>
+                        <block wx:if="{{~~item.isVideo}}">
+                            <image
+                                    src="/images/video-play.png"
+                                    class="video-play"></image>
+                        </block>
+                    </view>
+                    <view class="hot-item-footer">
+                        <view class="hot-item-price">
+                            <text class="price-text">拼货价</text>
+                            <text class="price"> ￥{{item.specialPrice || 0}} </text>
+                        </view>
+                        <!--<view class="hot-item-sold"><text>已拼{{item.orderCount}}件</text></view>-->
+                    </view>
+
+                </view>
+
+            </scroll-view>
+
+        </view>
+    </view>
+    <!--<video-play isShow="{{videoShow}}" src="{{currentVideo}}"></video-play>-->
+    <!-- 直播 -->
+        <view class="liveArea">
+            <view class="today-live">
+                <image
+                    mode="widthFix"
+                    src="/images/home/liveArea_header.png"
+                    class="liveArea-header-bgImg bgImgHeader"></image>
+                <view class="liveArea-header">
+                    <view class="liveArea-title">
+                        <text class="liveArea-title-icon iconfont icon-zhibodating"></text>
+                        <text class="liveArea-title-h1">{{basicInfo.titleArea[1].title}}</text>
+                        <div class="liveArea-title-h2">{{basicInfo.titleArea[1].content}}</div>
+                    </view>
+                </view>
+                <live-list class="liveArea-center" list="{{progressList}}"></live-list>
+                <text class="tabContent-text tabContent-loading" wx:if="{{progressLoading}}">正在加载……</text>
+            </view>
+
+            <view class="liveArea-body today-live live-bg">
+                <view class="tabContent">
+
+                    <!-- 即将开播 -->
+                    <view class="advanceList live-bg">
+                        <view class="onePendingTitle" >
+                            <image
+                                lazy-load
+                                mode="widthFix"
+                                class="onePendingTitle-img"
+                                src="/images/home/titleBj0@2x.png"></image>
+                            <text>即将开播</text>
+                        </view>
+                        <view class="onePending-list" hidden="{{pendingList.length <= 0}}">
+                            <view class="onePending" wx:for="{{pendingList}}" wx:key="liveId">
+                                <one-pending item="{{item}}" ></one-pending>
+                            </view>
+                        </view>
+                    </view>
+                    <!-- 即将开播 end -->
+                    <text class="pendingLoadingAndEnd"
+                        wx:if="{{pendingLoading}}">正在加载……</text>
+                    <text class="pendingLoadingAndEnd" wx:if="{{pendingListEnd}}">没有了</text>
+                </view>
+
+           </view>
+        </view>
+    <!-- 直播 end -->
+</view>
+
+<!-- 计算器弹框 -->
+<big-modal hidden="{{modelHidden}}" bindonClose="closeModel">
+        <view class="rules-title-top">
+            <text>省钱计算器</text>
+        </view>
+        <view class="rules-content">
+            <view class="rules-title">
+                <text class="rules-title-a">假设一年四季平均每人购35件衣服计算</text>
+                <text class="rules-title-b">在批发市场买衣服 每年可节省</text>
+                <text class="rules-title-c">￥12500.00</text>
+            </view>
+            <view class="rules-list">
+                <view class="rules-list-item">
+                    <view class="rules-list-item-left" >
+                        <text>春季衣服 5件</text>
+                        <text class="rules-list-item-left-gary">100元/件 零售比批发贵1-3倍</text>
+                    </view>
+                    <view>节省2050元</view>
+                </view>
+                <view class="rules-list-item">
+                    <view class="rules-list-item-left" >
+                        <text>夏季衣服 5件</text>
+                        <text class="rules-list-item-left-gary">50-100元/件 零售比批发贵1-3倍</text>
+                    </view>
+                    <view>节省1050元</view>
+                </view>
+                <view class="rules-list-item">
+                    <view class="rules-list-item-left" >
+                        <text>秋季衣服 5件</text>
+                        <text class="rules-list-item-left-gary">150元/件 零售比批发贵1-3倍</text>
+                    </view>
+                    <view>节省3050元</view>
+                </view>
+                <view class="rules-list-item">
+                    <view class="rules-list-item-left" >
+                        <text>冬季衣服 5件</text>
+                        <text class="rules-list-item-left-gary">200-500元/件 零售比批发贵1-3倍
+                        </text>
+                    </view>
+                    <view>节省5050元</view>
+                </view>
+            </view>
+            <button class="rule-btn"
+                    open-type="getUserInfo"
+                    type="primary"
+                    bindgetuserinfo="toCalculator">测一下我能省多少钱</button>
+        </view>
+
+
+</big-modal>
+<!--<view class="model" hidden="{{modelHidden}}" catchtap="closeModel">-->
+
+    <!--<view class="closeModel">-->
+    <!--<icon catchtap="closeModel"  type="cancel" size="40" color="#fff"></icon>-->
+    <!--</view>-->
+<!--</view>-->

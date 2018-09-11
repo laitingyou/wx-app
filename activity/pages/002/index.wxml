@@ -1,0 +1,105 @@
+<page-title title="限时秒杀"></page-title>
+
+<image class="header" mode="aspectFill" src="{{banner}}" ></image>
+
+<view class="tips-title">
+    <text >批发清仓，赶快抢！</text>
+    <view class="time" id="J-countdown">
+    	<text class="text">距结束仅剩</text>
+    	<text class="times">{{hh}}</text>
+    	<text>:</text>
+    	<text class="times">{{mm}}</text>
+    	<text>:</text>
+    	<text class="times">{{ss}}</text>
+    </view>
+</view>
+
+<view class="middle">
+    <view class="tip">
+        <view class="tip-li {{type == 1 ? 'active' : ''}} " bindtap="changeType">
+            <text class="time">{{monStartTime}}</text>
+            <text>正在抢批</text>            
+        </view>
+        <view class="tip-li {{type == 2 ? 'active' : ''}}" bindtap="changeType">
+            <text class="time">{{wedStartTime}}</text>
+            <text>下期预告</text>            
+        </view>
+    </view>
+    <view class="goods" wx:if="{{type == 1}}">
+        <view class="goods-ul">
+        	<block wx:for="{{monData}}" wx:key="{{index}}">
+	        	<navigator class="goods-li" url="/pages/goods/index?goodsId={{item.goodsId}}">
+					<view class="good-img">
+					    <text class="goods-img-icon">必抢</text>  
+					    <image src="{{item.goods_image}}" mode="aspectFill" lazy-load>
+				     	</image>
+					</view>
+					<view class="good-message">
+						<view class="goods-top">
+							<view class="title">
+								<text class="mEllipsis">{{item.goods_name}}</text>
+							</view>
+							<text class="store-name ellipsis">{{item.store_name}}</text>
+						</view>
+						<view class="goods-bottom">						
+							<view class="goods-bottom-item">
+								<text class="old-price">原价：¥{{item.price}}</text>
+								<view class="price">
+									<text class="price-samll">¥</text>
+									<text>{{item.special_price}}</text>
+								</view>
+							</view>
+							<view class="goods-bottom-item">
+								<text class="button">集赞抢购</text>
+							</view>			    		
+						</view>
+					</view>						
+				</navigator>	
+        	</block>
+        </view>
+        <view class="goods-bootom">
+        	<text class="b-button" bindtap="changeType" wx:if="{{monDataEnd && monData.length > 0}}">下期预告</text>
+        	<text class="loading" wx:if="{{monDataLoading}}">加载中……</text>
+        	<text class="loading" wx:if="{{monDataEnd && monData.length <= 0}}">暂无商品</text>
+        </view>
+    </view>
+    <view class="goods" wx:if="{{type == 2}}">
+        <view class="goods-ul">
+        	<block wx:for="{{wedData}}" wx:key="{{index}}">
+	        	<navigator class="goods-li"  url="/pages/goods/index?goodsId={{item.goodsId}}">
+					<view class="good-img">
+					    <text class="goods-img-icon">必抢</text>  
+					    <image src="{{item.goods_image}}" mode="aspectFill" lazy-load>
+				     	</image>
+					</view>
+					<view class="good-message">
+						<view class="goods-top">
+							<view class="title">
+								<text class="mEllipsis">{{item.goods_name}}</text>
+							</view>
+							<text class="store-name ellipsis">{{item.store_name}}</text>
+						</view>
+						<view class="goods-bottom">						
+							<view class="goods-bottom-item">
+								<text class="old-price">原价：¥{{item.price}}</text>
+								<view class="price">
+									<text class="price-samll">¥</text>
+									<text>{{item.special_price}}</text>
+								</view>
+							</view>
+							<view class="goods-bottom-item">
+								<text class="button show">集赞抢购</text>
+							</view>			    		
+						</view>
+					</view>						
+				</navigator>	
+        	</block>
+        	
+        </view>
+        <view class="goods-bootom">
+        	<text class="b-button" bindtap="changeType" wx:if="{{wedDataEnd && wedData.length > 0}}">正在抢批</text>
+        	<text class="loading" wx:if="{{wedDataLoading}}">加载中……</text>
+        	<text class="loading" wx:if="{{wedDataEnd && wedData.length <= 0}}">暂无商品</text>
+        </view>
+    </view>
+</view>

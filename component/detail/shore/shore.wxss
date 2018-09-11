@@ -1,0 +1,98 @@
+/*------shore-------*/
+.shore{
+  margin-top: 20rpx;
+  padding: 40rpx 28rpx;
+  background-color: #FFFFFF;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 80%, from(#F7C3C3), to(#FFFFFF), color-stop(.2,#FFFFFF));
+  color: #222222;
+}
+.shore-img-text{
+  background: #FFDBE5;
+  padding: 0 4rpx;
+  color: #FF2853;
+  position: absolute;
+  border: 2rpx solid #FF2853;
+  border-radius: 4rpx;
+  bottom: -14rpx;
+  left: 6rpx;
+  line-height:26rpx;
+  box-sizing: border-box;
+}
+.shore-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.shore-img{
+  width: 86rpx;
+  height: 86rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+
+}
+.shore-header-left{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 70%;
+  position: relative;
+}
+.shore-info{
+  width: 70%;
+  height: 86rpx;
+  position: relative;
+}
+.shore-title{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.shore-inst{
+  font-size: 24rpx;
+  color: #888888;
+  letter-spacing: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.shore-into-btn{
+  border-radius: 6rpx;
+  border: 2rpx solid #FF7B9F;
+  padding: 14rpx 30rpx;
+  color: #FF7B9F;
+}
+.shore-goods{
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.shore-goods-item{
+  width:212rpx;
+  text-align: center;
+  margin-right: 20rpx;
+}
+
+.shore-goods-img{
+  width:212rpx;
+  height: 212rpx;
+  display:block;
+  margin: 0 auto;
+  background: #d2d2d2;
+}
+.shore-goods-price{
+  text-align: center;
+  color: #FF2853;
+  width: 100%;
+  height: 2em;
+  overflow: hidden;
+}
+.shore-goods-price-number{
+  font-size: 32rpx;
+}
+.scroll-view{
+  height: 294rpx;
+}

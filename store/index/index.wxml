@@ -1,0 +1,210 @@
+<page-title  defaultstyle="center" background="#045ce3" class="storeNav" title="{{navTitle}}" ></page-title>
+<view wx:if="{{storeMsg}}" class="storeContent">
+    <view class="store">
+        <image wx:if="{{storeMsg.store_photo}}" class="store-Photo" mode="aspectFill"
+               src="{{storeMsg.store_photo}}"></image>
+        <view class="{{storeMsg.store_photo ? 'store-msg' : ''}}">
+            <view class="address">{{storeMsg.location}}</view>
+            <view class="grade">
+                <image mode="aspectFit" src="{{storeMsg.credits}}"></image>
+            </view>
+            <view class="logo">
+                <image mode="aspectFill" class="avatar" src="{{storeMsg.logo}}"></image>
+                <image wx:if="{{storeMsg.vipValid==1&&storeMsg.storeVipType!=0}}" src="{{vipIco[storeMsg.storeVipType].pic}}" class="{{vipIco[storeMsg.storeVipType].type}}"></image>
+                <text class="years">{{storeMsg.years}}</text>
+            </view>
+            <view class="vipText" wx:if="{{storeMsg.vipValid==1&&storeMsg.storeVipType!=0}}"  style="color: {{vipIco[storeMsg.storeVipType].color}}">{{vipIco[storeMsg.storeVipType].text}}</view>
+
+            <view class="attestation">
+
+                <view wx:if="{{storeMsg.integrity_services.is_integrity==1}}"><image mode="aspectFill" src="/images/store/chenxin.png"></image></view> <!--诚信-->
+                <view wx:if="{{storeMsg.integrity_services.is_enterprise==1}}"><image mode="aspectFill" src="/images/store/qiye.png"></image></view><!--企业-->
+                <view wx:if="{{storeMsg.integrity_services.is_entity==1}}"><image mode="aspectFill" src="/images/store/shiti.png"></image></view><!--实体-->
+                <view wx:if="{{storeMsg.integrity_services.is_fenxiao==1}}"><image mode="aspectFill" src="/images/store/daifa.png"></image></view><!--代发-->
+                <view wx:if="{{storeMsg.integrity_services.is_seller_credit==1}}"><image mode="aspectFill" src="/images/store/maijia.png"></image></view><!--卖家-->
+                <view wx:if="{{storeMsg.integrity_services.is_brand_credit==1}}"><image mode="aspectFill" src="/images/store/pinpai.png"></image></view><!--品牌-->
+                <view wx:if="{{storeMsg.integrity_services.is_hot==1}}"><image mode="aspectFill" src="/images/store/rexiao.png"></image></view><!--热销-->
+            </view>
+            <view class="census censusNum">
+                <span>{{storeMsg.price_avg}}元</span>
+                <span>{{storeMsg.sale_goods_count}}</span>
+                <span>{{storeMsg.buyer_count}}家</span>
+                <span>{{storeMsg.visit_count}}</span>
+            </view>
+            <view class="census censusText">
+                <span>均价</span>
+                <span>出货量</span>
+                <span>供货店主</span>
+                <span>客流量</span>
+            </view>
+        </view>
+    </view>
+
+    <!-- 店铺首页 -->
+    <block wx:if="{{store_true != 'friend'}}">
+        <view class="friends {{friend_msg.circle_list.length>0 ? 'pad20':''}}">
+
+            <view
+                    class="title">
+
+                <view class="left">Ta的生意圈</view><view class="right">  <navigator
+                    url="/store/index/index?id=friend&storeId={{storeId}}" hover-class="none">{{friend_msg.circle_num}}动态 <text class="iconfont icon-right"></text></navigator> </view></view>
+            <scroll-view scroll-x="true" class="ul">
+                <block wx:if="{{friend_msg.circle_list.length>0}}">
+                    <view wx:for="{{friend_msg.circle_list}}" class="li" wx:if="{{!item.url}}"
+                          wx:key="{{item.item_id}}" data-img="{{item.url_cover}}" bindtap="showImage">
+                        <image mode="aspectFill" src="{{item.url_cover}}"></image>
+                        <span class="num">{{item.image_num}}</span>
+                    </view>
+                </block>
+                <block wx:else>
+                    <block wx:if="{{if_wechat == 1}}">
+                        <view class="text text2">档主太忙啦，没有时间发朋友圈</view>
+                    </block>
+                    <block wx:else>
+                        <view class="text">档主还没有去设置同步朋友圈</view>
+                        <!-- <view wx:if="{{if_remind == 1}}" class="botton remind">已提醒</view>
+                        <view wx:else class="botton" bindtap="remind">提醒一下</view> -->
+                    </block>
+                </block>
+            </scroll-view>
+        </view>
+
+        <view class="goodsList">
+            <view class="options pad20">
+                <view bindtap="changeList" wx:for="{{friend_msg.goods_statistic}}" wx:for-item="item" wx:key="{{index}}"
+                      data-tip="{{index}}" class="li {{active_tip == index ? 'active' : ''}}">
+                    <view wx:if="{{index=='goodsCount'}}" class="text">全部</view>
+                    <view wx:elif="{{index=='newMothGoodsCount'}}" class="text">新品</view>
+                    <view wx:else="{{index=='hotMothGoodsCount'}}" class="text">爆款</view>
+                    <view class="num">{{item}}</view>
+                </view>
+                <view class="select-red" style="left:{{tip_left}}px;"></view>
+            </view>
+
+            <view class="goods {{goodsList.length>0 ? 'goodspd' : 'column'}}">
+                <view wx:for="{{goodsList}}" wx:for-index="idx" wx:key="{{item.storeId}}" class="li">
+                    <navigator url="/pages/goods/index?goodsId={{item.goodsId}}">
+                        <view class="img">
+                            <text class="iconfont icon-play" wx:if="{{item.ifVideo==1}}"></text>
+                            <image mode="aspectFill" data-imgindex="{{idx}}"
+                                   src="{{item.goodsImage}}" lazy-load="true"
+                                   binderror="errorImage"></image>
+                            <view class="time">{{item.time}}</view>
+                        </view>
+                    </navigator>
+                    <navigator url="/pages/goods/index?goodsId={{item.goodsId}}">
+                        <view class="msg">
+                            <view class="price">
+                                <view class="ellipsis">{{item.goodsName}}</view>
+                                <view>{{item.goodsPrice}}</view>
+                                <!-- <em catchtap="addShopcart"></em> -->
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+                <view class="nogoods" wx:if="{{goodsList.length==0}}">
+                    <view class="nogoods-text">暂无商品</view>
+                </view>
+            </view>
+        </view>
+        <view hidden="{{isMore}}" class="isMore">没有更多了</view>
+
+    </block>
+
+    <!-- 店铺朋友圈 -->
+    <block wx:else>
+        <view class="friendsList">
+            <view wx:for="{{friend_list.circle_list}}" wx:for-item="item1" wx:for-index="idx1"
+                  wx:key="{{item.fm_id}}" data-index="{{idx1}}" bindtouchstart="tapChange" class="li">
+                <view wx:if="{{item1.createdtimeright == ''}}" class="time">
+                    <view>{{item1.month}}月</view>
+                    <view>{{item1.day}}日</view>
+                </view>
+                <view wx:else class="time">
+                    <view>{{item1.createdtimeright}}</view>
+                </view>
+                <view class="goodsMsg">
+                    <view wx:if="{{item1.content.length>0}}" class="title {{item1.readMore ? 'five' : ''}}">
+                        {{item1.content}}
+                    </view>
+                    <view class="more-text" wx:if="{{item1.content.length>105}}" data-index="{{idx1}}"
+                          bindtap="readMore">{{item1.readMore ? '展开':'收起'}}
+                    </view>
+                    <view class="ul" wx:if="{{item1.media_list.length>0}}">
+                        <view wx:for="{{item1.media_list}}" wx:for-item="img" wx:for-index="idx"
+                              wx:key="img.item_id" wx:if="{{idx<item1.media_list.length}}"
+                              bindtap="{{item1.fm_type==3 || item1.fm_type==5 ? 'navigateTo' : 'showImageFriend'}}"
+                              data-img="{{img.url_cover}}" data-itmeindex="{{idx1}}" data-imgindex="{{idx}}"
+                              data-url="{{item1.fm_type==3 || item1.fm_type==5 ? '/pages/goods/index?goodsId='+img.item_id : ''}}"
+                              class="img {{item1.media_list.length==1 ? 'one' : ''}}">
+                            <image mode="aspectFill" src="{{ img.url_cover}}"
+                                   data-imgindex="{{idx}}" data-itmeindex="{{idx1}}" lazy-load="true"
+                            ></image>
+                            <view wx:if="{{!!img.url}}" class="iconVideo"></view>
+                            <view wx:if="{{item1.fm_type==3 || item1.fm_type==5}}" class="price">￥{{img.price}}
+                            </view>
+                        </view>
+                    </view>
+
+                    <view class="c-info">{{item1.location}}</view>
+                    <view class="send-time c-info">
+                        <span>{{item1.before}}</span>
+                        <span class="mini-logo">
+                            <!-- <em class="like {{item1.is_liked == 1 ? 'on' : ''}}" data-index="{{idx1}}" bindtap="addLove"></em> -->
+                            <!-- <em class="cart" catchtap="addShopcart"></em> -->
+                        </span>
+                    </view>
+                    <!-- <view class="star">
+                        <em class="star-top" wx:if="{{item1.comment_list.length>0}}"></em>
+                        <view class="star-name {{item1.comment_list.length>0 ? 'bottom': ''}}" wx:if="{{item1.like_list.length>0}}"><em></em><block wx:for="{{item1.like_list}}" wx:for-item="starName" wx:for-index="idx2">{{idx2!=0 ? '，' : ''}}{{starName.title}}</block></view>
+                        <view class="reply three" wx:if="{{item1.comment_list.length>0}}">
+                            <block wx:for="{{item1.comment_list}}" wx:for-item="comment" wx:for-index="idx">
+                                <view wx:if="{{comment.be_replied_user_id>0}}"><span>{{comment.title}}</span> 回复 <span>{{comment.be_replied_identity}} </span>{{comment.content}}</view>
+                                <view wx:else><span>{{comment.title}}：</span>{{comment.content}}</view>
+                            </block>
+                        </view>
+                        <view class="more" wx:if="{{item1.comment_count>3}}">查看全部评论（{{item1.comment_count}}）</view>
+                    </view> -->
+                </view>
+            </view>
+        </view>
+        <view hidden="{{isMore}}" class="isMore">没有更多了</view>
+    </block>
+    <view  class="bottomNav">
+        <view class="positioning">
+            <view class="tip noborderleft" bindtap="openShare">
+                <text class="iconfont icon-fenxiang"></text><text>分享店铺</text></view>
+
+        <button class="tip"  bindgetuserinfo="goChat"  data-userid ="{{storeMsg.user_id}}" open-type="getUserInfo">
+            <view class="text">
+                <text class="iconfont icon-service"></text>
+                <text>咨询客服</text>
+            </view>
+        </button>
+        </view>
+    </view>
+    <pop
+            show="{{shareTar}}"
+            okText="确定"
+            closable="{{false}}"
+            bottomButton="{{false}}"
+    >
+        <view class="shareTar">
+            <button open-type="share" class="shareTar-item nobutton">
+                <text class="iconfont icon-weixin share-icon"></text>
+                <text class="icon-label">分享好友</text>
+            </button>
+            <view class="shareTar-item" bindtap="onSaveScan">
+                <text class="iconfont icon-fankui share-icon"></text>
+                <text class="icon-label">保存二维码</text>
+            </view>
+        </view>
+        <view class="shareTar-cancal" slot="footer" bindtap="shareCancel">
+            <text>取消分享</text>
+        </view>
+    </pop>
+    <canvas hidden class="scan" canvas-id="scan"></canvas>
+</view>
+
+

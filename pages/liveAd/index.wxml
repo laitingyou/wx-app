@@ -1,0 +1,23 @@
+<page-title
+        title="我要直播"
+        background="#fff"
+        color="#4a4a4a"
+></page-title>
+<view class="img-box">
+    <image
+            mode="widthFix"
+            src="{{images[2]}}"
+            data-url="{{images[3]}}"
+            bindtap="preview"
+    ></image>
+    <view class="image-btn">
+        <view class="copy" bindtap="copyWx"></view>
+        <image
+                bindtap="preview"
+                mode="widthFix"
+                data-url="{{images[3]}}"
+                src="{{images[3]}}"
+        ></image>
+    </view>
+
+</view>

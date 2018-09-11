@@ -1,0 +1,11 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "f0f0f0",
+  "usingComponents": {
+    "page-title":"/component/pageTitle/pageTitle",
+    "barrage":"/component/barrage/barrage",
+    "form-button":"/component/formButton/formButton"
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "查看物流",
+    "usingComponents": {
+        "page-title":"/component/pageTitle/pageTitle"
+    }
+}

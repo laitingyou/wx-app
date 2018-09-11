@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "pop": "/component/pop/pop",
+    "counter":"/component/counter/counter"
+  }
+}

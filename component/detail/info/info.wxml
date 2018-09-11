@@ -1,0 +1,38 @@
+<!-- goodInfo -->
+<view class="goodInfo">
+  <!--<view class="goodName">-->
+    <!--<block wx:if="{{isSupplier}}">-->
+      <!--<text class="goodName-tit">代发</text>-->
+    <!--</block>-->
+    <!--<text class="goodName-name">{{goodsName}}</text>-->
+  <!--</view>-->
+  <!--<block wx:if="{{lockUpText}}">-->
+    <!--<view class="isSoldOut goodInfo-item">-->
+      <!--<text class="isSoldOut-txt">{{lockUpText}}</text>-->
+      <!--&lt;!&ndash; <navigator class="isSoldOut-btn" url="/pages/list/list?storeId={{store.id}}">-->
+        <!--<button type="warn" size="mini">找相似款</button>-->
+      <!--</navigator> &ndash;&gt;-->
+    <!--</view>-->
+  <!--</block>-->
+  <!--<view class="priceArea {{priceData.length>1 ? 'typeB' : 'typeA'}}">-->
+    <!--<block >-->
+      <!--<block wx:if="{{priceData.length>1}}">-->
+        <!--<view class="typeB-item">-->
+          <!--<text class="price">￥{{priceData[0].price}}</text>-->
+          <!--<text class="info">一件起批</text>-->
+        <!--</view>-->
+      <!--</block>-->
+      <!--&lt;!&ndash;<block wx:else>&ndash;&gt;-->
+        <!--&lt;!&ndash;<text class="info">{{priceData[0].show}}{{unit}}</text>&ndash;&gt;-->
+        <!--&lt;!&ndash;<text class="price">￥{{priceData[0].price}}</text>&ndash;&gt;-->
+        <!--&lt;!&ndash;<text wx:if="{{oldPriceDate}}" class="oldPrice">{{oldPriceDate}}</text>&ndash;&gt;-->
+      <!--&lt;!&ndash;</block>&ndash;&gt;-->
+    <!--</block>-->
+  <!--</view>-->
+  <!-- 活动时间 -->
+  <view wx:if="{{expireTime>0}}" class="activityTime goodInfo-item">
+    <image class="iconActivityTime" src="/images/activity@2x.png"></image>
+    <text>{{expireTimeText}}</text>
+  </view>
+</view>
+<!-- goodInfo end-->

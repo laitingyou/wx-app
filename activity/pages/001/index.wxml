@@ -1,0 +1,33 @@
+<page-title title="品牌清仓"></page-title>
+<view class="promo-content">
+    <view class="promo-banner">
+        <image src="{{promoBannerData.image}}" mode="widthFix"></image>
+    </view>
+    <view class="promo-content-list">
+        <view class="promo-content-list-item" bindtap="goDetail" data-goodsid="{{item.goods_id}}"  wx:for="{{promoListData.list}}" wx:key="{{index}}">
+            <view class="promo-content-list-item-img">
+                <view class="promo-content-list-item-img-tips">
+                    品牌清仓
+                </view>
+                <image src="{{item.goods_image}}" mode="aspectFill" lazy-load></image>
+            </view>
+            <view class="promo-content-list-item-text">
+                <view class="promo-content-list-item-text-title mEllipsis">{{item.goods_name}}</view>
+                <view class="promo-content-list-item-text-discount">
+                    <text class="promo-content-list-item-text-discount-l">清仓</text>
+                    <text class="promo-content-list-item-text-discount-r">{{item.ratio}}折</text>
+                </view>
+                <view class="promo-content-list-item-bottom">
+                    <view class="promo-content-list-item-bottom-flex">
+                        <text class="promo-content-list-item-bottom-price"><text>￥</text>{{item.goods_price}}</text>
+                        <button  class="promo-content-list-item-bottom-btn">立即抢</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="isLoading" wx:if="{{isLoading.show}}">{{isLoading.text}}</view>
+</view>
+<view class="isLoading" wx:if="{{promoListData.list.length===0}}">暂无数据</view>
+
+

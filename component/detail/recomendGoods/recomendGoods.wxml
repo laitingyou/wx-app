@@ -1,0 +1,10 @@
+<view><text>店内推荐</text></view>
+<scroll-view class="goodList" scroll-x="true">
+    <block wx:for="{{list}}" wx:key="{{index}}" >
+        <navigator open-type="redirect" class="goodList-item" url="/pages/goods/index?goodsId={{item.goodsId}}" >
+            <image mode="aspectFill" src="{{item.goodsImage}}"></image>
+            <text class="goodList-goodName ellipsis">{{item.goodsName}}</text>
+            <text class="goodList-price">{{item.goodsPrice}}</text>
+        </navigator>
+    </block>                
+</scroll-view>

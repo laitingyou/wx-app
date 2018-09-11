@@ -1,0 +1,35 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 84rpx;
+}
+.main-left,.main-right {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    background-color: #0BF;
+    width: 150rpx;
+    height: 2rpx;
+}
+.main-left:after,.main-right:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    background-color: #0BF;
+    width: 8rpx;
+    height: 8rpx;
+    border-radius: 50%;
+    top: -2rpx;
+}
+.main-left:after{     
+    right: -2rpx;
+}
+.main-right:after{
+    left: -2rpx;
+}
+.title {
+    font-size: 32rpx;
+    padding: 0 32rpx;
+    color: #0BF;
+}

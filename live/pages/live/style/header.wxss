@@ -1,0 +1,35 @@
+.liveCenter-header {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #fff;
+    color: #4a4a4a;
+}
+
+.liveCenter-header-item {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-content: center;
+    width: 50%;
+    height: 88rpx;
+    line-height: 88rpx;
+}
+
+.liveCenter-header-item.active {
+    position: relative;
+    z-index: 1;
+    color: #fe3666;
+}
+
+.liveCenter-header-item.active:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    width: 38.2%;
+    border: 1rpx solid #fe3666;
+}

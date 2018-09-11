@@ -1,0 +1,551 @@
+<!--直播间-->
+<page-title title="{{navTitle}}" background="#FF7684" defaultstyle="left" hasback="{{false}}"></page-title>
+<text wx:if="{{showColse}}" class="colseLive iconfont icon-cuo" bindtap="colseLive"></text>
+
+<view class="liveDetail" >
+    <view class="liveDetailContentTop" style="height: {{liveWinHeight}}px; ">
+        <view class="liveDetailContentTopLeft">
+            <view class="chatVideo">
+                <live-player id="video-livePlayer" class="chatVideoLivePlayer"
+                             style="height: {{liveWinHeight}}px;"
+                             src="{{liveUrl}}" mode="live"
+                             autoplay object-fit="fillCrop" background-mute="true" bindstatechange="statechange"
+                             bindnetstatus="netstatus" binderror="error">
+                    <!-- 主播喊你领钱 hidden="{{isRedBagShow}}" -->
+                    <cover-view class="redBgs" hidden="{{isRedBagShow}}" >
+                        <cover-image class="redBgsImage" src="/images/liveDetail/bg-money.png"></cover-image>
+                        <cover-view  class="close iconfont icon-cuo" bindtap="closeRegBag" ></cover-view >
+                        <cover-view class="redBgsTitle">主播喊你领钱</cover-view>
+                        <cover-view class="redBagsList">
+                            <cover-view class="list">
+                                <cover-image class="listImage" src="/images/liveDetail/bg-list.png" ></cover-image>
+                                <cover-view class="listT">分享到微信群领钱</cover-view>
+                                <cover-view class="listN">￥{{rebBagList[0]}}</cover-view>
+                            </cover-view>
+                            <cover-view class="list" wx:if="{{rebBagList.length>1}}" ><cover-image class="listImage" src="/images/liveDetail/bg-list.png" ></cover-image>
+                                <cover-view class="listT">关注主播领取</cover-view>
+                                <cover-view class="listN">￥{{rebBagList[0]}}</cover-view>
+                            </cover-view>
+                        </cover-view>
+                        <cover-view class="redBagsBtn" bindtap="showSharePop"><cover-image class="redBagsBtnImage" src="/images/liveDetail/bg-btn.png"></cover-image></cover-view>
+                    </cover-view>
+                    <cover-image class="coverImage" hidden="{{isVideoShow}}" src="/images/liveDetail/liveBj0.png"></cover-image>
+                    <cover-image class="coverImage1" hidden="{{isVideoShow}}" src="/images/liveDetail/liveBj1.png" bindtap="playLive"></cover-image>
+                    <cover-view class="liveTime" hidden="{{showTime}}">
+                        <cover-view class="tit">
+                            <cover-view class="yuan"></cover-view>
+                            <cover-view clss="text">离结束还有</cover-view>
+                        </cover-view>
+                        <cover-view class="time"> {{timeStr}}</cover-view>
+                    </cover-view>
+
+
+
+                    <cover-view class="userinfo" bindtap="showPop">
+                        <cover-view class="userinfoAvatar">
+                        <cover-image class="pic"
+                                     src="{{roomInfo.storeInfo.portraitUrl}}" ></cover-image>
+                        </cover-view>
+                        <cover-view class="userinfoText ">
+                            <cover-view class="userinfoTextA"> {{roomInfo.storeInfo.userName}}</cover-view>
+                            <cover-view class="userinfoTextB"> 观看人数 {{roomInfo.totalOnline}}</cover-view>
+                        </cover-view>
+                    </cover-view>
+                    <cover-view class="orderCount" wx:if="{{roomInfo}}"><cover-view class="orderCountText"> {{roomInfo.orderCount}}人剁手</cover-view></cover-view>
+                    <cover-view class="heartPraise" wx:for="{{praiseList}}"
+                                style="left:{{item.left}};bottom:{{item.bottom}}; animation-delay:{{item.delay}}"
+                                wx:key="{{index}}">
+                        <cover-image src="{{item.src}}"></cover-image>
+                    </cover-view>
+                    <cover-view class="goodPraise" bindtap="getHeart">
+                        <cover-image class="iconGoodPraise" src="/images/liveDetail/zan.png"></cover-image>
+                    </cover-view>
+
+
+                    <cover-view class="videoMask {{isShow ? 'show' : ''}}"
+                                bindtap="showPop"></cover-view>
+                    <cover-view class="videoMask {{isQuestionhide ? 'show' : ''}}"
+                                bindtap="getQuestionList"></cover-view>
+                    <cover-view class="videoMask bgnone {{isShareShow ? 'show' : ''}}" bindtap="showSharePop"></cover-view>
+                    <cover-view class="videoMask {{isOrderShow ? 'show' : ''}}" bindtap="showOrderPop"></cover-view>
+                    <cover-view class="videoMask {{isLiveLeaveShow ? 'show' : ''}}" bindtap="colseLive"></cover-view>
+                    <cover-view class="videoMask {{isGiftShow ? 'show' : ''}}" bindtap="showGift"></cover-view>
+                    <cover-view class="videoMask bgnone {{isActivityShow? 'show' : '' }}" bindtap="showActivity" ></cover-view>
+
+                </live-player>
+            </view>
+        </view>
+        <!-- 商品列表-->
+        <view class="liveDetailContentTopRight">
+            <scroll-view scroll-y style="height: {{liveWinHeight}}px">
+                <view class="chatGoodsList">
+                    <view bindtap="showOrderPop" data-sort="{{RecommendGoodsInfo.sort}}"
+                          data-goodsid="{{RecommendGoodsInfo.goodsId}}" class="chatGoodsListItem"
+                          wx:if="{{!isRecommend}}">
+                        <view class="chatGoodsListItemCont">
+                            <view class="goodsRecommend">
+                                <text> {{RecommendGoodsInfo.sort}} 正在推荐</text>
+                            </view>
+                            <image src="{{RecommendGoodsInfo.coverImage}}" mode="aspectFill" lazy-load></image>
+                            <view class="goodsText">
+                                <text>￥{{RecommendGoodsInfo.lowerPrice}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view bindtap="showOrderPop" data-sort="{{item.sortNumber}}" data-goodsid="{{item.goodsId}}"
+                          class="chatGoodsListItem"
+                          wx:if="{{newGoodsList.length}}" wx:for="{{newGoodsList}}"
+                          wx:key="{{index}}">
+                        <view class="chatGoodsListItemCont">
+                            <image src="/images/liveDetail/goodsOver.png" wx:if="{{item.stock<=0||isGoodsOver}}" class="goodsOver"></image>
+                            <view class="goodsNum">
+                                <text>{{item.sortNumber}}</text>
+                            </view>
+                            <image src="{{item.coverImage}}" mode="aspectFill" lazy-load></image>
+                            <view class="goodsText">
+                                <text>￥{{item.upperPrice}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    <!--聊天室-->
+    <view class="liveDetailContentBottom">
+        <view class="chartRoom">
+            <view class="chartRoomContent">
+                <view class="chatList">
+                    <view class="chatListContent">
+                        <view class="liveMore" bindtap="goLive" hidden="{{isLiveMoreHide}}">
+                            <text class="iconfont icon-zhibodating"></text>
+                            <text>更多直播</text>
+                        </view>
+                        <block wx:for="{{msgList}}" wx:key="{{index}}">
+                        <view class="customChatItemContentMsg  msgAnimation" wx:if="{{item.customType==='liveCartBarrage'||item.customType==='liveOrderBarrage'|| item.customType==='liveGetCoupon'}}" >
+                            <image class="itemImage" src="{{item.fromAvatar}}"></image>
+                            <view class="itemDoc">
+                                <text class="itemUser">{{item.fromNick}}</text>
+                                <text class="itemText">{{item.text}}</text>
+                            </view>
+                        </view>
+                            <view class="changeGoodsPrice msgAnimation2" hidden="{{isChangeGoodsPriceHide[item.changeGoods.goodsId]}}" wx:if="{{item.customType==='changeGoodsPrice'}}" >
+                                <text class="changeGoodsPriceClose iconfont icon-cuo" bindtap="closeChangeGoodsPrice"  data-goodsid="{{item.changeGoods.goodsId}}"></text>
+                                <image src="{{item.changeGoods.goodsImage}}" mode="aspectFill"  data-sort="{{item.changeGoods.sortId}}"
+                                       data-goodsid="{{item.changeGoods.goodsId}}"  data-isChange="isChange"  bindtap="showOrderPop"  ></image>
+                                <view class="changeGoodsPriceText"  data-sort="{{item.changeGoods.sortId}}"
+                                      data-goodsid="{{item.changeGoods.goodsId}}"   data-isChange="isChange"  bindtap="showOrderPop" >
+                                    <text class="changeGoodsPriceTextT">主播改价提醒:</text>
+                                    <view class="changeGoodsPriceTextB"><text class="changeGoodsPriceTextSort">{{item.changeGoods.sortId}} <text class="black">号</text></text> <text>直播价格：<text class="red">￥{{item.changeGoods.goodsPrice}}</text></text></view>
+                                </view>
+                            </view>
+                        </block>
+
+                        <scroll-view scroll-y class="chatListScroll" scroll-with-animation="true"
+                                     scroll-into-view="{{sId}}">
+                            <view class="chatListScrollContent">
+                                <view class="defaultAnnouncement">
+                                    <view class="defaultAnnouncementItem" wx:for="{{defaultAnnouncement}}"
+                                          wx:key="{{index}}">
+                                        <text>{{item}}</text>
+                                    </view>
+                                </view>
+                                <view class="msgList">
+                                    <view class="chatItem" wx:for="{{msgList}}" id="{{item.idClient}}"
+                                          wx:key="{{index}}">
+                                        <view class="chatItemContent">
+                                            <!-- 自定义消息-->
+                                            <view class="chatItemContentMsg custom"
+                                                  wx:if="{{item.type==='custom'&&item.customType==='liveConcern'||item.customType==='liveShare'}}">
+                                                <text class="itemUser">{{item.fromNick}}</text>
+                                                <text class="itemText">{{item.text}}</text>
+                                            </view>
+                                            <!--判断是否商家-->
+                                            <view class="chatItemContentMsg isSales"
+                                                  wx:if="{{item.type==='text'&&item.isSales&&item.text!=='进入直播间准备买买买了'}}">
+                                                <text class="itemUser">{{item.isSalesName}}</text>
+                                                <text class="itemText">{{item.text}}</text>
+                                            </view>
+
+                                            <!-- 系统消息-->
+                                            <view class="chatItemContentMsg"
+                                                  wx:if="{{item.type==='notification'&&item.attach.type ==='memberEnter'}}">
+                                                <text class="itemUser">{{item.attach.fromNick}}</text>
+                                                <text class="itemText">{{item.text}}</text>
+                                            </view>
+                                            <!--文本消息-->
+                                            <view class="chatItemContentMsg "
+                                                  wx:if="{{item.type==='text'&&!item.isSales}}">
+                                                <text class="itemUser">{{item.fromNick}}</text>
+                                                <text class="itemText write">{{item.text}}</text>
+                                            </view>
+                                            <!--抢光宝贝消息-->
+                                            <view class="chatItemGoodsOver" wx:if="{{item.customType==='liveGoodsSellOver'}}">
+                                                {{item.text}}
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </scroll-view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="chatEditor">
+            <view class="chatEditorSendPop {{isQHide ? 'show':''}}">
+                <view class="chatEditorSend">
+                    <input class="input-text" placeholder="来，跟主播说说话～" focus="{{isFocus}}" value="{{textValue}}" bindinput="getSendValue"
+                           bindblur="chatEditorSendFocus"
+                           type="text" confirm-type="send" cursor-spacing="10"/>
+                    <buuton class="chatEditorSendBtn" bindtap="sendText">发送</buuton>
+                </view>
+            </view>
+            <view class="chatEditorContent" hidden="{{isQShow}}">
+                <button class="chatEditorContentInput" open-type="getUserInfo" bindgetuserinfo="chatEditorSendFocus">
+                    <text>跟主播说说话～</text>
+                </button>
+
+                <butoon class="chatEditorContentQuestion" bindtap="getQuestionList">
+                    <text>问题</text>
+                </butoon>
+                <button  class="giftBtn" bindtap="showGift" >
+                   <image class="showGiftImg" src="/images/liveDetail/gift.png"></image>
+                </button>
+                <button class="chatEditorContentShare" open-type="getUserInfo" bindgetuserinfo="showSharePop"
+                        wx:if="{{isShareHide}}">
+                    <text class="chatEditorContentShareTips" wx:if="{{couponList.length}}" >点我领钱</text>
+                    <image class="icon-money" src="/images/money.svg"></image>
+                </button>
+            </view>
+        </view>
+    </view>
+
+<!-- 问题弹窗 遮罩(视频层级最高，所以遮罩要分开) -->
+<view class="popMask {{isShow? 'show' : '' }}" bindtap="showPop" catchtouchmove="maskMove"></view>
+<view class="popMask {{isQuestionhide? 'show' : '' }}" bindtap="getQuestionList" catchtouchmove="maskMove"></view>
+<view class="popMask bgnone {{isShareShow? 'show' : '' }}" bindtap="showSharePop" catchtouchmove="maskMove"></view>
+<view class="popMask {{isOrderShow? 'show' : '' }}" bindtap="showOrderPop" catchtouchmove="maskMove"></view>
+<view class="popMask {{isLiveLeaveShow? 'show' : '' }}" bindtap="colseLive" catchtouchmove="maskMove"></view>
+<view class="popMask {{isGiftShow? 'show' : '' }}" bindtap="showGift" catchtouchmove="maskMove"></view>
+<view class="popMask bgnone {{isActivityShow? 'show' : '' }}" bindtap="showActivity" catchtouchmove="maskMove"></view>
+<!-- 问题弹窗 pop -->
+<view class="popCont {{isQuestionhide ? 'show' : ''}}" id="QuestionPop">
+    <text class="close-pop iconfont icon-cuo" bindtap="getQuestionList"></text>
+    <view class="popCont-header">
+        <view class="popCont-head">快捷发送问题</view>
+    </view>
+    <scroll-view scroll-y="true">
+        <!-- <text class="questionListText" wx:if="{{questionListLoading}}">加载中……</text> -->
+        <view class="QuestionList">
+            <view wx:for="{{questionList}}" bindtap="sendText" data-questionItem="{{item.content}}" wx:key="{{index}}">
+                <text>{{item.content}}</text>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<!-- 用户信息 pop -->
+<view class="popCont {{isShow ? 'show' : ''}}" id="userPop">
+    <text class="close-pop iconfont icon-cuo" bindtap="showPop"></text>
+    <view class="popCont-body">
+        <view class="popInfo">
+            <view class="userInfo">
+                <image class="userImage" src="{{roomInfo.storeInfo.portraitUrl}}" mode="aspectFill"></image>
+                <view class="username">
+                    <text>{{roomInfo.storeInfo.userName}}</text>
+                </view>
+                <view class="userAddress">
+                    <text>{{roomInfo.storeInfo.addressName}}</text>
+                </view>
+            </view>
+            <view class="otherInfo">
+                <view>
+                    <text>{{roomInfo.storeInfo.fansCount}}</text>
+                    粉丝
+                </view>
+                <view>
+                    <text>{{roomInfo.storeInfo.newGo30}}</text>
+                    本月新品
+                </view>
+                <view>
+                    <text>{{roomInfo.storeInfo.openLiveCount}}</text>
+                    直播次数
+                </view>
+                <view>
+                    <text>{{roomInfo.storeInfo.praiseRate}}</text>
+                    好评率
+                </view>
+            </view>
+            <view class="btnGroup">
+                <button bindgetuserinfo="setConcern" class="infoConcernBtn" open-type="getUserInfo">
+                    {{isConcern==='1'?'已关注':'关注'}}
+                </button>
+                <button class="infoShopBtn" data-storeid="{{roomInfo.storeInfo.userId}}" bindtap="goStore">进店看看</button>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 分享领取 pop -->
+<view class="popCont {{isShareShow ? 'show' : ''}}" id="sharePop">
+    <text class="close-pop iconfont icon-cuo" bindtap="showSharePop"></text>
+    <view class="popCont-body">
+        <view class="sharePopContent">
+            <view class="shareTitle">
+                <text>直播间优惠任务说明</text>
+            </view>
+            <view class="shareTipsList">
+                <view class="list">
+                    <view class="num">
+                        <image src="/images/liveDetail/bg-nb.png"></image>
+                        <text>1</text>
+                    </view>
+                    <view class="text">分享到微信群
+                        <text>分享到微信群，可领取1张现金券</text>
+                    </view>
+                    <button class="btn" open-type="share">分享</button>
+                </view>
+                <view class="list">
+                    <view class="num">
+                        <image src="/images/liveDetail/bg-nb.png"></image>
+                        <text>2</text>
+                    </view>
+                    <view class="text">关注主播
+                        <text>马上关注主播，不错过任何新优惠</text>
+                    </view>
+                    <button class="btn" bindtap="setConcern">{{isConcern==='1'?'已关注':'关注'}}</button>
+                </view>
+            </view>
+            <view class="shareMoney" wx:if="{{couponList.length}}">
+                <view class="moneyBag" wx:for="{{couponList}}" wx:key="{{index}}">
+                    <image src="{{index<1?'/images/liveDetail/bg-blue-money.png':'/images/liveDetail/bg-red-money.png'}}"></image>
+                    <view class="tit">先分享后领取</view>
+                    <view class="text">
+                        <view class="prices">
+                            ￥
+                            <text class="ir">{{item.couponValue}}</text>
+                        </view>
+                        满{{item.minAmount}}元可用
+                    </view>
+                    <view class="btn">
+                        <button disabled="{{item.stock==='0'?'disabled':isShare}}" bindtap="getCoupon"
+                                data-keycode="{{item.keycode}}" class="{{isShare||item.stock==='0' ? 'shareAct' :'' }}"  data-couponprice="{{item.couponValue}}" >
+                            {{item.btnTips}}
+                        </button>
+                    </view>
+                </view>
+            </view>
+            <view class="shareRemind" wx:else>
+                <button class="shareRemindBtn" bindtap="setRemind">提醒主播设置优惠券</button>
+            </view>
+        </view>
+    </view>
+</view>
+<!--直播下单-->
+<view class="popCont {{isOrderShow ? 'show' : ''}}" id="orderPop">
+    <view class="header">
+        <view class="headerItem">
+            <text class="headerItemSort">{{orderSort}}</text>
+            <image mode="aspectFill" src="{{info.defaultImage}}" class="order-img"></image>
+        </view>
+        <view wx:if="{{info.isSpelling==1}}" class="order-info">
+            <view class="priceRange">
+                <text class="order-price"><text wx:if="{{isChange}}" class="changePrice">已改价:</text>￥ {{allPrice}}</text>
+            </view>
+            <view class="order-attribute-box">
+                <text wx:if="{{currentColor!==null || currentSize!==null}}">已选择：<text class="order-attribute"> {{info.colors[currentColor]}}, {{info.sizes[currentSize]}}</text>
+                </text>
+            </view>
+        </view>
+        <view wx:else class="order-info ">
+            <view class="priceRange">
+                <block wx:if="{{isChange}}" >
+                <view class="priceRange-item">
+                    <text class="order-price"><text  class="changePrice">已改价:</text>￥{{info.priceData.priceRange[info.priceData.priceRange.length-1].price}}</text>
+                    <text class="priceRange-item-num">{{info.priceData.priceRange[info.priceData.priceRange.length-1].show}}件</text>
+                </view>
+                </block>
+                <block wx:else>
+                <view wx:for="{{info.priceData.priceRange}}" wx:key="{{index}}" class="priceRange-item"   >
+                    <text class="order-price"><text wx:if="{{isChange}}" class="changePrice">已改价:</text>￥{{item.price}}</text>
+                    <text class="priceRange-item-num">{{item.show}}件</text>
+                </view>
+                </block>
+
+            </view>
+            <view class="order-attribute-box">
+                <text wx:if="{{currentColor!==null || currentSize!==null}}"> 已选择：<text class="order-attribute">{{info.colors[currentColor]}}, {{info.sizes[currentSize]}}</text>
+                </text>
+            </view>
+        </view>
+    </view>
+    <view class="popCont-body">
+        <scroll-view class="scroll-view" scroll-y>
+            <view class="colors">
+                <view class="form-header">
+                    <text>颜色</text>
+                </view>
+                <view class="form-content">
+                    <block wx:for="{{info.colors}}" wx:key="{{index}}">
+                        <text
+                                wx:if="{{disabled['color'][index]}}"
+                                class="form-content-item none"
+                        >{{item}}
+                        </text>
+                        <text
+                                wx:else
+                                data-key="{{index}}"
+                                data-type="color"
+                                class="form-content-item {{currentColor===index?'active':random}}"
+                                bindtap="btnClick"
+
+                        >{{item}}
+                        </text>
+                    </block>
+                </view>
+            </view>
+            <view class="sizes">
+                <view class="form-header">
+                    <text>尺码</text>
+                </view>
+                <view class="form-content">
+                    <block wx:for="{{info.sizes}}" wx:key="{{index}}">
+                        <text wx:if="{{disabled['size'][index]}}" class="form-content-item none">{{item}}
+                        </text>
+                        <text
+                                wx:else
+                                data-key="{{index}}"
+                                data-type="size"
+                                class="form-content-item {{currentSize===index?'active':random}}"
+                                catchtap="btnClick"
+                        >{{item}}
+                        </text>
+                    </block>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="amount">
+            <view class="form-header">
+                <text>数量</text>
+            </view>
+            <view class="form-content">
+                <text wx:if="{{currentStock!==null}}" class="gary">库存剩{{currentStock}}</text>
+
+                <counter
+                        max="{{ info.stock}}"
+                        bind:onChange="orderAmount" wx:if="{{isOrderShow}}"
+                ></counter>
+            </view>
+        </view>
+    </view>
+    <view class="footer">
+        <button wx:if="{{currentSize!==null && currentColor!==null&& enabled }}" open-type="getUserInfo" bindgetuserinfo="goOrder"
+                class="pop-ok">
+            <text>立即下单</text>
+        </button>
+        <button wx:else class="none-ok">
+            <text>立即下单</text>
+        </button>
+    </view>
+
+</view>
+
+<!-- 离开页面弹框 -->
+
+<view class="popCont {{isLiveLeaveShow ? 'show' : ''}}" id="liveLeave">
+    <text class="close-pop iconfont icon-cuo" bindtap="colseLive"></text>
+    <view class="colseBox">
+        <!-- <text class="colseBox-loading" wx:if="{{getRecommendsLiveLoading}}">加载中……</text>
+        <text class="colseBox-error" wx:if="{{getRecommendsLiveError}}">{{getRecommendsLiveError}}</text> -->
+        <view class="colseBox-list">
+            <block wx:for="{{recommendsLive}}" wx:key="liveId">
+                <navigator
+                        open-type="redirect"
+                        url="/pages/liveDetails/index?liveId={{item.liveId}}"
+                        class="colseBox-item">
+                    <image
+                            src="{{item.image}}"
+                            class="colseBox-item-img"
+                            mode="aspectFill"></image>
+                    <view class="colseBox-item-right">
+                        <text class="colseBox-item-title ellipsis">{{item.title}}</text>
+                        <view class="colseBox-item-inner">
+                            <block wx:if="{{item.status*1 == 0}}">
+                                <view class="liveHit1">预告</view>
+                            </block>
+                            <block wx:else>
+                                <text class="liveHit">直播中</text>
+                                <text class="number">{{item.view}}人看</text>
+                            </block>
+                        </view>
+                    </view>
+                </navigator>
+            </block>
+
+        </view>
+        <view class="colseBox-footer">
+            <view class="colseBox-btn goHome" bindtap="goHome">返回首页</view>
+            <view class="colseBox-btn goLiveCenter" bindtap="goLiveCenter">拼货</view>
+        </view>
+    </view>
+</view>
+
+
+<!--直播活动列表-->
+<view class="popCont giftPop {{isGiftShow ? 'show' : ''}}" id="isGift">
+    <view class="giftTitle">
+        <text>本场直播{{giftHours}}小时</text>
+        <text class="giftTime">距离结束还有 <text>{{timeObj.h}}</text> 小时 <text>{{timeObj.m}}</text> 分 <text>{{timeObj.s}}</text> 秒</text>
+    </view>
+    <view class="giftContent">
+<block wx:if="{{activityList.length&&activityList}}">
+    <view class="giftList" >
+        <view class="giftListTitle">直播精彩活动说明</view>
+        <view class="giftListItem" wx:for="{{activityList}}" wx:key="{{index}}">
+            <view class="giftListItemL">
+                <view wx:if="{{item.latId==1}}">分享最快的人获奖</view>
+                <view wx:if="{{item.latId==2}}">分享直播次数最多的人获奖</view>
+                <view wx:if="{{item.latId==3}}">分享后带来观看人数最多的获奖</view>
+                <text>·{{item.awardTypeName}}</text>
+                <text>·奖励前{{item.awardNumber}}名</text>
+            </view>
+            <view class="giftListItemR">
+                <view>
+                <button size="small" wx:if="{{item.status==0}}" disabled="disabled">已结束</button>
+                    <button size="small" wx:if="{{item.status==2}}" disabled="disabled">即将开始</button>
+                    <button size="small" wx:if="{{item.status==1}}" data-laid="{{item.laId}}" open-type="share">去分享</button>
+                </view>
+                <text wx:if="{{item.latId==1}}">我第{{item.count}}名</text>
+                <text wx:if="{{item.latId==2}}">我分享{{item.count}}次</text>
+                <text wx:if="{{item.latId==3}}">我带来{{item.count}}人</text>
+            </view>
+        </view>
+    </view>
+</block>
+        <block wx:elif="{{!activityList.length&&activityList}}">
+            <view class="giftContentTips">
+                主播还未发布活动
+            </view>
+        </block>
+        <block wx:elif="{{!activityList.length&&!activityList}}">
+            <view class="giftContentTips">
+                加载中...
+            </view>
+        </block>
+    </view>
+</view>
+<!--直播活动-->
+    <view class="popCont activity {{isActivityShow ? 'show' : ''}}" id="activity">
+        <text class="close-pop iconfont icon-cuo" bindtap="showActivity" ></text>
+        <view class="activityWrap">
+            <view class="activityContent">
+                <view class="activityTitle">{{activityInfo.activityTitle}}</view>
+                <view class="activityText"><view><text>{{activityInfo.activityContent}}</text></view></view>
+                <image class="activityImage" src="/images/liveDetail/activity.png"></image>
+                <view class="activityBtn">
+                    <button open-type="share" data-laid="{{activityInfo.laId}}" disabled="{{activityDisabled}}">{{activityTime}}</button>
+                </view>
+            </view>
+        </view>
+    </view>
+
+</view>

@@ -1,0 +1,22 @@
+<view class="orderArea">
+    <navigator class="orderArea-header" hover-class="none" url="/money/pages/order/index?tab=0">
+        <text class="orderArea-header-left">我的拼团</text>
+        <view class="orderArea-header-right">
+            <text class="orderArea-header-right-text">全部拼团</text>
+            <text class="iconfont icon-right"></text>
+        </view>
+    </navigator>
+    <view class="orderArea-main">
+        <navigator
+                wx:for="{{btns}}"
+                wx:key="{{index}}"
+                class="orderArea-item"
+                hover-class="none"
+                url="/money/pages/order/index?tab={{item.url}}"
+        >
+            <text class="orderArea-item-icon iconfont {{item.icon}}"></text>
+            <text class="orderArea-item-text">{{item.text}}</text>
+            <text class="orderArea-item-number" wx:if="{{bot[item.botLabel]}}">{{bot[item.botLabel]}}</text>
+        </navigator>
+    </view>
+</view>

@@ -1,0 +1,6 @@
+<view class="model"  hidden="{{modalHidden}}" catchtap="closeModel">
+    <view class="model-content">
+       <slot></slot>
+    </view>
+    <text catchtap="closeModel" class="iconfont icon-cuo "></text>
+</view>

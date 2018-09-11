@@ -1,0 +1,5 @@
+<view class="main">
+    <view class="main-left"></view>
+    <text class="title">{{title}}</text>
+    <view class="main-right"></view>
+</view>

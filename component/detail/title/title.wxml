@@ -1,0 +1,29 @@
+<view class="goods-title">
+  <view class="goods-title-top">
+    <text>{{info.goods_name}}</text>
+  </view>
+  <view class="goods-title-bottom">
+    <view class="goods-info-you-box" wx:if="{{info.type==1}}">
+      <text class="title">广东广州</text>
+    </view>
+    <view class="priceRange-box" wx:if="{{info.type==0}}">
+      <text class="priceRange">￥{{info.priceData.priceRange[0].price}}</text>
+       <text class="tip">{{info.priceData.priceRange[0].lower}}件起批</text>
+    </view>
+    <text class="title" wx:if="{{info.type==1}}">点赞{{info.like}}次</text>
+    <text class="title">已卖{{info.goodsOrderCount || 0 }}件</text>
+  </view>
+</view>
+<view class="coupon-list" wx:if="{{couponList.length>0}}">
+  <view
+          class="coupon-list-item"
+          wx:for="{{couponList}}"
+          wx:key="{{index}}"
+          wx:if="{{index<4}}"
+          catchtap="getCoupon"
+  >
+    <image  class="goods-info-you" mode="aspectFit" src="/images/coupon.png"></image>
+    <text class="goods-info-you-m">{{item.couponValue}}元券</text>
+  </view>
+
+</view>

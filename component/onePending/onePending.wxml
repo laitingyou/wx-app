@@ -1,0 +1,42 @@
+<view class="liveItem">
+    <view class="liveItem-header" >
+        <view class="storeImg" bindtap="_goToLive">
+            <image 
+                src="{{portraitUrl}}"            
+                lazy-load 
+                mode="aspectFill" 
+                class="liveImg storeImg-image"></image>
+        </view>
+        <view class="storeInfo" bindtap="_goToLive">
+            <text class="ellipsis storeInfo-liveName">{{userName}}</text>
+            <text class="ellipsis storeInfo-address">{{addressName}}</text>
+        </view>
+        
+        <form bindsubmit="_formSubmit" report-submit="{{true}}">
+            <block wx:if="{{isSubscribe}}">
+                <button class="subscribe active" formType="submit" open-type="getUserInfo" bindgetuserinfo="_clickAddSubscribe">{{time}}播 已订阅</button>
+            </block>
+            <block wx:else>            
+                    <button class="subscribe" formType="submit" open-type="getUserInfo" bindgetuserinfo="_clickAddSubscribe">{{time}}播 订阅提醒</button>            
+            </block>
+        </form>
+                   
+    </view>
+    <text class="liveTitle ellipsis">{{title}}</text>
+    <view class="goodsList">
+        <block wx:for="{{goodsList}}" wx:key="goodsId" wx:for-item="goods">
+            <view class="goodsList-li" bindtap="_goToLive" wx:if="{{index <= 2}}">
+                <image 
+                    lazy-load 
+                    mode="aspectFill" 
+                    src="{{goods.defaultImage}}"
+                    class="liveImg"></image>                    
+            </view>    
+        </block>
+        <view class="goodsList-more" bindtap="_goToLive">
+            <text>{{goodsCount}}个</text>
+            <text>直播款</text>
+            <text class="liveHit">预告</text>
+        </view>            
+    </view>
+</view>    

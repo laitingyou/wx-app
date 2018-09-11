@@ -1,0 +1,163 @@
+.item-box{
+
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 28rpx 8rpx 0;
+}
+
+.row-header{
+  height: 100%;
+  display: inline-block;
+
+}
+.row-img{
+  width: 308rpx;
+  height: 305rpx;
+  background-color: rgba(238, 238, 238, 0.58);
+  border: 1rpx solid #e0e0e0;
+  box-sizing: border-box;
+  margin-right: 40rpx;
+  position: relative;
+}
+.form-button{
+  border: none;
+
+
+
+}
+.itemHeight_praise .row-img{
+  width: 264rpx;
+  height: 264rpx;
+  margin-right: 20rpx;
+}
+.itemHeight_praise{
+  background: #F4F4F4;
+  padding:0;
+}
+.itemHeight_praise .price{
+  margin-top: 0;
+}
+
+.itemHeight_praise .row-btn-box{
+  width: 160rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+.itemHeight_praise .row-content{
+  height: 264rpx;
+  padding: 10rpx 20rpx 10rpx 0;
+  box-sizing: border-box;
+}
+
+
+.itemHeight_praise .row-invitation{
+  font-size: 24rpx;
+  line-height: 48rpx;
+}
+
+.itemHeight_praise .row-title{
+  font-size: 24rpx;
+}
+.itemHeight_praise .row-btn{
+  font-size: 24rpx;
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-right: 20rpx;
+}
+.row-content{
+  position: relative;
+  height: 305rpx;
+  width: 100%;
+
+}
+.row-title{
+  width: 100%;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 26rpx;
+  color: #888888;
+  letter-spacing: 0.92rpx;
+  line-height: 36rpx;
+}
+.row-invitation{
+  border: 1px solid #F9007C;
+  border-radius: 3px;
+  display:inline-block;
+  overflow: hidden;
+  margin:10rpx 0 0 0;
+  line-height: 52rpx;
+  box-sizing: border-box;
+  font-size: 26rpx;
+}
+.row-invitation-left{
+  color: #ffffff;
+  background: #F9007C;
+  display: inline-block;
+  padding: 0 11rpx;
+}
+.row-invitation-right{
+  padding: 0 11rpx;
+  color: #FE3666;
+  letter-spacing: 0.92rpx;
+  line-height: 12px;
+}
+.price{
+  margin-bottom: 20rpx;
+}
+.row-price{
+  font-size: 48rpx;
+  color:#f62e43;
+}
+.row-bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+}
+.row-amount{
+  font-size: 24rpx;
+  color: #888888;
+  letter-spacing: 0.86rpx;
+  line-height: 36rpx;
+
+}
+.row-btn{
+  color: #ffffff;
+  line-height: 80rpx;
+  border-radius:40rpx;
+  width: 200rpx;
+  font-size: 28rpx;
+  position: absolute;
+  text-align: center;
+  right: 0;
+  margin-right: 10rpx;
+}
+.row-btn-box{
+  width: 200rpx;
+  height: 80rpx;
+  margin-right: 10rpx;
+}
+
+.price{
+  color: #f62e43;
+}
+.video-play{
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  bottom: 20rpx;
+  right: 60rpx;
+}
+.item-left{
+  width: 100%;
+}

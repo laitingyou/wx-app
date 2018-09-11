@@ -1,0 +1,18 @@
+<view class="review" wx:if="{{info.count!=0}}">
+  <view class="review-top">
+    <text>买家评价（{{data.count}}）</text>
+    <!--<navigator class="review-top-right">查看全部</navigator>-->
+  </view>
+  <view class="review-content">
+    <block wx:for="{{data.data}}" wx:key="{{index}}">
+      <view class="avatar" >
+        <image class="avatar-img" mode="aspectFill" src="{{item.portrait}}"></image>
+        <text class="avatar-name">{{item.user_name}}</text>
+      </view>
+      <view class="review-content-bottom">
+        <text>{{item.goods_comment}}</text>
+      </view>
+    </block>
+
+  </view>
+</view>

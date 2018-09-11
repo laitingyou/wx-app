@@ -1,0 +1,48 @@
+<view class="item-box {{extendClass.height}}" >
+
+    <form-button
+            bindsubmit="{{~~itemData.isVideo?'videoPlay':'enterDetail'}}"
+            data-url="/pages/goods/index?goodsId={{itemData.goodsId}}"
+    >
+        <image   lazy-load="{{true}}" binderror="onError" mode="aspectFill" class="row-img" src="{{itemData.goodsImg}}"></image>
+        <block wx:if="{{~~itemData.isVideo && videoShow}}">
+            <image catchtap="videoPlay"  src="/images/video-play.png"  class="video-play"></image>
+        </block>
+    </form-button>
+    <!--<video-play isShow="{{videoShow}}" src="{{currentVideo}}" data="{{itemData}}"></video-play>-->
+        <!--<navigator hover-class="none" url="/pages/goods/index?goodsId={{itemData.goodsId}}">-->
+
+            <!--<image lazy-load="{{true}}" binderror="onError" mode="aspectFill" class="row-img " src="{{itemData.goodsImg}}"></image>-->
+        <!--</navigator>-->
+    <form-button
+            class="item-left"
+            bindsubmit="enterDetail"
+            data-url="/pages/goods/index?goodsId={{itemData.goodsId}}"
+    >
+        <view class="row-content ">
+            <view><text class="row-title">{{itemData.goodsName}}</text></view>
+
+            <view class="row-invitation">
+                <text class="row-invitation-left">邀请朋友点赞</text>
+                <text class="row-invitation-right">省¥{{itemData.sparePrice}}</text>
+            </view>
+            <view class="price">￥<text class="row-price">{{itemData.specialPrice}}</text></view>
+
+            <view class="row-bottom">
+
+                <text class="row-amount">已卖{{itemData.orderCount}}件</text>
+
+                <!--<form-button-->
+                        <!--bindsubmit="enterDetail"-->
+                        <!--data-url="/pages/goods/index?goodsId={{itemData.goodsId}}"-->
+                <!--&gt;-->
+                    <image class="row-btn-box" mode="aspectFill" src="/images/itembtn.png"></image>
+                    <text  class="row-btn">去开团集赞</text>
+
+                <!--</form-button>-->
+
+            </view>
+        </view>
+    </form-button>
+
+</view>

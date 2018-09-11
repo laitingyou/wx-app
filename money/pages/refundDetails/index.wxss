@@ -1,0 +1,231 @@
+@import '../../style/imgItem.wxss';
+
+button:active {
+    opacity: .8;
+}
+
+button:after {
+    border: none;
+}
+
+.gray {
+    color: #4a4a4a;
+}
+.iconfont {
+    font-size: 24rpx;
+}
+
+page {
+    padding-bottom: 110rpx;
+}
+
+.refundDetailContentBanner {
+    text-align: center;
+    position: relative;
+    color: #fff;
+    margin-bottom: 20rpx;
+    height: 236rpx;
+}
+
+.refundDetailContentBanner .refundDetailContentBannerImage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 236rpx;
+    width: 100vw;
+    z-index: -1;
+}
+
+.refundDetailContentBanner .refundDetailContentBannerTitle {
+    padding-top: 60rpx;
+
+}
+
+.refundDetailContentBanner .refundDetailContentBannerTitle .titlea {
+    display: block;
+    font-size: 48rpx;
+    line-height: 48rpx;
+    margin-bottom: 26rpx;
+}
+
+.refundDetailContentBanner .refundDetailContentBannerTitle .titleb {
+    display: block;
+    fonts-size: 28rpx
+}
+
+.refundDetailContentBanner .refundDetailContentBannerTitle .titleb text {
+    font-size: 40rpx;
+}
+
+.refundDetailContentInfo {
+    margin-bottom: 20rpx;
+    background-color: #fff;
+}
+
+.refundDetailContentInfo .refundDetailContentInfoT {
+
+    display: flex;
+    padding: 16rpx 28rpx;
+    border-bottom: 1rpx solid #e0e0e0;
+    line-height: 80rpx;
+}
+
+.store-icon {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 6rpx;
+    margin-right: 20rpx;
+    background-color: #FF5F00;
+    color: #fff;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.refundDetailContentInfoTa {
+    flex: 1;
+    font-size: 28rpx;
+    color: #4a4a4a;
+    line-height: 29px;
+
+}
+
+.refundDetailContentInfoTa text {
+    display: inline-flex;
+    max-width:220rpx;
+
+}
+
+.refundDetailContentInfoTa .icon-right {
+    color: #999;
+    margin-left: 22rpx;
+}
+
+.refundDetailContentInfoTb {
+    flex: 1;
+    text-align: right;
+    line-height: 0;
+}
+
+.refundDetailContentInfoTb button {
+    border-color: #FF3E70;
+    color: #FF3E70;
+    font-size: 28rpx;
+    display: inline-block;
+    border-radius: 50rpx;
+    line-height: 50rpx;
+}
+
+.refundDetailContentInfoM {
+    padding: 30rpx;
+    color: #999;
+    font-size: 28rpx;
+}
+
+.refundDetailContentInfoM .red {
+    color: #fb0006;
+}
+
+
+.refundDetailContentInfoM .infoImg {
+    width: 132rpx;
+    height: 132rpx;
+    background: #eee;
+    display: inline-block;
+    margin-right: 10rpx;
+    margin-bottom: 10rpx;
+}
+
+.refundDetailContentInfoM .textItem {
+    line-height: 28rpx;
+    margin-bottom: 20rpx;
+    color: #999;
+}
+
+
+.refundDetailContentInfoM button {
+    margin-top: 60rpx;
+    border-radius: 50rpx;
+    border: 1px solid #979797;
+    font-size: 28rpx;
+    width: 344rpx;
+}
+
+.refundDetailContentOrder .refundDetailContentOrderT {
+    display: flex;
+    background: #fff;
+    line-height: 80rpx;
+    height: 80rpx;
+    padding: 0 28rpx;
+    justify-content: space-between;
+    font-size: 28rpx;
+}
+
+.refundDetailContentOrder .refundDetailContentOrderT .right {
+    color: #999;
+}
+
+.refundDetailContentOrderM {
+    padding: 40rpx 28rpx;
+    font-size: 24rpx;
+    line-height: 24rpx;
+    position: relative;
+}
+
+.refundDetailContentOrderM view {
+    margin-bottom: 20rpx;
+    color: #4a4a4a;
+}
+
+.refundDetailContentOrderM view text {
+    color: #888;
+}
+
+.refundDetailContentOrderM .btn {
+    border: 1px solid #979797;
+    position: absolute;
+    line-height: 52rpx;
+    font-size: 28rpx;
+    right: 28rpx;
+    top: 28rpx;
+    border-radius: 6rpx;
+}
+
+.refundDetailBottom {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 3;
+
+}
+
+.refundDetailBottomButtonGroup {
+    padding: 16rpx 24rpx;
+    text-align: right;
+    line-height: 0;
+}
+
+.refundDetailBottom .refundDetailBottomButtonGroup button {
+    display: inline-block;
+    line-height: 68rpx;
+    font-size: 28rpx;
+    border-radius: 4rpx;
+    min-width: 168rpx;
+}
+
+.refundDetailBottom .refundDetailBottomButtonGroup button.btna {
+    border: 1rpx solid #aaa;
+}
+
+.refundDetailBottom .refundDetailBottomButtonGroup button.btnb {
+    background: #FE3666;
+    color: #fff;
+    border: 1rpx solid #FE3666;
+}
+
+.mr10{
+    margin-right: 20rpx;
+
+}

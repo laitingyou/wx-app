@@ -1,0 +1,1602 @@
+/* pages/liveDetail.wxss */
+
+page{
+    background-image: linear-gradient(0deg, #FE3666 10%, #FF7684  80%);
+
+}
+
+.liveDetailContentTop{
+    display: flex;
+    background-image: linear-gradient(0deg, #FF4B6A 0%, #FF7684  100%);
+    box-shadow:0px 0px 20px #9E0127;
+    overflow: hidden;
+
+}
+/*商品列表*/
+
+.chatGoodsList{
+    padding: 0 28rpx;
+}
+.chatGoodsListItem{
+
+
+    padding: 4rpx;
+    margin-bottom: 14rpx;
+    background: rgba(0,0,0,.3);
+    border-radius: 6rpx;
+
+}
+.chatGoodsListItemCont{
+
+    overflow: hidden;
+    position: relative;
+    width: 160rpx;
+    height: 160rpx;
+
+}
+
+
+.chatGoodsListItemCont .goodsText{
+    width: 100%;
+    height: 18px;
+    text-align: center;
+    color: #f1f1f1;
+    line-height: 18px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: rgba(0,0,0,.3);
+
+}
+.goodsNum{
+    position: absolute;
+    height: 36rpx;
+    line-height: 36rpx;
+    left: 0;
+    top: 0;
+    text-align: center;
+    color: #f1f1f1;
+    background: rgba(0,0,0,.3);
+    padding: 0 12rpx;
+}
+.goodsRecommend{
+    background: #008EF3;
+    height: 32rpx;
+    line-height: 32rpx;
+    color: #fff;
+    font-size: 20rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 8rpx;
+
+
+}
+.chatGoodsListItemCont image {
+    width: 160rpx;
+    height: 160rpx;
+}
+
+.goodsImage{
+    width: 160rpx;
+    height: 160rpx;
+}
+.lazyLoad {
+    animation: fade 0.2s;
+}
+
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/*直播视频*/
+.chatVideoLivePlayer{
+    width: 534rpx;
+    position: relative;
+}
+
+.userinfo{
+    background: rgba(0,0,0,.6);
+    border-radius: 100rpx;
+    position: absolute;
+    z-index: 1;
+    color: #fff;
+    top: 20rpx;
+    left: 20rpx;
+    display: flex;
+    padding-right: 20rpx;
+}
+
+.userinfo .userinfoAvatar{
+    width: 70rpx;
+    height: 70rpx;
+    margin-right: 20rpx;
+    border-radius: 50%;
+    background: #eee;
+
+}
+.userinfo .userinfoAvatar .pic{
+    max-width: 70rpx;
+    height: auto;
+
+}
+
+.userinfoText {
+    width: 100px;
+    overflow: hidden;
+    margin-top: 8rpx;
+}
+.userinfo .userinfoTextA{
+    color: #fff;
+    font-size: 26rpx;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+
+}
+.userinfo .userinfoTextB{
+    color: #e8e8e8;
+    font-size: 20rpx;
+    text-shadow: 2px 2px 2px #000000;
+}
+
+.orderCount{
+    padding: 0 6px;
+    height: 24px;
+
+    background: rgba(255,68,78,.6);
+    position: absolute;
+    z-index: 1;
+    border-radius: 20rpx;
+    top: 20rpx;
+    right: 24rpx;
+}
+.orderCountText{
+    line-height: 24px;
+    font-size: 24rpx;
+    color: #ffffff;
+
+
+}
+.goodPraise{
+    background: #FE3666;
+    width: 82rpx;
+    height: 82rpx;
+    line-height: 60px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 28rpx;
+    left: 28rpx;
+    text-align: center;
+    z-index: 2;
+}
+.goodPraise:active{
+    opacity: .8;
+}
+.goodPraise .iconGoodPraise{
+
+    width: 38rpx;
+    height: 40rpx;
+    margin: 8px auto;
+}
+
+
+
+.heartPraise {
+    width: 60rpx;
+    animation-name: heartPraise-transform-keyframes;
+    animation-duration: 1500ms;
+    animation-delay: 0ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    transform-origin: 0 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 28rpx;
+    left: 28rpx;
+    opacity: 0;
+}
+.heartPraise .icon-love{
+    font-size: 60rpx;
+}
+
+
+@keyframes heartPraise-transform-keyframes {
+    0% {
+        opacity: 0;transform:translate(0px, 0px) scale(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);animation-timing-function: cubic-bezier(.25,.25,.75,.75);}
+    50% {
+        opacity: 1;transform:translate(1px, -72px) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);animation-timing-function: cubic-bezier(.25,.25,.75,.75);}
+    75% {
+        opacity: 1;transform:translate(34px, -126px) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);animation-timing-function: cubic-bezier(.25,.25,.75,.75);}
+    100% {
+        opacity: 0;transform:translate(8px, -185px) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);}
+}
+
+
+/* 用户信息弹窗*/
+
+.popInfo{
+    text-align: center;
+    color: #4a4a4a;
+}
+
+.userInfo{
+    margin-bottom: 24px;
+}
+.userImage{
+    width: 132rpx;
+    height: 132rpx;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.username{
+    margin-bottom: 8px;
+}
+.username text{
+    font-size: 32rpx;
+
+}
+
+.userAddress text{
+    font-size: 24rpx;
+
+}
+.otherInfo{
+    display: flex;
+    margin-bottom: 30px;
+}
+.otherInfo view{
+    flex: 1;
+    font-size: 24rpx;
+}
+.otherInfo view text{
+    display: block;
+}
+.btnGroup {
+    display: flex;
+}
+.btnGroup button{
+    width: 280rpx;
+    border-radius: 100px;
+    font-size: 32rpx;
+
+}
+.btnGroup button:active{
+    opacity: .8;
+}
+.infoConcernBtn{
+    background: #FE3666 ;
+    color: #fff;
+
+}
+
+.infoShopBtn{
+    background: #fff;
+    color: #FE3666;
+    border: 1px solid #FE3666;
+
+}
+.infoShopBtn:after{
+    border: none;
+}
+.videoMask{
+    display: none;
+    background: rgba(0, 0, 0, .5);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    z-index: 3;
+    position: absolute;
+
+
+}
+.bgnone{
+    background: none!important;
+}
+.show{
+display: block!important;
+
+}
+.orderCount{
+    height: auto;
+}
+
+.popMask{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+}
+
+/* 聊天室*/
+.liveDetailContentBottom {
+    height: 125px;
+
+}
+.chatList .chatListContent{
+    position: relative;
+    font-size: 28rpx;
+}
+
+ .chatListScroll{
+    height: 118px;
+}
+.chatListScrollContent{
+    padding: 20rpx 28rpx 0 28rpx;
+}
+
+.defaultAnnouncement .defaultAnnouncementItem{
+    color: #fff;
+    line-height: 40rpx;
+    margin-bottom: 10rpx;
+}
+
+
+.customChatItemContentMsg {
+    background: #fff;
+    border-radius: 200rpx;
+    position: absolute;
+    padding: 10rpx 20rpx;
+    top: 25%;
+    z-index: 3;
+    display: flex;
+
+}
+.changeGoodsPrice{
+    background: #fff;
+    border-radius: 4rpx;
+    padding: 10rpx;
+    top: 35%;
+    z-index: 3;
+    display: flex;
+    position: absolute;
+    overflow: hidden;
+
+}
+.changeGoodsPriceClose{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 13rpx;
+    font-size: 20rpx;
+}
+.changeGoodsPrice image{
+    width: 92rpx;
+    height: 92rpx;
+    border-radius: 4rpx;
+    background: #eee;
+    margin-right: 20rpx;
+}
+.changeGoodsPriceText  .changeGoodsPriceTextSort{
+    margin-right: 28rpx;
+    color: #ff0000;
+
+}
+.changeGoodsPriceTextT {
+    font-size: 28rpx;
+    line-height: 28rpx;
+}
+.changeGoodsPriceTextB{
+    font-size: 28rpx;
+    line-height: 28rpx;
+    margin-top: 20rpx;
+}
+.red{
+    color: #ff0000;
+}
+.itemDoc {
+    line-height: 50rpx;
+}
+
+.itemDoc  .itemUser {
+    color: #ff444e;
+}
+
+.itemDoc  .itemText {
+    color: #4a4a4a;
+
+}
+.itemImage{
+    width: 50rpx;
+    height: 50rpx;
+    margin-right: 10rpx;
+    border-radius: 50%;
+}
+
+
+
+
+.msgAnimation {
+    animation-name: msgAnimation-transform-keyframes;
+    animation-duration: 4000ms;
+    animation-delay: 0ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    transform-origin: 0 0;
+    opacity: 0;
+}
+@keyframes msgAnimation-transform-keyframes {
+    0% {
+        opacity: 1;transform:translate(0, 0) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);animation-timing-function: cubic-bezier(.25,.25,.75,.75);}
+    33.33% {
+        opacity: 1;transform:translate(50px, 0) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);animation-timing-function: cubic-bezier(.25,.25,.75,.75);}
+    66.67% {
+        opacity: 1;transform:translate(100px, 0) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);animation-timing-function: cubic-bezier(.25,.25,.75,.75);}
+    88.67% {
+        opacity: 1;transform:translate(120px, 0) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);animation-timing-function: cubic-bezier(.25,.25,.75,.75);}
+    100% {
+        opacity: 0;transform:translate(150px, 0) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);}
+}
+
+.msgAnimation2 {
+    animation-name: msgAnimation-transform-keyframes2;
+    animation-duration: 4000ms;
+    animation-delay: 0ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    transform-origin: 0 0;
+    opacity: 0;
+}
+@keyframes msgAnimation-transform-keyframes2 {
+    0% {
+        opacity: 1;transform:translate(0, 0) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);animation-timing-function: cubic-bezier(.25,.25,.75,.75);}
+    33.33% {
+        opacity: 1;transform:translate(50px, 0) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);animation-timing-function: cubic-bezier(.25,.25,.75,.75);}
+    66.67% {
+        opacity: 1;transform:translate(100px, 0) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);animation-timing-function: cubic-bezier(.25,.25,.75,.75);}
+    88.67% {
+        opacity: 1;transform:translate(135px, 0) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);animation-timing-function: cubic-bezier(.25,.25,.75,.75);}
+    100% {
+        opacity: 1;transform:translate(135px, 0) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(-50%, -50%);}
+}
+.chatItemContentMsg {
+    margin-bottom: 10rpx;
+}
+
+.isSales .itemUser{
+    width: 68rpx;
+    height: 15px;
+    text-align: center;
+    line-height: 15px;
+    color: #ffffff;
+    font-size: 24rpx;
+    background: #008EF3;
+    display: inline-block;
+    border-radius: 4rpx;
+}
+.isSales .itemText{
+    color: #F8E81C;
+
+}
+.itemUser {
+
+    color: #ffff00;
+    margin-right: 20rpx;
+}
+
+.custom .itemText{
+    color: #fff;
+}
+.itemText {
+    color: #FBB0C2;
+}
+
+.write {
+    color: #fff;
+}
+
+
+.chatEditor{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 28rpx;
+
+
+}
+.chatEditorContent{
+    display: flex;
+    padding: 0 28rpx 20rpx 28rpx;
+
+}
+.chatEditorContent > .chatEditorContentInput{
+    flex: 1;
+    background: rgba(0,0,0,.6);
+    border-radius: 49rpx;
+    margin-right: 20rpx;
+    height: 82rpx;
+    line-height: 82rpx;
+    padding-left: 28rpx;
+    text-align: left;
+    font-size: 28rpx;
+}
+.chatEditorContentInput  text{
+    color: #fff;
+
+}
+.chatEditorContentInput:after{
+    border: none;
+}
+
+.chatEditorContent > .chatEditorContentQuestion {
+    border-radius: 50%;
+    background: rgba(0,0,0,.6);
+    width: 82rpx;
+    height: 82rpx;
+    text-align: center;
+    line-height: 82rpx;
+    color: #ffffff;
+    margin-right: 20rpx;
+
+
+}
+.chatEditorContent > .giftBtn {
+    border-radius: 50%;
+    background: rgba(0,0,0,.6);
+    width: 82rpx;
+    height: 82rpx;
+    text-align: center;
+    line-height: 113rpx;
+    padding: 0;
+    font-size: 28rpx;
+    color: #ffffff;
+
+}
+.chatEditorContent > .chatEditorContentShare{
+    border-radius: 50%;
+    background: rgba(0,0,0,.6);
+    width: 82rpx;
+    height: 82rpx;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    line-height: 93rpx;
+    margin-left: 20rpx;
+    padding: 0;
+    overflow: visible;
+}
+
+.chatEditorContentShare:after{
+    border: none;
+}
+
+
+.chatEditorContent > .chatEditorContentShare >.chatEditorContentShareTips{
+    position: absolute;
+    height: 26rpx;
+    background-color: #fff;
+    font-size: 18rpx;
+    line-height: 26rpx;
+    color: #FF6389;
+    width: 80rpx;
+    border-radius: 4rpx;
+    top: -10rpx;
+    left: 0;
+    text-align: center;
+}
+.chatEditorContent view:last-child{
+    margin-right: 0;
+}
+.icon-money{
+    width: 42rpx;
+    height: 34rpx;
+}
+.chatEditorSendPop{
+    display: none;
+}
+.chatEditorSend{
+    background: #4A4A4A;
+    padding: 16rpx 28rpx;
+    display: flex;
+}
+
+.chatEditorSend input {
+    flex: 1;
+    width: 80%;
+    background: #fff;
+    height: 80rpx;
+    color: #333333;
+    border-radius: 12rpx;
+    margin-right: 10px;
+    padding-left: 28rpx;
+
+}
+.chatEditorSendBtn {
+    width: 20%;
+    height: 80rpx;
+    border-radius: 12rpx;
+    line-height: 80rpx;
+    color: #fff;
+    background: #FE3666;
+    text-align: center;
+
+}
+.chatEditorSendBtn:active{
+    opacity: .8;
+}
+.write{
+    color :#fff
+}
+/* 问题弹窗内容*/
+.QuestionList{
+    line-height: normal;
+}
+.QuestionList view {
+    border-bottom: 1px solid #f1f1f1;
+    padding: 36rpx 28rpx;
+
+}
+.QuestionList view text {
+    color: #4a4a4a;
+    font-size: 28rpx;
+}
+.questionListText {
+    display: block;
+    text-align: center;
+    line-height: 400rpx;
+    height: 400rpx;
+}
+
+/*分享弹窗内容*/
+.sharePopContent{
+
+}
+.shareTitle text{
+
+    color: #999;
+    font-size: 24rpx;
+}
+.shareTipsList{
+
+    margin-bottom: 10px;
+}
+.shareTipsList .list {
+    display: flex;
+    border-bottom: 1rpx solid #E8E8E8 ;
+    padding: 29rpx 20rpx;
+    justify-content: space-between;
+    align-items : center;
+
+
+}
+.shareTipsList .list:last-child{
+    border-bottom: 0;
+}
+.shareTipsList .list .num {
+    height: 42rpx;
+    position: relative;
+}
+.shareTipsList .list .num image{
+    width: 42rpx;
+    height: 42rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.shareTipsList .list .num  text{
+    position: absolute;
+    color: #fff;
+    width: 42rpx;
+    height: 42rpx;
+    line-height: 42rpx;
+    left: 0;
+    top: 0;
+    text-align: center;
+}
+.shareTipsList .list .text{
+    font-size: 28rpx;
+}
+.shareTipsList .list .text text{
+
+    display: block;
+    color: #999999;
+    font-size: 24rpx;
+
+
+}
+.shareTipsList .list .btn {
+    background-image: linear-gradient(-180deg, #FF857B 2%, #FC003C 100%);
+    border-radius: 100px;
+    text-align: center;
+    width: 160rpx;
+    height: 60rpx;
+    color: #fff;
+    display: block;
+    border: none;
+    margin: 0;
+    font-size: 24rpx;
+}
+.shareTipsList .list .btn:active{
+    opacity: .8;
+}
+.shareMoney {
+    display: flex;
+    justify-content :space-between;
+    padding: 0 40rpx;
+
+}
+.moneyBag{
+
+    width: 284rpx;
+    height: 306rpx;
+    position: relative;
+    color: #fff;
+
+}
+.moneyBag  image {
+
+    width: 284rpx;
+    height: 306rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.moneyBag .tit{
+    width:284rpx;
+    height:84rpx;
+    line-height:84rpx;
+    text-align:center;
+    position:absolute;
+    z-index:2;
+    top:0;
+    left:0;
+
+}
+.moneyBag  .text{
+    position: absolute;
+    width: 284rpx;
+    text-align: center;
+    top: 114rpx;
+    font-size: 24rpx;
+    line-height: 40rpx;
+}
+.moneyBag .text .prices{
+    font-size: 24rpx;
+    display: block;
+}
+.moneyBag .text .prices .il{
+    font-size: 24rpx;
+
+}
+.moneyBag .text .prices .ir{
+    font-size: 80rpx;
+}
+.moneyBag .btn{
+
+    width: 284rpx;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 30rpx;
+
+
+}
+.moneyBag .btn button {
+    background: linear-gradient(-180deg, #FFD200 0%, #FF5F00 100%);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.34);
+    border-radius: 100px;
+    width: 160rpx;
+    margin: 0 auto;
+    font-size: 24rpx;
+    color: #fff;
+
+
+}
+.shareAct{
+    background: #9B9B9B!important;
+    box-shadow: none
+}
+
+.shareRemindBtn{
+    border-radius: 100px;
+    border: 1px solid #FF6389;
+    background: #fff;
+    color: #FF6389;
+    width: 480rpx;
+    margin-top: 30px;
+    font-size: 28rpx;
+
+}
+.shareRemindBtn:active{
+    opacity: .6;
+}
+/* 立即下单弹窗*/
+.bottom{
+    position: fixed;
+    bottom: 0;
+    height: 90rpx;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+.bottom-left{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottom-item{
+    height: 90rpx;
+    display: flex;
+    align-items: center;
+    width: calc( 100% /3);
+    justify-content: center;
+}
+.home,.mymessage {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 20rpx;
+    color: #888888;
+    position: relative;
+}
+.icon-home,.icon-mymessage{
+    width: 40rpx;
+    height: 40rpx;
+    margin: 0 auto;
+}
+.icon-home::before,.icon-mymessage::before{
+    font-size: 20px;
+}
+.no-praise-buy{
+    background-color: #FF6389;
+    color: #ffffff;
+}
+.praise-buy{
+    background-color: #FF0017;
+    color: #ffffff;
+}
+.msg{
+    position: absolute;
+    top: -8rpx;
+
+    left: 50%;
+    min-width: 34rpx;
+    background: #FE3666;
+    font-size: 24rpx;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    border-radius: 50%;
+}
+.liveTime{
+    position: absolute;
+    color: #FE3666;
+    font-size: 24rpx;
+    top: 49px;
+    right: 12px;
+    width: 145rpx;
+
+}
+.liveTime .tit{
+    display: flex;
+}
+.liveTime .tit .yuan{
+    width: 10rpx;
+    height: 10rpx;
+    border-radius: 50%;
+    background: #FE3666;
+    margin-right: 5px;
+    margin-top: 5px;
+
+}
+
+.liveTime  .time{
+    margin-left: 15rpx;
+}
+
+/*弹窗*/
+
+.popBj {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(120%);
+    transition: transform 350ms;
+    transition: opacity 350ms;
+}
+
+.popCont {
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 32rpx;
+    background-color: #fff;
+    transform: translateY(120%);
+    transition: transform 150ms;
+}
+
+.popCont-head {
+    width: 100%;
+    line-height: 88rpx;
+    height: 88rpx;
+    border-bottom: 1px solid #f1f1f1;
+    text-align: center;
+    display: block;
+}
+
+.popCont-body {
+    padding: 40rpx ;
+    box-sizing: border-box;
+}
+.popColse {
+    height: 100rpx;
+    line-height: 100rpx;
+    color: #fff;
+    background-color: #FE3666;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+.popCont-header{
+}
+.close-pop{
+    position:absolute;
+    right:0;
+    top:0;
+    color:#979797 ;
+    font-size:26rpx;
+    padding: 30rpx;
+
+}
+.popCont-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.defaultImg{
+   width:534rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.coverBg{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 172rpx;
+    z-index: 1;
+    transform: rotate(-180deg);
+    background-image: linear-gradient(-180deg, rgba(0,0,0,0) 41%, rgba(0,0,0,.8) 100%);
+}
+/* 订单Pop*/
+.order-img{
+    width: 160rpx;
+    height: 160rpx;
+    background: #e9e9e9;
+}
+.header{
+    display: flex;
+    justify-content: left;
+    padding: 28rpx 28rpx 0 28rpx;
+}
+.order-info{
+    margin-left: 20rpx;
+}
+.order-price{
+    color: #FF0000;
+    font-size: 40rpx;
+    letter-spacing: 0;
+    line-height: 40rpx;
+}
+.order-attribute-box{
+    display: flex;
+    font-size: 28rpx;
+    line-height: 28rpx;
+    margin-top: 26rpx;
+    text-indent: 10rpx;
+}
+.order-attribute{
+    color: #FF0000;
+}
+
+.form-header{
+    color: #909090;
+}
+.form-header text{
+    font-size: 28rpx;
+}
+.form-content{
+    display: flex;
+    justify-content: left;
+    justify-items: center;
+    margin-bottom: 40rpx;
+    flex-direction: row;
+    flex-flow: wrap;
+    align-content: flex-start;
+
+}
+.form-content-item{
+    padding: 0 40rpx;
+    margin-right:20rpx ;
+    border: 1rpx solid #4a4a4a;
+    border-radius: 6rpx;
+    margin-top: 20rpx;
+    line-height: 60rpx;
+    height: 60rpx;
+    font-size: 24rpx;
+}
+
+.active{
+    border: 1rpx solid #FE3666;
+    color: #ffffff;
+    background-color: #FE3666;
+}
+.none{
+    background: #E8E8E8;
+    border: 1rpx solid transparent;
+
+    color: #CCCCCC;
+    letter-spacing: 0;
+
+}
+.none-ok{
+    background: #E8E8E8;
+    color: #CCCCCC;
+    text-align: center;
+}
+
+.amount{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+    line-height: 70rpx;
+    height: 70rpx;
+}
+.pop-ok{
+    background-color: #FE3666;
+    color: #ffffff;
+    text-align: center;
+}
+.sold{
+    width: calc(  200% /3);
+    height: 100%;
+    line-height:  90rpx;
+    text-align: center;
+    background:#909090;
+    color: #ffffff;
+}
+.priceRange{
+    display: flex;
+    justify-content: left;
+}
+.priceRange-item{
+    display: flex;
+    flex-direction: column;
+    margin-right: 20rpx;
+}
+.priceRange-item-num{
+    font-size: 28rpx;
+    line-height: 28rpx;
+    color: #666666;
+    text-indent: 10rpx;
+    margin-top: 26rpx;
+}
+.scroll-view{
+    max-height: 30vh;
+
+}
+.textRight{
+    text-align: right;
+}
+
+#orderPop .popCont-body{
+  padding: 28rpx;
+
+}
+.amount .form-content {
+    margin-bottom: 0!important;
+}
+.amount .form-content .gary{
+    color: #888888;
+    font-size: 28rpx;
+    margin-right: 20rpx;
+}
+.headerItem{
+    width: 160rpx;
+    height: 160rpx;
+    position: relative;
+}
+.headerItem .headerItemSort{
+    position: absolute;
+    width: 44rpx;
+    height: 44rpx;
+    display: block;
+    line-height: 44rpx;
+    color: #ffffff;
+    font-size: 24rpx;
+    background-color: #FF0000;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    left:-20rpx;
+    top:-17rpx;
+    text-align: center;
+
+}
+.footer  button{
+    border-radius: 0;
+    border: none;
+    font-size: 28rpx;
+    line-height: 88rpx;
+}
+.footer  button:after{
+    border: none;
+}
+
+.footer  button:active{
+    opacity: .8;
+}
+
+.liveMore{
+    height: 68rpx;
+    line-height: 68rpx;
+    padding: 0 20rpx;
+    color: #fff;
+    background-image: linear-gradient(-52deg, #00B5FF 0%, #A39DF9 100%);
+    border-radius: 94px 0 0 94px;
+    position: absolute;
+    right: 0;
+    top: 80rpx;
+    z-index: 11;
+    font-size: 28rpx;
+}
+.liveMore .icon-zhibodating{
+    margin-right: 12rpx;
+}
+
+/* 关闭直播间弹框 */
+.colseLive {
+    position: absolute;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    background-color: #FF7684;
+    color: #fff;
+    box-sizing: border-box;
+    padding-top: 46rpx;
+    height: 70px;
+    width: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.colseBoxOut {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .6);
+}
+.colseBox {
+    background-color: #fff;
+}
+.colseBox:before {
+    content: '其他直播推荐';
+    display: block;
+    font-size: 28rpx;
+    text-align: center;
+    line-height: 80rpx;
+    height: 80rpx;
+    color: #888888;
+}
+.colseBox-title {
+    text-align: center;
+    font-size: 28rpx;
+    line-height: 70rpx;
+    border-bottom: 1rpx solid #f1f1f1;
+}
+.colseBox-list {
+    padding: 0 20rpx;
+}
+.colseBox-item {
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid #f1f1f1;
+}
+.colseBox-item,
+.colseBox-item-img,
+.colseBox-item-right {
+    display: flex;
+}
+.colseBox-item-img {
+    flex: 0 0 140rpx;
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 4rpx;
+}
+.colseBox-item-right {
+    flex: 1 0 auto;
+    width: 0;
+    padding-left: 20rpx;
+    flex-direction: column;
+}
+.colseBox-item-title {
+    width: 100%;
+    font-size: 28rpx;
+    line-height: 28rpx;
+}
+.colseBox-item-inner {
+    margin-top: 40rpx;
+    align-items: center;
+    justify-content: space-between;
+}
+.colseBox-item-inner .number {
+    color: #9B9B9B;
+    font-size: 20rpx;
+    margin-left: 20rpx;
+    line-height: 40rpx;
+}
+.colseBox-footer {
+    padding:30rpx;
+    display: flex;
+    justify-content: space-around;
+}
+.colseBox-btn {
+    font-size: 28rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    width: 236rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40rpx;
+    box-sizing: border-box;
+}
+.colseBox-btn:active{
+    opacity: .8;
+}
+.goHome {
+    border: 1px solid #FE3666;
+    color: #FE3666;
+}
+.goLiveCenter {
+    background: #FE3666;
+    color: #fff;
+}
+@keyframes liveIcon {
+    form {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+.liveHit {
+    display: inline-block;
+    color: #fff;
+    font-size: 20rpx;
+    padding: 0 15rpx;
+    line-height: 40rpx;
+    border-radius: 20rpx;
+    align-items: center;
+    background-image: linear-gradient(138deg, #f72386 0, #ff2853 100%);
+}
+.liveHit:before {
+    content: '';
+    display: inline-block;
+    background-color: #fff;
+    width: 8rpx;
+    height: 8rpx;
+    margin-right: 8rpx;
+    border-radius: 8rpx;
+    vertical-align: middle;
+    animation: liveIcon 0.8s linear 0.8s infinite alternate;
+}
+.liveHit1 {
+    display: inline-block;
+    color: #fff;
+    line-height: 40rpx;
+    font-size: 20rpx;
+    padding: 0 20rpx;
+    border-radius: 20rpx;
+    background-image: linear-gradient(to bottom right, #19c3ff 0, #2692ff 100%, rgba(86, 168, 251, 0.00) 100%, rgba(163, 157, 248, 0.00) 100%);
+}
+.colseBox-loading,.colseBox-error {
+    display: block;
+    width: 100%;
+    line-height: 100rpx;
+    text-align: center;
+}
+/* 关闭直播间弹框 end */
+.coverImage{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;    
+}
+.coverImage1 {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    margin-top: -94rpx;
+    margin-left: -130rpx;
+    width: 261rpx;
+    height: 188rpx;
+} 
+
+
+/* 直播分享礼品*/
+.giftContent{
+    padding: 40rpx 28rpx 0;
+}
+
+.giftTitle {
+    display: flex;
+    justify-content: space-between;
+    background: #f1f1f1;
+    padding: 26rpx 30rpx ;
+    font-size: 28rpx;
+    line-height: 28rpx;
+}
+
+.giftList .giftListTitle{
+    color: #9B9B9B;
+    font-size: 28rpx;
+    line-height: 28rpx;
+}
+.giftList .giftListItem{
+    display: flex;
+    font-size: 28rpx;
+    justify-content: space-between;
+    border-bottom: 1rpx solid #e0e0e0;
+    padding:  30rpx 0;
+    color: #4a4a4a;
+}
+.giftList .giftListItem:last-child{
+    margin-bottom: 0;
+}
+.giftListItemL view{
+    font-size: #4a4a4a;
+    font-size: 28rpx;
+    line-height: 28rpx;
+    margin-bottom: 20rpx;
+
+}
+.giftListItemL text{
+    color: #9b9b9b;
+    font-size: 28rpx;
+    display: block;
+}
+.giftListItemR {
+  text-align: center;
+
+}
+.giftListItemR  view{
+    text-align: right;
+}
+.giftListItemR button{
+    line-height: 60rpx;
+    width: 160rpx;
+    height: 60rpx;
+    font-size: 24rpx;
+    color: #fff;
+    background: #fe2e65;
+    margin-bottom: 10rpx;
+    border-radius: 40rpx;
+    margin-left: 0;
+    margin-right: 0;
+    display: inline-block;
+
+}
+.giftListItemR button[disabled]{
+    background: #aaa;
+    color: #fff;
+}
+.giftListItemR button:after{
+    border: none;}
+.giftListItemR button:active{
+    opacity: .8;
+}
+
+
+.giftTime text {
+    color: #f62e43;
+    width: 30rpx;
+    display: inline-block;
+}
+.showGiftImg{
+    width: 52rpx;
+    height: 51rpx;
+}
+.giftPop{
+    height: 383px;
+}
+.giftContentTips{
+    font-size: 24rpx;
+    margin-top: 200rpx;
+    text-align: center;
+
+}
+.activity{
+    background: rgba(0,0,0,.6);
+}
+.activityContent{
+ width: 540rpx;
+    height: 590rpx;
+margin: 30rpx auto 30rpx;
+    position: relative;
+
+
+}
+
+.activityImage{
+    width: 540rpx;
+    height: 590rpx;
+}
+.activityTitle{
+    color: #f8ea3f;
+    font-size: 35rpx;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 30%;
+}
+.activityText{
+    width: 100%;
+    position: absolute;
+    top: 45%;
+
+}
+.activityText view {
+    background: rgba(0,0,0,.2);
+    width: 420rpx;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 28rpx;
+    padding: 20rpx;
+
+}
+.activityBtn{
+    position: absolute;
+    width: 100%;
+    bottom: 10%;
+
+
+}
+.activityBtn button{
+    background: #f8ea3f;
+    color: #d8170b;
+    width: 300rpx;
+    margin: 0 auto;
+    border-radius: 100rpx;
+
+}
+.activityBtn button[disabled]{
+    background: #f8ea3f!important;
+    color: #d8170b;
+
+}
+.activityBtn button:after{
+    border: none;
+}
+.black{
+    color: #000;
+}
+.changePrice{
+    font-size: 28rpx;
+}
+/* 点我领钱消息*/
+.redBgs{
+    position: absolute;
+    width: 438rpx;
+    height: 530rpx;
+    top: 160rpx;
+    left: 60rpx;
+    z-index: 111111;
+}
+.redBgsImage {
+    width: 438rpx;
+    height: 530rpx;
+    position: absolute;
+}
+.redBagsList  {
+    position: absolute;
+    top: 140rpx;
+    padding: 0 30rpx;
+}
+.redBgsTitle {
+    color: #fff;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 50rpx;
+    font-size: 32rpx;
+}
+
+.redBagsList .list {
+    position: relative;
+    width: 394rpx;
+    height: 108rpx;
+}
+
+.redBagsList .list .listImage{
+    width: 394rpx;
+    height: 108rpx;
+    position: absolute;
+}
+.redBagsBtn {
+    position: absolute;
+    width: 100%;
+    bottom: 64rpx;
+}
+.redBagsBtn .redBagsBtnImage{
+    width: 268rpx;
+    height: 96rpx;
+    margin: 0 auto;
+}
+.redBgs .close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #ffffff;
+    font-size:26rpx;
+    padding: 30rpx;
+}
+.list .listT{
+    position: absolute;
+    color: #4a4a4a;
+    top: 35rpx;
+    left: 20rpx;
+    font-size: 28rpx;
+}
+.list .listN{
+    position: absolute;
+    left: 270rpx;
+    top: 35rpx;
+    color: #d81e06;
+    font-weight: bold;
+}
+
+.goodsOver{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 111;
+}
+.chatItemGoodsOver{
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #ffffff;
+    font-size: 24rpx;
+    background: #008EF3;
+    display: inline-block;
+    border-radius: 4rpx;
+}

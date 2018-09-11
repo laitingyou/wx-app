@@ -1,0 +1,89 @@
+@import '../../../style/iconfont.wxss';
+.row-invitation{
+  border: 2rpx solid red;
+  border-radius: 4rpx;
+  display:inline-block;
+  overflow: hidden;
+}
+.row-invitation-left{
+  color: #ffffff;
+  background: #30B2FF;
+  padding: 0 10rpx;
+}
+.row-invitation-right{
+  padding: 0 10rpx;
+  color:#f62e43;
+  background-color: #ffffff;
+}
+.left{
+  display: flex;
+  justify-content: left;
+  margin-left: 28rpx;
+}
+
+.goods-info{
+  background-color: #FF2853;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 100rpx;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+.goods-info-bg{
+  width:268rpx;
+  height:158rpx;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.goods-info-box{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.goods-price{
+  font-size: 60rpx;
+  font-weight: 600;
+}
+
+.goods-info-middle{
+  margin-top: 6rpx;
+  margin-left: 20rpx;
+}
+.shareTar-item{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  font-size: 22rpx;
+  height: 100%;
+  background: transparent;
+}
+.share-icon{
+  font-size: 40rpx;
+  padding: 0 10rpx;
+  color: #939393;
+}
+.icon-label{
+  font-size: 30rpx;
+}
+
+
+.goods-info-right{
+  height:158rpx;
+  background: #FFFF00;
+  color: #FF2853;
+  text-align: center;
+  margin-left: 20rpx;
+}
+.original-price-number{
+  text-decoration: line-through;
+}

@@ -1,0 +1,34 @@
+<view class="shore">
+  <view class="shore-header">
+    <view class="shore-header-left">
+      <navigator hover-class="none" url="/store/index/index?storeId={{info.store_id}}">
+        <image class="shore-img" mode="aspectFill" src="{{info.store_logo}}"></image>
+      </navigator>
+
+      <!--<text class="shore-img-text">1年店</text>-->
+      <view class="shore-info">
+        <view class="shore-title">
+          <text>{{info.store_name}}</text>
+        </view>
+        <view class="shore-inst">
+          <text class="shore-inst-text">拼团商品 : {{info.goods_count}}</text>
+          <text class="shore-inst-text">卖出 : {{info.goodsOrderCount}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="shore-into">
+      <navigator hover-class="none"  url="/store/index/index?storeId={{info.store_id}}" class="shore-into-btn">查看全部</navigator>
+    </view>
+  </view>
+  <scroll-view scroll-x class="scroll-view"  wx:if="{{info.goodsList.length>0}}">
+    <view class="shore-goods">
+      <navigator hover-class="none" wx:for="{{info.goodsList}}" wx:key="{{index}}"  open-type="redirect" url="/pages/goods/index?goodsId={{item.goodsId}}"  class="shore-goods-item">
+      <image class="shore-goods-img" mode="aspectFill" src="{{item.goodsImage}}"></image>
+      <view class="shore-goods-price">￥<text class="shore-goods-price-number">{{item.goodsPrice}}</text></view>
+    </navigator >
+
+    </view>
+  </scroll-view>
+
+</view>

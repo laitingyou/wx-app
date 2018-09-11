@@ -1,0 +1,16 @@
+<view  class="box {{show?'show':''}}">
+    <view class="cover" catchtap="{{forbidClose?'':'onClose'}}"></view>
+    <view class="modal-box">
+        <text wx:if="{{closable}}" class="close iconfont icon-cuo" catchtap="onClose"></text>
+        <view class="modal-header">
+            <slot name="header"></slot>
+        </view>
+        <view class="modal-content">
+            <slot name="body"></slot>
+        </view>
+        <view class="modal-footer" catchtap="onClose">
+            <slot name="footer"></slot>
+        </view>
+    </view>
+
+</view>

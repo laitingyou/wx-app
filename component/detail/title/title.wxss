@@ -1,0 +1,81 @@
+.goods-title{
+  background-color: #ffffff;
+  padding: 10rpx 28rpx 10rpx;
+  font-size: 28rpx;
+
+  letter-spacing: 0;
+  line-height: 56rpx;
+}
+.goods-title-top{
+  color: #4A4A4A;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.goods-info-you-box{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: relative;
+}
+.goods-title-bottom{
+  margin: 30rpx 0 10rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #888888;
+  letter-spacing: 0;
+  line-height: 28rpx;
+  align-items: center;
+}
+.goods-title-bottom .title{
+  color: #8c8c8c;
+}
+
+
+
+.coupon-list{
+  background-color: #ffffff;
+  margin-top: 20rpx;
+  padding: 10rpx 28rpx 10rpx;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.coupon-list-item{
+  position: relative;
+  height: 90rpx;
+  margin-right: 50rpx;
+}
+.goods-info-you{
+  width: 200rpx;
+  height: 90rpx;
+}
+.goods-info-you-m{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  transform: translate(-50%,-50%);
+  color: #ffffff;
+  font-size: 28rpx;
+  text-align: center;
+}
+.priceRange-box{
+  display: flex;
+  align-items: center;
+}
+.priceRange{
+  font-size: 32rpx;
+  color: #FF0000;
+}
+.tip{
+  color: #FFFFFF;
+  font-size: 20rpx;
+  background: #FE3666;
+  border-radius: 3px;
+  padding: 3rpx 8rpx;
+  margin-left: 20rpx;
+}

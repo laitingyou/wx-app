@@ -1,0 +1,348 @@
+page {
+    color: #4A4A4A;
+}
+.myPage{
+    overflow-x: hidden;
+}
+.image {
+    background-color: #eee;
+    width: 100%;
+    height: 100%;
+}
+.header {
+    box-sizing: border-box;
+    height: 320rpx;
+    text-align: center;
+    background: linear-gradient(42deg, #ff7684 0%, #ff4b6a 100%);
+    
+    color: #fff;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 28rpx;
+    padding-top: 80rpx;
+}
+.nickName{
+    margin-left: 20rpx;
+    text-align: left;
+    background: transparent;
+    color: #fff;
+}
+.update{
+    background: #09AF17;
+    display: inline-block;
+    border-radius: 20rpx;
+    font-size: 18rpx;
+    padding: 4rpx 20rpx;
+    color: #fff;
+}
+.userImg {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: 100rpx;
+    height: 100rpx;
+    color: #999;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0;
+    margin-bottom: 10rpx;
+    border: 2rpx solid rgba(255, 255, 255, .6);
+}
+.userImg-icon {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    font-size: 60rpx;
+    line-height: 80rpx;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.header-img {
+    border-radius: 6rpx;
+
+}
+.header-userName {
+    display: block;
+    margin-bottom: 10rpx;
+    font-size: 32rpx;
+}
+
+
+/*收藏地址和官方客服*/
+
+.otherList {
+    background-color: #fff;
+    margin-top: 20rpx;  
+    border-top: 1rpx solid #E0E0E0;
+    border-bottom: 1rpx solid #E0E0E0;  
+}
+.otherList-item {
+    display: flex;
+    align-items: center;
+    padding: 0 24rpx;
+    height: 88rpx;
+    border-bottom: 1rpx solid #E0E0E0;
+    margin-bottom: -1rpx;
+}
+.otherList-item-inner {
+    display: flex;
+    flex: 1 0 auto;
+}
+.otherList-item-icon {
+    margin-right: 20rpx;
+    font-size: 40rpx;
+}
+.otherList-item-iconRright{
+    flex: 0 0 36rpx;
+    color: #888;
+}
+.icon-dizhi1 {
+    color: #008EF3;
+}
+.icon-service {
+    color: #EE6723;
+}
+/*收藏地址和官方客服end*/
+
+/*客服按钮*/
+.contactOut {
+    position: relative;
+    z-index: 1;
+}
+.contactOut-button {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+}
+.orderArea-main {
+    display: flex;
+    border-top: 1rpx solid #E0E0E0;
+    border-bottom: 1rpx solid #E0E0E0;
+    padding: 40rpx 0;
+}
+.orderArea-item {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 auto;
+    justify-content: center;
+}
+.orderArea-item-icon,.orderArea-item-text{
+    display: flex;
+    justify-content: center;
+}
+.orderArea-item-icon {
+    font-size: 54rpx;
+    color: #888;
+}
+.orderArea-item-text {
+    font-size: 24rpx;
+    margin-top: 20rpx;
+}
+.icons{
+    padding: 20rpx 0;
+}
+.icons .orderArea-item-text{
+    margin-top: 0;
+}
+/*客服按钮 end */
+.itembg {
+    background-color: #fff;
+    color: red;
+    margin-top: 2rpx;
+}
+
+
+.goAdTextOut {
+    position: relative;
+    height: 50rpx;
+}
+.goAdText {
+    position: absolute;
+    z-index: 1;
+    top: -44rpx;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20rpx;
+    height: 88rpx;
+    
+    box-sizing: border-box;
+    font-size: 28rpx;
+}
+ .goAdText-inner {
+    display: flex;
+    justify-content: space-between;
+    background-color: #000;    
+    background-color: #fff;
+    border-radius: 6rpx;
+    display: flex;
+    height: 88rpx;
+    padding: 0 20rpx;
+    align-items: center;    
+    box-shadow: 0 4rpx 5rpx rgba(0, 0, 0, .2);
+}
+.goAdText-text-num {
+    color: #FE3666;
+}
+.goAdText-btn {
+    display: inline-flex;
+    flex: 0 0 102rpx;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25rpx;
+    height: 50rpx;
+    color: #fff;
+    padding: 0 25rpx;
+    background-image: linear-gradient(to bottom, #FFAF7B, #FE3666);
+} 
+
+/* 幻灯 */
+.adSwiper {
+    padding: 20rpx;    
+}
+.adSwiper-item {
+    width: 100%;
+    height: 320rpx;
+    border-radius: 8rpx;
+}
+.adSwiper-img {
+    width: 100%;
+    height: 100%;
+}
+/* 幻灯 end */
+/*-----直播inlive-----*/
+.live{
+    margin-top: 20rpx;
+    width: 100%;
+    background-color: #fff;
+}
+.live-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx 22rpx 0;
+}
+.live-header-left{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 32rpx;
+    color: #222222;
+    letter-spacing: 0;
+    line-height: 32rpx;
+    width: 180rpx;
+}
+.live-header-left-icon{
+    width: 40rpx;
+    height: 40rpx;
+}
+.live-icon::before{
+    content: '\e6c3';
+    color: #F9007C;
+    font-size: 40rpx;
+}
+
+
+/****直播区域****/
+.liveArea {
+
+    margin-top: 16rpx;
+    width: 100%;
+    /*min-height: 400rpx;*/
+    box-sizing: border-box;
+
+}
+.today-live{
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(180deg,#B24CFA, rgba(178, 76, 250, 0.28));
+}
+.onePending-margin{
+    margin-top: 20rpx;
+}
+
+.liveArea-header-bgImg {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    left: 0;
+    width: 100%;
+    top: 0;
+}
+/*标题*/
+.liveArea-title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 16rpx 28rpx 10rpx;
+}
+.liveArea-title-icon {
+    flex: 0 0 50rpx;
+    font-size: 60rpx;
+    color: #ffffff;
+}
+.liveArea-title-h1,.goods-title {
+    flex: 0 0 auto;
+    font-size: 32rpx;
+    font-weight: 600;
+    text-indent: 10rpx;
+}
+.liveArea .liveArea-title{
+    color: #ffffff;
+}
+.liveArea-title-h2,.goods-little-title {
+    flex: 1 1 auto;
+    width: 0;
+    padding: 0 20rpx;
+    font-size: 28rpx;
+}
+
+.onePending {
+    background: #ffffff;
+}
+.onePending-list{
+    padding:0 24rpx 24rpx;
+}
+.onePendingTitle  {
+    position: relative;
+    display: block;
+    font-size: 32rpx;
+    color: #00B0F0;
+    text-align: center;
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 20rpx 0;
+    margin: 0 -24rpx;
+    background-color: #f1f1f1;
+}
+.onePendingTitle-img {
+    position: absolute;
+    z-index: 0;
+    top: 30rpx;
+    left: 50%;
+    margin-left: -150rpx;
+    width: 300rpx;
+}
+
+.advanceList {
+    background-color: #f1f1f1;
+}
+.icon-zhibo1:before{
+    color: #ff0064;
+}
+.icon-pintuan{
+    color: #00B0F0;
+}
+.icon-service{
+    color: #fe9d1b;
+}
+.icon-dizhi1{
+    color: #00B0F0;
+}

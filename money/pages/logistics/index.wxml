@@ -1,0 +1,56 @@
+<page-title title="查看物流"></page-title>
+<view class="logistics">
+    <view class="box">
+        <view class="box-header">
+            <!-- 物流信息 -->
+            <view class="logisticsMain">
+                <navigator class="logisticsMain-left">
+                    <image class="logisticsMain-img" lazy-load mode="aspectFill" src="{{goodsImage}}"></image>
+                </navigator>
+                <view class="logisticsMain-center">
+                    <view class="logisticsMain-text ellipsis">
+                        <text>物流公司：</text>
+                        <text class="primary">{{name}}</text>
+                    </view>
+                    <text class="logisticsMain-text ellipsis">运单编号：{{number}}</text>
+                    <text class="logisticsMain-text ellipsis" bindtap="callPhone">物流电话：{{tel}}</text>
+                </view>
+                <view class="logisticsMain-right">
+                    <button type="warn" size="mini" plain class="logisticsMain-btn" bindtap="copyNumber">复制单号</button>
+                </view>
+            </view>
+            <!-- 物流信息 end -->
+        </view>
+        <view class="box-main">
+            <view class="address">
+                <text class="iconfont icon-dizhi address-icon"></text>
+                <text class="address-text">配送至：{{regionName}} {{address}}</text>
+            </view>
+        </view>
+    </view>
+    <!-- 订单踪迹 -->
+    <view class="box ">
+        <view class="box-header">订单跟踪</view>
+        <view class="box-main">
+            <view class="stepList">
+                <view class="stepList-plan"></view>
+                <view class="stepList-main">
+                    <view wx:if="{{list.length === 0}}" class="null"><text>暂无物流信息</text></view>
+                    <view 
+                        wx:for="{{list}}"
+                        wx:key="time"
+                        class="stepList-item {{index<1 ? 'stepList-itemActive' : ''}}"
+                    >
+                        <text class="stepList-item-text">{{item.status}}</text>
+                        <text class="stepList-item-time stepList-fistTime">{{item.time}}</text>
+                    </view>
+                </view>
+            </view>
+            <!-- <view class="showListText">
+        <text>展开</text>
+        <text class="iconfont icon-down showListText-icon"></text>
+      </view> -->
+        </view>
+    </view>
+    <!-- 订单踪迹 end -->
+</view>

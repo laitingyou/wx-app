@@ -1,0 +1,81 @@
+<view class="liveList">
+    <image 
+        hidden="{{liveDataToday.end && liveDataToday.list.length <= 0}}"
+        mode="widthFix" 
+        src="/images/home/liveArea_footer.png" 
+        class="liveArea-header-bgImg bgImgFooter"></image> 
+    <block wx:for="{{list}}" wx:key="liveId">
+        <block wx:if="{{item.different}}">
+            <navigator class="liveItem liveItem1 {{index%2?'item-right':'item-left'}}" url="/pages/liveDetails/index?liveId={{item.liveId}}">
+                <view class="liveItem1-inner">
+                    <view class="liveImgArea">
+                        <view class="liveType" wx:if="{{item.liveType == 2 || item.liveType == 4 || item.liveType == 5}}">
+                            <image class="liveType" src="/images/liveType{{item.liveType}}.png"></image>
+                        </view>
+                        <image 
+                            lazy-load
+                            src="{{item.image}}"
+                            mode="aspectFill"
+                            class="liveImg"></image> 
+                            <view class="live-title-box">
+                                <text class="live-title-box-title ellipsis">{{item.title}}</text>
+                                <view class="live-info" >
+                                    <text class="liveHit">直播中</text>
+                                    <text>{{item.view}}人看</text>
+                                </view>
+                            </view>
+                            
+                        <text class="iconfont xin xin0"></text>
+                        <text class="iconfont xin xin1"></text>
+                        <text class="iconfont xin xin2"></text>
+                        <text class="iconfont xin xin3"></text>
+                        <image class="isHaveCoupon" src="/images/isHaveCoupon.png" wx:if="{{item.isHaveCoupon}}"></image>
+                    </view>        
+                </view>
+            </navigator>
+        </block>
+        <block wx:else>
+            <navigator class="liveItem liveItem0" url="/pages/liveDetails/index?liveId={{item.liveId}}">
+                <view class="liveItem-left">
+                    <view class="liveImgArea">
+                        <view class="liveType" wx:if="{{item.liveType == 2 || item.liveType == 4 || item.liveType == 5}}">
+                            <image class="liveType" src="/images/liveType{{item.liveType}}.png"></image>
+                        </view>
+                        <image 
+                            lazy-load
+                            src="{{item.image}}"
+                            mode="aspectFill"
+                            class="liveImg"></image> 
+                            <view class="live-title-box">
+                                <view class="live-info" >
+                                    <text class="liveHit">直播中</text>
+                                    <text>{{item.view}}人看</text>
+                                </view>
+                            </view>
+                            <text class="iconfont xin xin0"></text>
+                            <text class="iconfont xin xin1"></text>
+                            <text class="iconfont xin xin2"></text>
+                            <text class="iconfont xin xin3"></text>
+                    </view>
+                </view>
+                <view class="liveItem-right">
+                    <image class="isHaveCoupon" src="/images/isHaveCoupon.png" wx:if="{{item.isHaveCoupon}}"></image>
+                    <text class="ellipsis liveName {{item.isHaveCoupon ? 'hasHaveCoupon' : ''}}">{{item.title}}</text>
+                    <text class="ellipsis address">{{item.addressName}}</text>
+                    <view class="goodsBox">
+                        <block wx:for="{{item.goodsList}}" wx:key="goodsId" wx:for-item="goods">
+                            <image 
+                                mode="aspectFill" 
+                                src="{{goods.defaultImage}}"
+                                class="goodImg"></image>    
+                        </block>
+                        <view class="goodsMore">
+                            <text>{{item.goodsCount}}个</text>
+                            <text>直播款</text>
+                        </view> 
+                    </view>        
+                </view>
+            </navigator>
+        </block>
+    </block>        
+</view>

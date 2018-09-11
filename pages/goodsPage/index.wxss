@@ -1,0 +1,282 @@
+@import '../../style/iconfont.wxss';
+.container{
+  background-color: #F0F0F1;
+  font-size: 28rpx;
+  margin-top: 0;
+}
+.nav-box{
+  width: 100%;
+  height: 104rpx;
+  background: #ffffff;
+}
+.nav-little-box{
+  background: #ffffff;
+  position: fixed;
+  top: 70px;
+  z-index: 99;
+  width: 100%;
+  height: 104rpx;
+  box-shadow: 1rpx 6rpx 10rpx 0rpx rgba(2, 2, 2, 0.11);
+}
+.nav-container{
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  align-items: center;
+  /*background-image: linear-gradient(-180deg, #FBB443 0%,  rgba(251, 218, 97, 0) 100%);*/
+  height: 104rpx;
+  /* position: sticky;
+   position: -webkit-sticky;*/
+
+}
+.orderTab {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  line-height: 88rpx;
+  box-sizing: border-box;
+  width: fit-content;
+}
+.orderTabItemSelect {
+  border-bottom: 4rpx solid #FE3666;
+  color: #FE3666;
+}
+.orderTabItem {
+  color: #4A4A4A;
+  font-size: 28rpx;
+  text-align: center;
+  padding: 0 20rpx;
+  background-color: #fff;
+}
+.orderTabWrap {
+  overflow: scroll;
+  width: 100%;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  z-index: 1;
+  border-bottom: 1rpx solid #e0e0e0;
+  overflow-x: scroll;
+}
+.tabs-wrapper{
+  height: 89rpx;
+
+}
+.nav{
+  box-sizing: border-box;
+  padding: 10rpx 20rpx;
+  color: #4a4a4a;
+  border:1px solid transparent;
+}
+.active{
+  border:1px solid #F9007C;
+  color: #F9007C;
+  border-radius:40rpx;
+}
+.name{
+  font-weight: 700;
+  color: #4A4A4A;
+  font-size: 30rpx;
+}
+
+.content{
+  margin:0px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+}
+.item{
+  background: #ffffff;
+  width: 49.5%;
+  box-sizing: border-box;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.block{
+  margin-bottom: 1px;
+  background: #ffffff;
+  padding: 0;
+  width: 100%;
+}
+
+.content-title{
+  width:100%;
+  text-align: center;
+  height: 84rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  color: #00B0F0;
+  letter-spacing: 1.14rpx;
+}
+.line{
+  height: 20rpx;
+  width: 150rpx;
+  margin: 0 24rpx;
+}
+.line-right{
+  transform: rotate(180deg);
+}
+
+
+
+
+.bottomText {
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding: 50rpx 0 30rpx;
+}
+.none-bottomText{
+  position: fixed;
+  bottom: 0;
+  z-index: -99;
+}
+.refresh{
+  padding: 40rpx 0 30rpx;
+}
+.noHeight{
+  height: 0;
+  overflow: hidden;
+}
+
+
+.goods-swiper{
+  height: 91vh;
+  width: 100%;
+}
+.swiper-item-container{
+
+}
+
+.nobutton{
+  font-size: 30rpx;
+}
+
+/*导航*/
+.styleSheet{
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+
+}
+.store-goods-container{
+  width: 100%;
+}
+.store-goods{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20rpx 24rpx;
+  box-sizing: border-box;
+  width: 100%;
+  background: #FFF;
+  flex-wrap: wrap;
+}
+.goods-shore-item{
+  width: 49%;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+  margin-top: 20rpx;
+}
+.hot-item-box{
+  width:100%;
+  height: 430rpx;
+  position: relative;
+
+}
+.video-play{
+  position: absolute;
+  width: 70rpx;
+  height: 70rpx;
+  bottom: 20rpx;
+  right:20rpx;
+}
+.line-title{
+  padding: 20rpx;
+  color: #888888;
+  font-size: 24rpx;
+  text-align: center;
+}
+.hot-item-top{
+  width: 65rpx;
+  height: 53rpx;
+  position: absolute;
+  top: 0;
+  left: 5rpx;
+  z-index: 99;
+}
+.hot-item-img{
+  width: 100%;
+  height: 100%;
+  background: #eeeeee;
+}
+.store-goods-title{
+  display: inline-block;
+  width: 100%;
+  color: #222222;
+  font-size: 28rpx;
+  display:-webkit-box;
+  word-break: break-all;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hot-item-footer{
+  padding:16rpx 20rpx;
+}
+.hot-item-price{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 22rpx;
+  margin: 15rpx 0 0rpx;
+
+}
+.hot-item-price .price-text{
+  line-height: 30rpx;
+  color: #FE688C;
+  border:1rpx solid #FE688C;
+  box-sizing: border-box;
+  border-radius: 7rpx;
+  padding: 0 8rpx;
+}
+.price{
+  font-size: 28rpx;
+  color: #FD3666;
+}
+.hot-item-sold{
+  font-size: 20rpx;
+  color: #9B9B9B;
+}
+.huidaodingbu{
+  position: fixed;
+  bottom: 20rpx;
+  right: 20rpx;
+  z-index: 99;
+  opacity: .8;
+}
+.huidaodingbu:before{
+  font-size: 90rpx;
+  color:#FE688C ;
+}
+.swiper{
+  width: 100vw;
+}
+.swiper .slide-image{
+  width:100%;
+  height:100%;
+
+}
+.adTabList{
+  display: flex;
+}
+
+.adSwiper-item {
+  width: 100%;
+  height: 320rpx;
+}

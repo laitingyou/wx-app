@@ -1,0 +1,287 @@
+@import '/style/iconfont.wxss';
+
+button:active {
+    opacity: .8;
+}
+button{
+    font-size: 24rpx!important;
+    padding: 0 20rpx!important;
+}
+
+button:after{
+    border: none!important;
+}
+
+.orderTabWrap {
+    width: 100%;
+    position: fixed;
+    top: 70px;
+    z-index: 1;
+    border-bottom: 1rpx solid #e0e0e0;
+    height: 89rpx;
+    line-height: 88rpx;
+    background-color: #fff;
+}
+
+.orderTab {
+    padding: 0 20rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.orderTabContent {
+    padding-top: 110rpx;
+}
+
+.orderTabItem {
+    flex: 1;
+    color: #4A4A4A;
+    font-size: 28rpx;
+    text-align: center;
+}
+
+.orderTabItemSelect {
+    border-bottom: 4rpx solid #FE3666;
+    color: #FE3666;
+}
+
+.swiperTabContent {
+    width: 100vw;
+    height: auto;
+}
+
+.listTips {
+    text-align: center;
+    font-size: 24rpx;
+    padding: 20rpx 40rpx;
+}
+
+.isMore {
+    text-align: center;
+    font-size: 24rpx;
+    height: 100rpx;
+    line-height: 80rpx;
+}
+
+/*订单列表*/
+
+.orderList {
+    background-color: #fff;
+    border-top: 1rpx solid #e0e0e0;
+    border-bottom: 1rpx solid #e0e0e0;
+    margin-bottom: 22rpx;
+}
+
+.orderList:last-child {
+    margin-bottom: 0;
+}
+
+.orderListContentTop {
+    padding: 14rpx 28rpx;
+    display: flex;
+    line-height: 60rpx;
+}
+
+.orderListContentTopAvatar {
+    flex: 1;
+}
+
+.orderListContentTopAvatar text {
+    font-size: 28rpx;
+    max-width: 220rpx;
+    display: inline-flex;
+}
+
+.orderListContentTopAvatar .icon-right {
+    margin-left: 20rpx;
+    font-size: 24rpx;
+}
+
+.orderListContentTopR {
+    flex: 1;
+    text-align: right;
+    font-size: 24rpx;
+    color: #fc353d;
+}
+
+.orderListContentMiddle {
+    background-color: #f4f4f4;
+    padding: 20rpx 28rpx;
+    margin-bottom: 5px;
+}
+
+.orderListContentMiddle:last-child {
+    margin-bottom: 0;
+}
+
+.orderListContentMiddle image {
+    width: 152rpx;
+    height: 152rpx;
+    float: left;
+}
+
+.orderListContentMiddleInfo {
+    margin-left: 176rpx;
+}
+
+.orderListContentMiddleInfoT {
+    display: flex;
+    margin-bottom: 15rpx;
+}
+
+.orderListContentMiddleInfoTtitle {
+    font-size: 24rpx;
+    color: #4a4a4a;
+}
+
+.orderListContentMiddleInfoTprice {
+    flex: 1;
+    min-width: 80px;
+    line-height: 20px;
+    text-align: right;
+}
+
+.orderListContentMiddleInfoTprice text {
+    fons-size: 28rpx;
+}
+
+.orderListContentMiddleInfoB {
+    display: flex;
+}
+
+.middleInfoL text {
+    font-size: 24rpx;
+    color: #9b9b9b;
+    display: block;
+}
+
+.middleInfoR {
+    flex: 1;
+    text-align: right;
+
+}
+
+.middleInfoR text {
+    font-size: 28rpx;
+    color: #9b9b9b;
+}
+
+.orderListContentMiddleInfoPrice {
+    padding: 0 28rpx;
+    background-color: #fff;
+    height: 89rpx;
+    line-height: 89rpx;
+    display: flex;
+    color: #9b9b9b;
+
+}
+
+.middleInfoPriceL {
+    color: #9b9b9b;
+    font-size: 24rpx;
+}
+
+.middleInfoPriceR {
+    font-size: 28rpx;
+    flex: 1;
+    text-align: right;
+
+}
+
+.middleInfoPriceRp {
+    color: #f91a33;
+}
+
+.orderListContentBottom {
+    display: flex;
+    background-color: #fff;
+    border-top: 1rpx solid #e0e0e0;
+    padding: 31rpx 28rpx;
+}
+
+.orderListContentBottomL {
+    color: #fe3666;
+    font-size: 28rpx;
+}
+
+.likeSuccess image {
+    width: 58rpx;
+    height: 58rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    margin-left: 20rpx;
+
+}
+
+.likeSuccess text {
+    vertical-align: middle;
+}
+
+.orderListContentBottomR {
+    text-align: right;
+    flex: 1;
+}
+
+.orderListContentBottomR button {
+    overflow: visible;
+}
+
+.plainBtn {
+    color: #fe3666 !important;
+    border-color: #fe3666 !important;
+    border-radius: 50rpx;
+}
+
+.mr10 {
+    margin-right: 10rpx;
+
+}
+.ml10{
+    margin-left: 10rpx;
+}
+
+.primaryBtn {
+    background-color: #fe3666 !important;
+    border: 1px solid #fe3666 !important;
+    border-radius: 50rpx;
+}
+
+.store-icon {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 6rpx;
+    margin-right: 20rpx;
+    background-color: #fe3666;
+    color: #fff;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-more {
+    width: 15.2rpx;
+    margin-left: 20.8rpx;
+}
+
+.icon-more:before {
+    content: "\e6a2";
+    color: #888;
+    height: 24rpx !important;
+}
+
+.cf:before, .cf:after {
+    content: "";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+.autoWidth{
+    width: auto;
+}
+.adTabListItemSelect{
+    border-bottom: 2px solid #fe3666;
+    color: #fe3666;
+}

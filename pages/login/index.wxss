@@ -1,0 +1,19 @@
+page {
+	background-color: #fff;
+}
+.loginPage {
+	width: 500rpx;
+	margin: 0 auto;
+	padding-top: 190rpx;
+	text-align: center;
+}
+.loginPage-img {
+	width: 390rpx;
+	height: 127rpx;
+	display: inline-block;
+	margin: 0 auto 240rpx auto;
+}
+.loginBtn {
+	height: 88rpx !important;
+	border-radius: 44rpx !important
+}
